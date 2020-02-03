@@ -25,18 +25,22 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+        mainwidget.cpp \
         main.cpp \
         main_window.cpp \
         toolbar.cpp
 
 HEADERS += \
+        mainwidget.h \
         main_window.h \
         toolbar.h
 
 FORMS += \
+        mainwidget.ui \
         toolbar.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
