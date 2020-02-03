@@ -1,17 +1,13 @@
 #include "mainwidget.h"
 #include "ui_mainwidget.h"
 #include "iostream"
+#include "Graph/csv.h"
 
 using namespace std;
 MainWidget::MainWidget(QWidget *parent) :
     QWidget(parent)
 {
     setupUi(this);
-
-    vector<vector<string>> data = {{"1", "3"}, {"1", "2"}};
-
-    fillTable(*tableur_1, data);
-    //fillTab(data2, &tableWidget_2)
 }
 
 void MainWidget::fillTable(QTableWidget &tableWidget, vector<vector<string>> data) {
@@ -25,4 +21,10 @@ void MainWidget::fillTable(QTableWidget &tableWidget, vector<vector<string>> dat
 
 void MainWidget::addTab() {
 
+}
+
+void MainWidget::fillFirstTable(vector<vector<string>> data) {
+
+    fillTable(*tableur_1, data);
+    //fillTab(data2, &tableWidget_2)
 }

@@ -25,12 +25,18 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
+        Graph/csv.cpp \
+        Graph/edge.cpp \
+        Graph/graph.cpp \
+        Graph/node.cpp \
         mainwidget.cpp \
         main.cpp \
         main_window.cpp \
         toolbar.cpp
 
 HEADERS += \
+        Graph/csv.h \
+        Graph/graph.h \
         mainwidget.h \
         main_window.h \
         toolbar.h

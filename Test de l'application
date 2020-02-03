@@ -1,0 +1,28 @@
+  - Exécuter l'application.
+  
+  - Plusieurs boutons sont disponibles, pour l'instant il est seulement possible
+    d'ouvrir et visualiser un fichier csv en utilisant Fichier -> Ouvrir tableau
+    ou en utilisant ctrl + O ou le bouton correspondant. Utiliser une de ces
+    options.
+    
+  - Une boîte de dialogue s'ouvre, sélectionner un fichier csv à ouvrir.
+    Plusieurs exemples sont disponibles dans ../documents_CSV/, dont plusieurs
+    qui s'ouvrent correctement :
+        - accent.csv
+        - basique.csv
+        - espaces.csv
+        - notes.csv
+        - virgules.csv
+    Ainsi que d'autres qui font crasher l'application :
+        - gros_nombres.csv
+        - lorem_ipsum_modifié.csv
+
+  - Pour l'instant, la taille du tableur est fixe et un fichier qui dépasse ne
+    sera pas affiché intégralement. De plus, le nombre d'onglets est également
+    statique et tous les fichiers ouverts s'afficheront dans le premier onglet
+    en écrasant les données précédentes.
+    
+  - Il est également possible de changer le thème de l'application, en cochant
+    l'option Préférences -> thème sombre. (Impossible de revenir au thème de
+    base pour l'instant... Le côté obscur de la force est omnipotent).
+

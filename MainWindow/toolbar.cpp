@@ -1,4 +1,5 @@
 #include "toolbar.h"
+#include "Graph/csv.h"
 #include <QDebug>
 
 ToolBar::ToolBar(QWidget *parent) :
@@ -99,7 +100,13 @@ void ToolBar::tableauOuvrir()
    QString fichier = QFileDialog::getOpenFileName(this,"Ouvrir un fichier", QString(), "Tableurs (*.csv *.txt)");
    QMessageBox::information(this, "Fichier", "Vous avez sélectionné :\n" +fichier);
 
+   std::string filePath = fichier.toStdString();
 
+
+   //TEMPORAIRE
+
+   //MainWidget::addTab();
+   mainWidget->fillFirstTable(openFromCSV(filePath));
 }
 
 void ToolBar::sauvegarder()
