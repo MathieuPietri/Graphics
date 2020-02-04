@@ -2,7 +2,7 @@
 #include "Graph/csv.h"
 #include <QDebug>
 #include <QToolBar>
-
+#include <QStatusBar>
 ToolBar::ToolBar(QWidget *parent) :
     QMainWindow(parent)
 {
@@ -44,7 +44,7 @@ ToolBar::ToolBar(QWidget *parent) :
     connect(actionZoomMoins, SIGNAL(triggered()), this, SLOT(zoomMoins()));
     connect(actionImageTailleReelle, SIGNAL(triggered()), this, SLOT(zoomTailleReelle()));
     connect(actionPleinEcran, SIGNAL(changed()), this, SLOT(pleinEcran()));
-    connect(actionBarreDeStatus, SIGNAL(triggered()), this, SLOT(barreDEtats()));
+    connect(actionBarreDeStatus, SIGNAL(triggered()), this, SLOT(BarreDeStatus()));
     connect(actionBarreDOutils, SIGNAL(changed()), this, SLOT(barreDOutils()));
 
 
@@ -209,9 +209,17 @@ void ToolBar::pleinEcran()
 
 }
 
-void ToolBar::barreDEtats()
+void ToolBar::BarreDeStatus()
 {
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
+    if(actionBarreDeStatus->isChecked()){
+        this->barreDeStatut->show();
+        qDebug() << "Bar des Statues pas caché";
+    }else {
+        this->barreDeStatut->hide();
+        qDebug() << "Bar des Statues caché";
+
+    }
 }
 
 void ToolBar::barreDOutils()
