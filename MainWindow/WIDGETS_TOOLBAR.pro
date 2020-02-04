@@ -31,7 +31,6 @@ SOURCES += \
         Graph/node.cpp \
         mainwidget.cpp \
         main.cpp \
-        main_window.cpp \
         tabcontentwidget.cpp \
         toolbar.cpp
 
@@ -39,7 +38,6 @@ HEADERS += \
         Graph/csv.h \
         Graph/graph.h \
         mainwidget.h \
-        main_window.h \
         tabcontentwidget.h \
         toolbar.h
 

@@ -1,5 +1,4 @@
 #include "toolbar.h"
-#include "main_window.h"
 #include <QApplication>
 
 int main(int argc, char *argv[])
@@ -13,7 +12,7 @@ int main(int argc, char *argv[])
     t.show();
 
     //t.showFullScreen();
-   // w.show();
+    // w.show();
 
     return a.exec();
 }
