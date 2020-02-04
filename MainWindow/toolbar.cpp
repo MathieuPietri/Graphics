@@ -110,7 +110,7 @@ void ToolBar::tableauOuvrir()
    //MainWidget::addTab();
    try{
     std::vector<std::vector<std::string>> file = openFromCSV(filePath);
-    mainWidget->fillFirstTable(file);
+    mainWidget->addDataSet(file, "nom");
    }catch(std::exception &e){
     std::cout << e.what() << std::endl;
    }
