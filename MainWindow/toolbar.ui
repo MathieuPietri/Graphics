@@ -300,6 +300,9 @@
    </property>
   </action>
   <action name="actionPleinEcran">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="text">
     <string>Plein ecran</string>
    </property>

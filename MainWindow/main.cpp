@@ -9,8 +9,12 @@ int main(int argc, char *argv[])
     //Main_window w;
 
     ToolBar t;
+    t.setWindowState(Qt::WindowMaximized);
     t.show();
+
+    //t.showFullScreen();
    // w.show();
 
     return a.exec();
 }
+
