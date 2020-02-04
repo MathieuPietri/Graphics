@@ -106,7 +106,12 @@ void ToolBar::tableauOuvrir()
    //TEMPORAIRE
 
    //MainWidget::addTab();
-   mainWidget->fillFirstTable(openFromCSV(filePath));
+   try{
+    std::vector<std::vector<std::string>> file = openFromCSV(filePath);
+    mainWidget->fillFirstTable(file);
+   }catch(std::exception &e){
+    std::cout << e.what() << std::endl;
+   }
 }
 
 void ToolBar::sauvegarder()
