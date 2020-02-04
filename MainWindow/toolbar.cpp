@@ -1,6 +1,7 @@
 #include "toolbar.h"
 #include "Graph/csv.h"
 #include <QDebug>
+#include <QToolBar>
 
 ToolBar::ToolBar(QWidget *parent) :
     QMainWindow(parent)
@@ -43,8 +44,8 @@ ToolBar::ToolBar(QWidget *parent) :
     connect(actionZoomMoins, SIGNAL(triggered()), this, SLOT(zoomMoins()));
     connect(actionImageTailleReelle, SIGNAL(triggered()), this, SLOT(zoomTailleReelle()));
     connect(actionPleinEcran, SIGNAL(changed()), this, SLOT(pleinEcran()));
-    connect(actionBarreDEtat, SIGNAL(triggered()), this, SLOT(barreDEtats()));
-    connect(actionBarreDOutils, SIGNAL(triggered()), this, SLOT(barreDOutils()));
+    connect(actionBarreDeStatus, SIGNAL(triggered()), this, SLOT(barreDEtats()));
+    connect(actionBarreDOutils, SIGNAL(changed()), this, SLOT(barreDOutils()));
 
 
     /*
@@ -203,7 +204,7 @@ void ToolBar::pleinEcran()
         this->showFullScreen();
     }else {
         this->showNormal();
-        this->showMaximized();
+        //this->showMaximized();
     }
 
 }
@@ -216,6 +217,14 @@ void ToolBar::barreDEtats()
 void ToolBar::barreDOutils()
 {
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
+    if(actionBarreDOutils->isChecked()){
+        this->toolBar->show();
+        qDebug() << "toolBar pas caché";
+    }else {
+        this->toolBar->hide();
+        qDebug() << "toolBar caché";
+
+    }
 }
 
 
