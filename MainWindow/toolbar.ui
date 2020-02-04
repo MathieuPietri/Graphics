@@ -135,7 +135,7 @@
     <addaction name="actionImageTailleReelle"/>
     <addaction name="actionPleinEcran"/>
     <addaction name="separator"/>
-    <addaction name="actionBarreDeStatuts"/>
+    <addaction name="actionBarreDeStatus"/>
     <addaction name="actionBarreDOutils"/>
    </widget>
    <widget class="QMenu" name="menuPreferences">
@@ -310,7 +310,7 @@
     <string>F11</string>
    </property>
   </action>
-  <action name="actionBarreDeStatuts">
+  <action name="actionBarreDeStatus">
    <property name="checkable">
     <bool>true</bool>
    </property>
