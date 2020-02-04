@@ -1,6 +1,7 @@
 #include "toolbar.h"
 #include "Graph/csv.h"
 #include <QDebug>
+#include <QToolBar>
 
 ToolBar::ToolBar(QWidget *parent) :
     QMainWindow(parent)
@@ -44,7 +45,7 @@ ToolBar::ToolBar(QWidget *parent) :
     connect(actionImageTailleReelle, SIGNAL(triggered()), this, SLOT(zoomTailleReelle()));
     connect(actionPleinEcran, SIGNAL(changed()), this, SLOT(pleinEcran()));
     connect(actionBarreDEtat, SIGNAL(triggered()), this, SLOT(barreDEtats()));
-    connect(actionBarreDOutils, SIGNAL(triggered()), this, SLOT(barreDOutils()));
+    connect(actionBarreDOutils, SIGNAL(changed()), this, SLOT(barreDOutils()));
 
 
     /*
@@ -215,6 +216,12 @@ void ToolBar::barreDEtats()
 void ToolBar::barreDOutils()
 {
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
+    if(actionBarreDEtat->isChecked()){
+        this->toolBar->hide();
+
+    }else {
+        this->toolBar->show();
+    }
 }
 
 
