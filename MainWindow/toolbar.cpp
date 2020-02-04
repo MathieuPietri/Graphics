@@ -203,6 +203,7 @@ void ToolBar::pleinEcran()
     if(actionPleinEcran->isChecked()){
         this->showFullScreen();
     }else {
+        this->showNormal();
         this->showMaximized();
     }
 
