@@ -51,7 +51,7 @@ ToolBar::ToolBar(QWidget *parent) :
      *
      *
     */
-    connect(actionModeSombre, SIGNAL(triggered()), this, SLOT(modeSombre()));
+    connect(actionModeSombre, SIGNAL(changed()), this, SLOT(modeSombre()));
     connect(actionLangues, SIGNAL(triggered()), this, SLOT(langues()));
 
 
@@ -208,15 +208,26 @@ void ToolBar::barreDOutils()
 void ToolBar::modeSombre()
 {
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
-
     QApplication::setStyle(QStyleFactory::create("Fusion"));
     QPalette p;
-    p = qApp->palette();
-    p.setColor(QPalette::Window, QColor(53,53,53));
-    p.setColor(QPalette::Button, QColor(53,53,53));
-    p.setColor(QPalette::Highlight, QColor(142,45,197));
-    p.setColor(QPalette::ButtonText, QColor(255,255,255));
-    qApp->setPalette(p);
+
+    if(actionModeSombre->isChecked()){
+        qDebug() << "IsEnabled";
+        p = qApp->palette();
+        p.setColor(QPalette::Window, QColor(53,53,53));
+        p.setColor(QPalette::Button, QColor(53,53,53));
+        p.setColor(QPalette::Highlight, QColor(142,45,197));
+        p.setColor(QPalette::ButtonText, QColor(255,255,255));
+        qApp->setPalette(p);
+    }else{
+        qDebug() << "isDisabled";
+        p = qApp->palette();
+        p.setColor(QPalette::Window, QColor(239,239,239));
+        p.setColor(QPalette::Button, QColor(239,239,239));
+        p.setColor(QPalette::Highlight, QColor(48,140,198));
+        p.setColor(QPalette::ButtonText, QColor(0,0,0));
+        qApp->setPalette(p);
+    }
 }
 
 void ToolBar::langues()
@@ -234,7 +245,7 @@ void ToolBar::langues()
 void ToolBar::aboutGraphEt()
 {
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
-    QMessageBox::information(this, "About GraphET", "Cette application a été créer par :\n Alix, Anthony, Mathieu, Maxime, Oriane et Quentin \n en février 2020. \n");
+    QMessageBox::information(this, "About GraphET", "Cette application a été créé par :\n Alix, Anthony, Mathieu, Maxime, Oriane et Quentin \n en février 2020. \n");
 }
 
 /*
