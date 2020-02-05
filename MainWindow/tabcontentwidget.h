@@ -11,6 +11,7 @@ class TabContentWidget : public QWidget, private Ui::TabContentWidget
 public:
     explicit TabContentWidget(QWidget *parent = nullptr);
     QTableWidget & getTable();
+    QGraphicsView & getGraphArea();
 };
 
 #endif // TABCONTENTWIDGET_H
