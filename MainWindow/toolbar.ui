@@ -135,7 +135,7 @@
     <addaction name="actionImageTailleReelle"/>
     <addaction name="actionPleinEcran"/>
     <addaction name="separator"/>
-    <addaction name="actionBarreDEtat"/>
+    <addaction name="actionBarreDeStatus"/>
     <addaction name="actionBarreDOutils"/>
    </widget>
    <widget class="QMenu" name="menuPreferences">
@@ -300,6 +300,9 @@
    </property>
   </action>
   <action name="actionPleinEcran">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="text">
     <string>Plein ecran</string>
    </property>
@@ -307,7 +310,7 @@
     <string>F11</string>
    </property>
   </action>
-  <action name="actionBarreDEtat">
+  <action name="actionBarreDeStatus">
    <property name="checkable">
     <bool>true</bool>
    </property>
@@ -315,7 +318,7 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Barre d'etats</string>
+    <string>Barre de statuts</string>
    </property>
   </action>
   <action name="actionBarreDOutils">
@@ -395,6 +398,9 @@
    <property name="text">
     <string>Restaurer Tool</string>
    </property>
+   <property name="toolTip">
+    <string>Restaurer</string>
+   </property>
    <property name="shortcut">
     <string>Ctrl+Y</string>
    </property>
@@ -410,6 +416,9 @@
    <property name="text">
     <string>Zoom Tool Plus</string>
    </property>
+   <property name="toolTip">
+    <string>Zoomer</string>
+   </property>
   </action>
   <action name="actionZoomMoinsTool">
    <property name="icon">
@@ -418,6 +427,9 @@
    </property>
    <property name="text">
     <string>Zoom Tool Moins</string>
+   </property>
+   <property name="toolTip">
+    <string>Dézoomer</string>
    </property>
   </action>
   <action name="actionFusionTool">
@@ -428,6 +440,9 @@
    <property name="text">
     <string>Fusion Tool</string>
    </property>
+   <property name="toolTip">
+    <string>Fusionner 2 noeuds du graphe</string>
+   </property>
   </action>
   <action name="actionOuvrirTool">
    <property name="icon">
@@ -437,6 +452,9 @@
    <property name="text">
     <string>Ouvrir Tool</string>
    </property>
+   <property name="toolTip">
+    <string>Ouvrir un fichier</string>
+   </property>
   </action>
   <action name="actionChoisirCouleurTool">
    <property name="icon">
@@ -445,6 +463,9 @@
    </property>
    <property name="text">
     <string>Choisir Couleur Tool</string>
+   </property>
+   <property name="toolTip">
+    <string>Choisir la couleur du noeud sélectionné</string>
    </property>
   </action>
   <action name="actionFusionner">
@@ -535,6 +556,9 @@
    <property name="text">
     <string>EnregistrerSous</string>
    </property>
+   <property name="toolTip">
+    <string>Enregistrer Sous</string>
+   </property>
    <property name="shortcut">
     <string>Ctrl+Shift+S</string>
    </property>
@@ -547,6 +571,9 @@
    <property name="text">
     <string>NouveauTableauAleatoire</string>
    </property>
+   <property name="toolTip">
+    <string>Générer un nouveau tableau aléatoire</string>
+   </property>
    <property name="shortcut">
     <string>Ctrl+N</string>
    </property>
@@ -558,6 +585,9 @@
    </property>
    <property name="text">
     <string>Exporter</string>
+   </property>
+   <property name="toolTip">
+    <string>Exporter le graphe</string>
    </property>
   </action>
  </widget>

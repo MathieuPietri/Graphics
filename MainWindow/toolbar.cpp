@@ -1,7 +1,8 @@
 #include "toolbar.h"
 #include "Graph/csv.h"
 #include <QDebug>
-
+#include <QToolBar>
+#include <QStatusBar>
 ToolBar::ToolBar(QWidget *parent) :
     QMainWindow(parent)
 {
@@ -41,9 +42,10 @@ ToolBar::ToolBar(QWidget *parent) :
     */
     connect(actionZoomPlus, SIGNAL(triggered()), this, SLOT(zoomPlus()));
     connect(actionZoomMoins, SIGNAL(triggered()), this, SLOT(zoomMoins()));
-    connect(actionPleinEcran, SIGNAL(triggered()), this, SLOT(pleinEcran()));
-    connect(actionBarreDEtat, SIGNAL(triggered()), this, SLOT(barreDEtats()));
-    connect(actionBarreDOutils, SIGNAL(triggered()), this, SLOT(barreDOutils()));
+    connect(actionImageTailleReelle, SIGNAL(triggered()), this, SLOT(zoomTailleReelle()));
+    connect(actionPleinEcran, SIGNAL(changed()), this, SLOT(pleinEcran()));
+    connect(actionBarreDeStatus, SIGNAL(triggered()), this, SLOT(BarreDeStatus()));
+    connect(actionBarreDOutils, SIGNAL(changed()), this, SLOT(barreDOutils()));
 
 
     /*
@@ -75,7 +77,7 @@ ToolBar::ToolBar(QWidget *parent) :
     connect(actionAnnulerTool, SIGNAL(triggered()), this, SLOT(annuler()));
     connect(actionRestaurerTool, SIGNAL(triggered()), this, SLOT(restaurer()));
     connect(actionZoomPlusTool, SIGNAL(triggered()), this, SLOT(zoomPlus()));
-    connect(actionZoomMoinsTool, SIGNAL(triggered()), this, SLOT(zoomMoins()));
+    connect(actionZoomMoinsTool, SIGNAL(triggered()), this, SLOT(zoomMoins()));  
     connect(actionFusionTool, SIGNAL(triggered()), this, SLOT(fusion()));
     connect(actionOuvrirTool, SIGNAL(triggered()), this, SLOT(tableauOuvrir()));
     connect(actionChoisirCouleurTool, SIGNAL(triggered()), this, SLOT(choixCouleurs()));
@@ -97,8 +99,8 @@ void ToolBar::tableauOuvrir()
 {
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
     //Ouverture d'un fichier
-   QString fichier = QFileDialog::getOpenFileName(this,"Ouvrir un fichier", QString(), "Tableurs (*.csv *.txt)");
 
+   QString fichier = QFileDialog::getOpenFileName(this,"Ouvrir un fichier", QString(), "Tableurs (*.csv *.txt, *gret)");
 
    std::string filePath = fichier.toStdString();
 
@@ -108,7 +110,7 @@ void ToolBar::tableauOuvrir()
    //MainWidget::addTab();
    try{
     std::vector<std::vector<std::string>> file = openFromCSV(filePath);
-    mainWidget->fillFirstTable(file);
+    mainWidget->addDataSet(file, "nom");
     QMessageBox::information(this, "Fichier", "Vous avez sélectionné :\n" +fichier);
 
    }catch(std::exception &e){
@@ -129,7 +131,7 @@ void ToolBar::sauvegarder()
 void ToolBar::enregistrerSous()
 {
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
-    QString SaveFile = QFileDialog::getSaveFileName(this, "Enregistrer un fichier", QString(), "Fichiers GraphET (*.grep)");
+    QString SaveFile = QFileDialog::getSaveFileName(this, "Enregistrer un fichier", QString(), "Fichiers GraphET (*.gret)");
 }
 
 void ToolBar::exporter()
@@ -197,19 +199,47 @@ void ToolBar::zoomMoins()
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
 }
 
-void ToolBar::pleinEcran()
+void ToolBar::zoomTailleReelle()
 {
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
 }
 
-void ToolBar::barreDEtats()
+void ToolBar::pleinEcran()
 {
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
+    if(actionPleinEcran->isChecked()){
+        this->showFullScreen();
+    }else {
+        this->showNormal();
+        //this->showMaximized();
+    }
+
+}
+
+void ToolBar::BarreDeStatus()
+{
+    qDebug() << __FUNCTION__ << "The event sender is" << sender();
+    if(actionBarreDeStatus->isChecked()){
+        this->barreDeStatut->show();
+        qDebug() << "Bar des Statues pas caché";
+    }else {
+        this->barreDeStatut->hide();
+        qDebug() << "Bar des Statues caché";
+
+    }
 }
 
 void ToolBar::barreDOutils()
 {
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
+    if(actionBarreDOutils->isChecked()){
+        this->toolBar->show();
+        qDebug() << "toolBar pas caché";
+    }else {
+        this->toolBar->hide();
+        qDebug() << "toolBar caché";
+
+    }
 }
 
 

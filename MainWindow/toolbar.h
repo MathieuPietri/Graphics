@@ -47,8 +47,9 @@ protected slots:
     */
     void zoomPlus();
     void zoomMoins();
+    void zoomTailleReelle();
     void pleinEcran();
-    void barreDEtats();
+    void BarreDeStatus();
     void barreDOutils();
 
 

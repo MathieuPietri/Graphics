@@ -1,5 +1,4 @@
 #include "toolbar.h"
-#include "main_window.h"
 #include <QApplication>
 
 int main(int argc, char *argv[])
@@ -9,8 +8,12 @@ int main(int argc, char *argv[])
     //Main_window w;
 
     ToolBar t;
+    t.setWindowState(Qt::WindowMaximized);
     t.show();
-   // w.show();
+
+    //t.showFullScreen();
+    // w.show();
 
     return a.exec();
 }
+
