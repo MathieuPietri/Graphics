@@ -98,7 +98,7 @@ void ToolBar::tableauOuvrir()
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
     //Ouverture d'un fichier
    QString fichier = QFileDialog::getOpenFileName(this,"Ouvrir un fichier", QString(), "Tableurs (*.csv *.txt)");
-   QMessageBox::information(this, "Fichier", "Vous avez sélectionné :\n" +fichier);
+
 
    std::string filePath = fichier.toStdString();
 
@@ -109,8 +109,15 @@ void ToolBar::tableauOuvrir()
    try{
     std::vector<std::vector<std::string>> file = openFromCSV(filePath);
     mainWidget->fillFirstTable(file);
+    QMessageBox::information(this, "Fichier", "Vous avez sélectionné :\n" +fichier);
+
    }catch(std::exception &e){
-    std::cout << e.what() << std::endl;
+       string str = e.what();
+       if(str.compare("File not found") == 0){
+           std::cout << e.what() << std::endl;
+           std::cout << "oui";
+       }
+       std::cout << e.what();
    }
 }
 
