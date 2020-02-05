@@ -43,7 +43,14 @@
       </attribute>
       <layout class="QVBoxLayout" name="verticalLayout_2">
        <item>
-        <widget class="TabContentWidget" name="tabContentWidget_1" native="true"/>
+        <widget class="TabContentWidget" name="tabContentWidget_1" native="true">
+         <property name="minimumSize">
+          <size>
+           <width>842</width>
+           <height>469</height>
+          </size>
+         </property>
+        </widget>
        </item>
       </layout>
      </widget>

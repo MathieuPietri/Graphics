@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>687</width>
-    <height>454</height>
+    <width>842</width>
+    <height>469</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>842</width>
+    <height>469</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>TabContentWidget</string>
@@ -304,41 +310,25 @@
     </widget>
    </item>
    <item>
-    <widget class="QScrollArea" name="graphScrollArea">
-     <property name="verticalScrollBarPolicy">
-      <enum>Qt::ScrollBarAlwaysOn</enum>
+    <widget class="QGraphicsView" name="graphArea">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
      </property>
-     <property name="horizontalScrollBarPolicy">
-      <enum>Qt::ScrollBarAlwaysOn</enum>
+     <property name="maximumSize">
+      <size>
+       <width>800</width>
+       <height>1000</height>
+      </size>
+     </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarAsNeeded</enum>
      </property>
      <property name="sizeAdjustPolicy">
-      <enum>QAbstractScrollArea::AdjustToContents</enum>
+      <enum>QAbstractScrollArea::AdjustToContentsOnFirstShow</enum>
      </property>
-     <property name="widgetResizable">
-      <bool>true</bool>
-     </property>
-     <widget class="QWidget" name="graphContainer">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>0</y>
-        <width>1318</width>
-        <height>818</height>
-       </rect>
-      </property>
-      <layout class="QHBoxLayout" name="horizontalLayout_5">
-       <item>
-        <widget class="QWidget" name="graphArea" native="true">
-         <property name="minimumSize">
-          <size>
-           <width>1300</width>
-           <height>800</height>
-          </size>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
     </widget>
    </item>
   </layout>

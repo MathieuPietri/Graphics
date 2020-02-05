@@ -2,6 +2,7 @@
 #define TABCONTENTWIDGET_H
 
 #include "ui_tabcontentwidget.h"
+#include <QGraphicsView>
 
 class TabContentWidget : public QWidget, private Ui::TabContentWidget
 {
