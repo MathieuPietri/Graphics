@@ -302,358 +302,429 @@
     <message>
         <location filename="toolbar.ui" line="20"/>
         <source>ToolBar</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>ToolBar</translatorcomment>
+        <translation>ToolBar</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="104"/>
         <location filename="toolbar.cpp" line="114"/>
         <source>Fichier</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>File</translatorcomment>
+        <translation>File</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="117"/>
         <source>Edition</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Edit</translatorcomment>
+        <translation>Edit</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="131"/>
         <source>Affichage</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Display</translatorcomment>
+        <translation>Display</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="143"/>
         <source>Preferences</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Preferences</translatorcomment>
+        <translation>Preferences</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="152"/>
         <source>Aide</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Help</translatorcomment>
+        <translation>Help</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="177"/>
         <source>toolBar</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>toolBar</translatorcomment>
+        <translation>toolBar</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="207"/>
         <source>Nouveau tableau aleatoire...</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>New random table...</translatorcomment>
+        <translation>New random table...</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="210"/>
         <location filename="toolbar.ui" line="578"/>
         <source>Ctrl+N</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Ctrl+N</translatorcomment>
+        <translation>Ctrl+N</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="219"/>
         <source>Ouvrir tableau...</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Open table...</translatorcomment>
+        <translation>Open table...</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="222"/>
         <source>Ctrl+O</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Ctrl+O</translatorcomment>
+        <translation>Ctrl+O</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="231"/>
         <location filename="toolbar.ui" line="542"/>
         <location filename="toolbar.ui" line="545"/>
         <source>Enregistrer</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Save</translatorcomment>
+        <translation>Save</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="234"/>
         <location filename="toolbar.ui" line="548"/>
         <source>Ctrl+S</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Ctrl+S</translatorcomment>
+        <translation>Ctrl+S</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="243"/>
         <source>Exporter...</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Export to...</translatorcomment>
+        <translation>Export to...</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="248"/>
         <source>Imprimer...</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Print...</translatorcomment>
+        <translation>Print...</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="251"/>
         <source>Ctrl+P</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Ctrl+P</translatorcomment>
+        <translation>Ctrl+P</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="260"/>
         <location filename="toolbar.ui" line="381"/>
         <source>Annuler</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Undo</translatorcomment>
+        <translation>Undo</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="263"/>
         <location filename="toolbar.ui" line="387"/>
         <source>Ctrl+Z</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Ctrl+Z</translatorcomment>
+        <translation>Ctrl+Z</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="272"/>
         <location filename="toolbar.ui" line="402"/>
         <source>Restaurer</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Redo</translatorcomment>
+        <translation>Redo</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="275"/>
         <location filename="toolbar.ui" line="405"/>
         <source>Ctrl+Y</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Ctrl+Y</translatorcomment>
+        <translation>Ctrl+Y</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="284"/>
         <source>Zoom avant</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Zoom in</translatorcomment>
+        <translation>Zoom in</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="287"/>
         <source>Ctrl++</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Ctrl++</translatorcomment>
+        <translation>Ctrl++</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="296"/>
         <source>Zoom arriere</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Zoom out</translatorcomment>
+        <translation>Zoom out</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="299"/>
         <source>Ctrl+-</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Ctrl+-</translatorcomment>
+        <translation>Ctrl+-</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="307"/>
         <source>Plein ecran</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Full screen</translatorcomment>
+        <translation>Full screen</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="310"/>
         <source>F11</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>F11</translatorcomment>
+        <translation>F11</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="321"/>
         <source>Barre de statuts</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Status Bar</translatorcomment>
+        <translation>Status Bar</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="332"/>
         <source>Barre d&apos;outils</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Tool Bar</translatorcomment>
+        <translation>Tool Bar</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="340"/>
         <source>Mode sombre</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Dark Mode</translatorcomment>
+        <translation>Dark Mode</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="343"/>
         <source>Ctrl+D</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Ctrl+D</translatorcomment>
+        <translation>Ctrl+D</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="348"/>
         <source>Langues...</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Language...</translatorcomment>
+        <translation>Language...</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="353"/>
         <source>A propos...</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>About...</translatorcomment>
+        <translation>About...</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="358"/>
         <source>Tout selectionner</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Select All</translatorcomment>
+        <translation>Select All</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="361"/>
         <source>Ctrl+A</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Ctrl+A</translatorcomment>
+        <translation>Ctrl+A</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="366"/>
         <source>Copier</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Copy</translatorcomment>
+        <translation>Copy</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="369"/>
         <source>Ctrl+C</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Ctrl+C</translatorcomment>
+        <translation>Ctrl+C</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="378"/>
         <source>Annuler Tool</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Undo Tool</translatorcomment>
+        <translation>Undo Tool</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="399"/>
         <source>Restaurer Tool</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Redo Tool</translatorcomment>
+        <translation>Redo Tool</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="417"/>
         <source>Zoom Tool Plus</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Zoom Tool In</translatorcomment>
+        <translation>Zoom Tool In</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="420"/>
         <source>Zoomer</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Zoom</translatorcomment>
+        <translation>Zoom</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="429"/>
         <source>Zoom Tool Moins</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Zoom Tool out</translatorcomment>
+        <translation>Zoom Tool out</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="432"/>
         <source>Dézoomer</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Zoom out</translatorcomment>
+        <translation>Zoom out</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="441"/>
         <source>Fusion Tool</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Merge Tool</translatorcomment>
+        <translation>Merge Tool</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="444"/>
         <source>Fusionner 2 noeuds du graphe</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Merge vertices</translatorcomment>
+        <translation>Merge vertices</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="453"/>
         <source>Ouvrir Tool</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Open Tool</translatorcomment>
+        <translation>Open Tool</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="456"/>
         <source>Ouvrir un fichier</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Open file</translatorcomment>
+        <translation>Open file</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="465"/>
         <source>Choisir Couleur Tool</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Choose Color</translatorcomment>
+        <translation>Choose Color</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="468"/>
         <source>Choisir la couleur du noeud sélectionné</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Choose color</translatorcomment>
+        <translation>Choose color</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="477"/>
         <source>Fusionner</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Merge</translatorcomment>
+        <translation>Merge</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="480"/>
         <source>Ctrl+M</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Ctrl+M</translatorcomment>
+        <translation>Ctrl+M</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="489"/>
         <source>Enregistrer sous...</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Save to...</translatorcomment>
+        <translation>Save to...</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="492"/>
         <location filename="toolbar.ui" line="563"/>
         <source>Ctrl+Shift+S</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Ctrl+Shift+S</translatorcomment>
+        <translation>Ctrl+Shift+S</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="501"/>
         <source>Image taille réelle </source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Default size picture </translatorcomment>
+        <translation>Default size picture </translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="504"/>
         <source>Ctrl+0</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Ctrl+0</translatorcomment>
+        <translation>Ctrl+0</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="513"/>
         <source>Manuel d&apos;aide...</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Help manual...</translatorcomment>
+        <translation>Help manual...</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="516"/>
         <source>F1</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>F1</translatorcomment>
+        <translation>F1</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="521"/>
         <source>Aperçu avant impression</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Printing preview</translatorcomment>
+        <translation>Printing preview</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="524"/>
         <source>Ctrl+Shift+P</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Ctrl+Shift+P</translatorcomment>
+        <translation>Ctrl+Shift+P</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="533"/>
         <source>Changer la couleur d&apos;un noeud</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Change color</translatorcomment>
+        <translation>Change color</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="557"/>
         <source>EnregistrerSous</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Save to</translatorcomment>
+        <translation>Save to</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="560"/>
         <source>Enregistrer Sous</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Save to</translatorcomment>
+        <translation>Save to</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="572"/>
         <source>NouveauTableauAleatoire</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>New Random Table</translatorcomment>
+        <translation>New random Table</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="575"/>
         <source>Générer un nouveau tableau aléatoire</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Generate new random table</translatorcomment>
+        <translation>Generate new random table</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="587"/>
         <source>Exporter</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Export</translatorcomment>
+        <translation>Export</translation>
     </message>
     <message>
         <location filename="toolbar.ui" line="590"/>
         <source>Exporter le graphe</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Export graph</translatorcomment>
+        <translation>Export graph</translation>
     </message>
     <message>
         <location filename="toolbar.cpp" line="114"/>
         <source>Vous avez sélectionné :
 </source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>You have chosen :
+</translatorcomment>
+        <translation>You chose :
+</translation>
     </message>
     <message>
         <location filename="toolbar.cpp" line="134"/>
         <source>Enregistrer un fichier</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Save</translatorcomment>
+        <translation>Save</translation>
     </message>
     <message>
         <location filename="toolbar.cpp" line="134"/>
         <source>Fichiers GraphET (*.gret)</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Files GraphET (*.gret)</translatorcomment>
+        <translation>Files GraphET (*.gret)</translation>
     </message>
     <message>
         <location filename="toolbar.cpp" line="290"/>
         <source>About GraphET</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>About GraphET</translatorcomment>
+        <translation>About GraphET</translation>
     </message>
     <message>
         <location filename="toolbar.cpp" line="290"/>
@@ -661,7 +732,10 @@
  Alix, Anthony, Mathieu, Maxime, Oriane et Quentin 
  en février 2020. 
 </source>
-        <translation type="unfinished"></translation>
+        <translation>This application was created by :
+Alix Anthony Mathieu Maxime Oriane. and Quentin 
+ in february 2020. 
+</translation>
     </message>
 </context>
 </TS>
