@@ -140,7 +140,7 @@ void ToolBar::enregistrerSous()
     QFile data(nomFichier);
     if(data.open(QFile::WriteOnly | QFile ::Truncate)) {
         QTextStream out(&data);
-        out << "todo translateToGret";
+        out << "todo translateToGret ";
     }
 }
 
