@@ -1,4 +1,5 @@
 #include "csv.h"
+#include "tabcontentwidget.h"
 
 vector<vector<string>> openFromCSV(string fileName){
 
@@ -41,23 +42,16 @@ vector<vector<string>> openFromCSV(string fileName){
     return result;
 }
 
-string translateToGret(vector<vector<string>> table) {
+string translateToGret(TabContentWidget & tabContent) {
 
-    string result = "";
-
-    for (vector<string> line : table) {
-        for (string value : line) {
-            result.append(protectValue(value));
-        }
-
-    }
+    string result = "unimplemented";
 
     return result;
 }
 
 
 string protectValue(string value) {
-    return value;
+    return '"' + value + '"';
 }
 
 
