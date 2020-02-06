@@ -100,7 +100,8 @@ void ToolBar::tableauOuvrir()
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
     //Ouverture d'un fichier
 
-   QString fichier = QFileDialog::getOpenFileName(this,"Ouvrir un fichier", "../documents_CSV", "Tableurs (*.csv *.txt, *gret)");
+   QString fichier = QFileDialog::getOpenFileName(this,"Ouvrir un fichier",
+                                                    "../documents_CSV", "Tableurs (*.csv *.txt, *gret)");
 
    string filePath = fichier.toStdString();
 
@@ -122,6 +123,17 @@ void ToolBar::tableauOuvrir()
 void ToolBar::sauvegarder()
 {
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
+
+    QString nomFichier = QFileDialog::getSaveFileName(this, tr("Sauvegarder Graphe"),
+                                                        "../documents_GRAPHE", tr("NINJA (*.txt)"));
+
+    if(nomFichier.isEmpty())
+        cout << "ET C'EST LE RIP POUR LE JOUEUR FRANCAIS";
+    QFile data(nomFichier);
+//    if(data.open)(QFile::WriteOnly | QFile ::Truncate)) {
+        QTextStream out(&data);
+        out << "BLABLA";
+//    }
 }
 
 void ToolBar::enregistrerSous()
