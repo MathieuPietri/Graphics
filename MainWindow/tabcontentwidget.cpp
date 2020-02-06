@@ -16,3 +16,9 @@ QGraphicsView & TabContentWidget::getGraphArea() {
     QGraphicsView & graphArea_ = *graphArea;
     return graphArea_;
 }
+
+void TabContentWidget::setTableSize(int cols, int rows) {
+    table->setColumnCount(cols);
+    table->setRowCount(rows);
+}
+
