@@ -124,22 +124,24 @@ void ToolBar::sauvegarder()
 {
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
 
-    QString nomFichier = QFileDialog::getSaveFileName(this, tr("Sauvegarder Graphe"),
-                                                        "../documents_GRAPHE", tr("NINJA (*.txt)"));
 
-    if(nomFichier.isEmpty())
-        cout << "ET C'EST LE RIP POUR LE JOUEUR FRANCAIS";
-    QFile data(nomFichier);
-//    if(data.open)(QFile::WriteOnly | QFile ::Truncate)) {
-        QTextStream out(&data);
-        out << "BLABLA";
-//    }
 }
 
 void ToolBar::enregistrerSous()
 {
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
-    QString SaveFile = QFileDialog::getSaveFileName(this, tr("Enregistrer un fichier"), QString(), tr("Fichiers GraphET (*.gret)"));
+    //QString SaveFile = QFileDialog::getSaveFileName(this, tr("Enregistrer un fichier"), QString(), tr("Fichiers GraphET (*.gret)"));
+
+    QString nomFichier = QFileDialog::getSaveFileName(this, tr("Sauvegarder Graphe"),
+                                                        "../documents_GRAPHE", tr("NINJA (*.gret)"));
+
+    if(nomFichier.isEmpty())
+        cout << "ET C'EST LE RIP POUR LE JOUEUR FRANCAIS";
+    QFile data(nomFichier);
+    if(data.open(QFile::WriteOnly | QFile ::Truncate)) {
+        QTextStream out(&data);
+        out << "todo translateToGret";
+    }
 }
 
 void ToolBar::exporter()
