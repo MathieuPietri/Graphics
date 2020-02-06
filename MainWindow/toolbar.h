@@ -67,6 +67,9 @@ protected slots:
      *
     */
     void aboutGraphEt();
+
+private:
+    static std::string getNameFromPath(std::string path);
 };
 
 #endif // TOOLBAR_H

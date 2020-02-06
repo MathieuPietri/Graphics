@@ -11,11 +11,12 @@ class MainWidget : public QWidget, private Ui::MainWidget
     Q_OBJECT
 
 public:
-    int tabCounter = 1;
+    int tabCounter = -1;
     explicit MainWidget(QWidget *parent = nullptr);
     void fillTable(QTableWidget &tableWidget, std::vector<std::vector<std::string>> data);
     void addDataSet(vector<vector<string>> data, const QString &name);
-    void fillFirstTable(vector<vector<string>> data);
-};
 
+private:
+    static int maxColCount(vector<vector<string>> data);
+};
 #endif // MAINWIDGET_H

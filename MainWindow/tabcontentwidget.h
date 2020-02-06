@@ -12,6 +12,7 @@ public:
     explicit TabContentWidget(QWidget *parent = nullptr);
     QTableWidget & getTable();
     QGraphicsView & getGraphArea();
+    void setTableSize(int x, int y);
 };
 
 #endif // TABCONTENTWIDGET_H

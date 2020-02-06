@@ -22,18 +22,22 @@ void MainWidget::fillTable(QTableWidget &tableWidget, vector<vector<string>> dat
 }
 
 void MainWidget::addDataSet(vector<vector<string> > data, const QString &name) {
-    if (tabCounter == 1) {
-        fillFirstTable(data);
-        tabCounter++;
-        return;
+    if (tabCounter == -1) {
+        tabContentWidget_1->setTableSize(maxColCount(data), data.size());
+        tabs->removeTab(0);
     }
     TabContentWidget *newTabContentWidget = new TabContentWidget(this);
-    tabs->addTab(newTabContentWidget, name);
+    tabCounter = tabs->addTab(newTabContentWidget, name);
+    newTabContentWidget->setTableSize(maxColCount(data), data.size());
     fillTable(newTabContentWidget->getTable(), data);
+    tabs->setCurrentIndex(tabCounter);
 }
 
-void MainWidget::fillFirstTable(vector<vector<string>> data) {
-
-    fillTable(tabContentWidget_1->getTable(), data);
-    //fillTab(data2, &tableWidget_2)
+int MainWidget::maxColCount(vector<vector<string>> data) {
+    int max = 0;
+    for (vector<string> v : data) {
+        if (v.size() > max)
+            max = v.size();
+    }
+    return max;
 }

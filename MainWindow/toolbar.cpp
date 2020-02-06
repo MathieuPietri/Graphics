@@ -110,7 +110,7 @@ void ToolBar::tableauOuvrir()
    //MainWidget::addTab();
    try{
     std::vector<std::vector<std::string>> file = openFromCSV(filePath);
-    mainWidget->addDataSet(file, "nom");
+    mainWidget->addDataSet(file, QString::fromStdString(getNameFromPath(filePath)));
     QMessageBox::information(this, tr("Fichier"), tr("Vous avez sélectionné :\n") +fichier);
 
    }catch(std::exception &e){
@@ -296,3 +296,12 @@ ToolBar::~ToolBar()
     delete this;
 }
 */
+
+std::string ToolBar::getNameFromPath(std::string path) {
+    std::string result = "";
+    while (path.back() != '/') {
+        result.insert(0, &path.back());
+        path.pop_back();
+    }
+    return result;
+}
