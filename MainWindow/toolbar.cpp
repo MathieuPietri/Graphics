@@ -100,27 +100,23 @@ void ToolBar::tableauOuvrir()
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
     //Ouverture d'un fichier
 
-   QString fichier = QFileDialog::getOpenFileName(this,"Ouvrir un fichier", QString(), "Tableurs (*.csv *.txt, *gret)");
+   QString fichier = QFileDialog::getOpenFileName(this,"Ouvrir un fichier", "../documents_CSV", "Tableurs (*.csv *.txt, *gret)");
 
-   std::string filePath = fichier.toStdString();
+   string filePath = fichier.toStdString();
 
-
-   //TEMPORAIRE
-
-   //MainWidget::addTab();
-   try{
-    std::vector<std::vector<std::string>> file = openFromCSV(filePath);
-    mainWidget->addDataSet(file, QString::fromStdString(getNameFromPath(filePath)));
-    QMessageBox::information(this, tr("Fichier"), tr("Vous avez sélectionné :\n") +fichier);
-
-   }catch(std::exception &e){
-       string str = e.what();
-       if(str.compare("File not found") == 0){
-           std::cout << e.what() << std::endl;
-           std::cout << "oui";
+   if(fichier != NULL){
+       try {
+           vector<vector<string>> file = openFromCSV(filePath);
+           mainWidget->addDataSet(file, QString::fromStdString(getNameFromPath(filePath)));
+           QMessageBox::information(this, tr("Fichier"), tr("Vous avez sélectionné :\n") +fichier);
+       } catch (exception &e) {
+            string str = e.what();
        }
-       std::cout << e.what();
    }
+   else {
+       cout << "Annulation de l'ouverture d'un tableau ";
+   }
+
 }
 
 void ToolBar::sauvegarder()
