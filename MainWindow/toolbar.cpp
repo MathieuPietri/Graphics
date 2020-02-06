@@ -100,38 +100,48 @@ void ToolBar::tableauOuvrir()
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
     //Ouverture d'un fichier
 
-   QString fichier = QFileDialog::getOpenFileName(this,"Ouvrir un fichier", QString(), "Tableurs (*.csv *.txt, *gret)");
+   QString fichier = QFileDialog::getOpenFileName(this,tr("Ouvrir un fichier"),
+                                                    "../documents_CSV", tr("Tableurs (*.csv *.txt, *gret)"));
 
-   std::string filePath = fichier.toStdString();
+   string filePath = fichier.toStdString();
 
-
-   //TEMPORAIRE
-
-   //MainWidget::addTab();
-   try{
-    std::vector<std::vector<std::string>> file = openFromCSV(filePath);
-    mainWidget->addDataSet(file, QString::fromStdString(getNameFromPath(filePath)));
-    QMessageBox::information(this, tr("Fichier"), tr("Vous avez sélectionné :\n") +fichier);
-
-   }catch(std::exception &e){
-       string str = e.what();
-       if(str.compare("File not found") == 0){
-           std::cout << e.what() << std::endl;
-           std::cout << "oui";
+   if(fichier != NULL){
+       try {
+           vector<vector<string>> file = openFromCSV(filePath);
+           mainWidget->addDataSet(file, QString::fromStdString(getNameFromPath(filePath)));
+           QMessageBox::information(this, tr("Fichier"), tr("Vous avez sélectionné :\n") + fichier);
+       } catch (exception &e) {
+            string str = e.what();
        }
-       std::cout << e.what();
    }
+   else {
+       cout << "Annulation de l'ouverture d'un tableau ";
+   }
+
 }
 
 void ToolBar::sauvegarder()
 {
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
+
+
 }
 
 void ToolBar::enregistrerSous()
 {
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
-    QString SaveFile = QFileDialog::getSaveFileName(this, tr("Enregistrer un fichier"), QString(), tr("Fichiers GraphET (*.gret)"));
+    //QString SaveFile = QFileDialog::getSaveFileName(this, tr("Enregistrer un fichier"), QString(), tr("Fichiers GraphET (*.gret)"));
+
+    QString nomFichier = QFileDialog::getSaveFileName(this, tr("Sauvegarder Graphe"),
+                                                        "../documents_GRAPHE", tr("NINJA (*.gret)"));
+
+    if(nomFichier.isEmpty())
+        cout << "ET C'EST LE RIP POUR LE JOUEUR FRANCAIS";
+    QFile data(nomFichier);
+    if(data.open(QFile::WriteOnly | QFile ::Truncate)) {
+        QTextStream out(&data);
+        out << "todo translateToGret";
+    }
 }
 
 void ToolBar::exporter()
