@@ -123,7 +123,12 @@ void ToolBar::tableauOuvrir()
 void ToolBar::sauvegarder()
 {
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
+    if(true){
 
+    }
+    else {
+        enregistrerSous();
+    }
 
 }
 
@@ -139,8 +144,15 @@ void ToolBar::enregistrerSous()
         cout << "ET C'EST LE RIP POUR LE JOUEUR FRANCAIS";
     QFile data(nomFichier);
     if(data.open(QFile::WriteOnly | QFile ::Truncate)) {
+
+        //TODOUDOU
+        /*
+        TabContentWidget *interieurOfTab = new TabContentWidget();
+        TabContentWidget & interieurOfTab_ = *interieurOfTab;
+
         QTextStream out(&data);
-        out << "todo translateToGret ";
+        out << translateToGret(interieurOfTab_);
+        */
     }
 }
 
