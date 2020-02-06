@@ -111,7 +111,7 @@ void ToolBar::tableauOuvrir()
    try{
     std::vector<std::vector<std::string>> file = openFromCSV(filePath);
     mainWidget->addDataSet(file, "nom");
-    QMessageBox::information(this, "Fichier", "Vous avez sélectionné :\n" +fichier);
+    QMessageBox::information(this, tr("Fichier"), tr("Vous avez sélectionné :\n") +fichier);
 
    }catch(std::exception &e){
        string str = e.what();
@@ -131,7 +131,7 @@ void ToolBar::sauvegarder()
 void ToolBar::enregistrerSous()
 {
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
-    QString SaveFile = QFileDialog::getSaveFileName(this, "Enregistrer un fichier", QString(), "Fichiers GraphET (*.gret)");
+    QString SaveFile = QFileDialog::getSaveFileName(this, tr("Enregistrer un fichier"), QString(), tr("Fichiers GraphET (*.gret)"));
 }
 
 void ToolBar::exporter()
@@ -287,7 +287,7 @@ void ToolBar::langues()
 void ToolBar::aboutGraphEt()
 {
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
-    QMessageBox::information(this, "About GraphET", "Cette application a été créé par :\n Alix, Anthony, Mathieu, Maxime, Oriane et Quentin \n en février 2020. \n");
+    QMessageBox::information(this, tr("About GraphET"), tr("Cette application a été créé par :\n Alix, Anthony, Mathieu, Maxime, Oriane et Quentin \n en février 2020. \n"));
 }
 
 /*
