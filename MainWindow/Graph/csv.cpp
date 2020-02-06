@@ -40,3 +40,24 @@ vector<vector<string>> openFromCSV(string fileName){
     }
     return result;
 }
+
+string translateToGret(vector<vector<string>> table) {
+
+    string result = "";
+
+    for (vector<string> line : table) {
+        for (string value : line) {
+            result.append(protectValue(value));
+        }
+
+    }
+
+    return result;
+}
+
+
+string protectValue(string value) {
+    return value;
+}
+
+
