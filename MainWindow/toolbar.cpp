@@ -100,7 +100,7 @@ void ToolBar::tableauOuvrir()
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
     //Ouverture d'un fichier
 
-   QString fichier = QFileDialog::getOpenFileName(this,"Ouvrir un fichier", QString(), "Tableurs (*.csv *.txt, *gret)");
+   QString fichier = QFileDialog::getOpenFileName(this,tr("Ouvrir un fichier"), QString(), tr("Tableurs (*.csv *.txt, *gret)"));
 
    std::string filePath = fichier.toStdString();
 
