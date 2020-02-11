@@ -9,17 +9,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwidget.ui" line="42"/>
+        <location filename="mainwidget.ui" line="45"/>
         <source>Tab 1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwidget.ui" line="59"/>
+        <location filename="mainwidget.ui" line="62"/>
         <source>Tab 2</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="mainwidget.ui" line="67"/>
+        <location filename="mainwidget.ui" line="70"/>
         <source>Taper ici</source>
         <translation type="unfinished"></translation>
     </message>
@@ -78,222 +78,237 @@
     </message>
     <message>
         <location filename="tabcontentwidget.ui" line="87"/>
-        <source>11</source>
+        <source>10</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="tabcontentwidget.ui" line="92"/>
-        <source>12</source>
+        <source>11</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="tabcontentwidget.ui" line="97"/>
-        <source>13</source>
+        <source>12</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="tabcontentwidget.ui" line="102"/>
-        <source>14</source>
+        <source>13</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="tabcontentwidget.ui" line="107"/>
-        <source>15</source>
+        <source>14</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="tabcontentwidget.ui" line="112"/>
-        <source>16</source>
+        <source>15</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="tabcontentwidget.ui" line="117"/>
-        <source>17</source>
+        <source>16</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="tabcontentwidget.ui" line="122"/>
-        <source>18</source>
+        <source>17</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="tabcontentwidget.ui" line="127"/>
-        <source>19</source>
+        <source>18</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="tabcontentwidget.ui" line="132"/>
-        <source>20</source>
+        <source>19</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="tabcontentwidget.ui" line="137"/>
-        <source>21</source>
+        <source>20</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="tabcontentwidget.ui" line="142"/>
-        <source>22</source>
+        <source>21</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="tabcontentwidget.ui" line="147"/>
-        <source>24</source>
+        <source>22</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="tabcontentwidget.ui" line="152"/>
-        <source>25</source>
+        <source>23</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="tabcontentwidget.ui" line="157"/>
-        <source>26</source>
+        <source>24</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="tabcontentwidget.ui" line="162"/>
-        <source>27</source>
+        <source>25</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="tabcontentwidget.ui" line="167"/>
-        <source>28</source>
+        <source>26</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="tabcontentwidget.ui" line="172"/>
-        <source>29</source>
+        <source>27</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="tabcontentwidget.ui" line="177"/>
-        <source>30</source>
+        <source>28</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="tabcontentwidget.ui" line="182"/>
-        <source>A</source>
+        <source>29</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="tabcontentwidget.ui" line="187"/>
-        <source>B</source>
+        <source>30</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="tabcontentwidget.ui" line="192"/>
-        <source>C</source>
+        <source>A</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="tabcontentwidget.ui" line="197"/>
-        <source>D</source>
+        <source>B</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="tabcontentwidget.ui" line="202"/>
-        <source>E</source>
+        <source>C</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="tabcontentwidget.ui" line="207"/>
-        <source>F</source>
+        <source>D</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="tabcontentwidget.ui" line="212"/>
-        <source>G</source>
+        <source>E</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="tabcontentwidget.ui" line="217"/>
-        <source>H</source>
+        <source>F</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="tabcontentwidget.ui" line="222"/>
-        <source>I</source>
+        <source>G</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="tabcontentwidget.ui" line="227"/>
-        <source>J</source>
+        <source>H</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="tabcontentwidget.ui" line="232"/>
-        <source>K</source>
+        <source>I</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="tabcontentwidget.ui" line="237"/>
-        <source>L</source>
+        <source>J</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="tabcontentwidget.ui" line="242"/>
-        <source>M</source>
+        <source>K</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="tabcontentwidget.ui" line="247"/>
-        <source>N</source>
+        <source>L</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="tabcontentwidget.ui" line="252"/>
-        <source>O</source>
+        <source>M</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="tabcontentwidget.ui" line="257"/>
-        <source>P</source>
+        <source>N</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="tabcontentwidget.ui" line="262"/>
-        <source>Q</source>
+        <source>O</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="tabcontentwidget.ui" line="267"/>
-        <source>R</source>
+        <source>P</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="tabcontentwidget.ui" line="272"/>
-        <source>S</source>
+        <source>Q</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="tabcontentwidget.ui" line="277"/>
-        <source>T</source>
+        <source>R</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="tabcontentwidget.ui" line="282"/>
-        <source>U</source>
+        <source>S</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="tabcontentwidget.ui" line="287"/>
-        <source>V</source>
+        <source>T</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="tabcontentwidget.ui" line="292"/>
-        <source>W</source>
+        <source>U</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="tabcontentwidget.ui" line="297"/>
-        <source>X</source>
+        <source>V</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="tabcontentwidget.ui" line="302"/>
+        <source>W</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="tabcontentwidget.ui" line="307"/>
+        <source>X</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="tabcontentwidget.ui" line="312"/>
         <source>Y</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="tabcontentwidget.ui" line="317"/>
+        <source>Z</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -535,6 +550,7 @@
     </message>
     <message>
         <location filename="toolbar.ui" line="456"/>
+        <location filename="toolbar.cpp" line="103"/>
         <source>Ouvrir un fichier</source>
         <translation type="unfinished"></translation>
     </message>
@@ -632,6 +648,11 @@
     <message>
         <location filename="toolbar.ui" line="590"/>
         <source>Exporter le graphe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="toolbar.cpp" line="103"/>
+        <source>Tableurs (*.csv *.txt, *gret)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
