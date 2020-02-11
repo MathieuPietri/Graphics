@@ -1,5 +1,6 @@
 #include <string>
 #include <vector>
+#include <QColor>
 
 #ifndef GRAPH_H
 #define GRAPH_H
@@ -13,12 +14,19 @@ class Node{
         void setPos(double x, double y){_xPos = x; _yPos = y;};
         int getPonderation(){return _ponderation;};
         void setPonderation(int value){_ponderation = value;};
+        void setColor(int r, int g, int b){_color.setRgb(r, g, b, 255);}
+        void setColorFromColor(QColor c){_color = c;}
+        void select(){_selected = 1;}
+        void unselect(){_selected = 0;}
+        int getSelection(){return _selected;}
         
     private:
         std::string _nameId;
         int _ponderation;
+        QColor _color;
         double _xPos = 0.0;
         double _yPos = 0.0;
+        int _selected = 0;
 };
 
 class Edge{

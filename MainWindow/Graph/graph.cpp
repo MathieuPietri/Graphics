@@ -4,7 +4,7 @@ using namespace std;
 
 Node* Graph::getNodeByName(string name){
 
-    for(int i = 0; i <nodeList.size(); i++){
+    for(int i = 0; i <(int)nodeList.size(); i++){
         if(nodeList[i]->getId() == name)
             return nodeList[i];
     }
@@ -12,7 +12,7 @@ Node* Graph::getNodeByName(string name){
 }
 
 Edge* Graph::getEdgeByNodes(string n1, string n2){
-    for(int i=0 ; i<edgeList.size() ; i++){
+    for(int i=0 ; i<(int)edgeList.size() ; i++){
         std::string id1 = edgeList[i]->getNode1()->getId();
         std::string id2 = edgeList[i]->getNode2()->getId();
         if( id1 == n1 && id2 == n2 ) return edgeList[i];
@@ -23,10 +23,10 @@ Edge* Graph::getEdgeByNodes(string n1, string n2){
 
 Graph::Graph(vector<vector<string>> &csvData){
     
-    for(int i=0 ; i<csvData.size() ; i++){
+    for(int i=0 ; i<(int)csvData.size() ; i++){
         std::vector<std::string> nodeLinked;
         nodeLinked.clear();        
-        for(int j=0 ; j<csvData[i].size() ; j++){
+        for(int j=0 ; j<(int)csvData[i].size() ; j++){
             Node* currentNod = getNodeByName( csvData[i][j] );
             nodeLinked.push_back(csvData[i][j]);
             if( currentNod == nullptr )
@@ -34,8 +34,8 @@ Graph::Graph(vector<vector<string>> &csvData){
             else { currentNod->setPonderation(currentNod->getPonderation()+1); }
         }
         if (nodeLinked.size() >= 2){   
-            for(int k=0 ; k<nodeLinked.size()-1 ; k++){
-                for(int j=k+1 ; j<nodeLinked.size() ; j++){
+            for(int k=0 ; k<(int)nodeLinked.size()-1 ; k++){
+                for(int j=k+1 ; j<(int)nodeLinked.size() ; j++){
                     if(getEdgeByNodes(nodeLinked[k], nodeLinked[j]) == nullptr){
                         edgeList.push_back(new Edge(getNodeByName(nodeLinked[k]), getNodeByName(nodeLinked[j])));
                     }
