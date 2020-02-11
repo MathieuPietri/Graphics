@@ -1,4 +1,5 @@
 #include "tabcontentwidget.h"
+#include "Graph/graphrenderer.h"
 
 TabContentWidget::TabContentWidget(QWidget *parent) :
     QWidget(parent)

@@ -3,6 +3,7 @@
 #include "iostream"
 #include "Graph/csv.h"
 #include "tabcontentwidget.h"
+#include "Graph/graphrenderer.h"
 
 using namespace std;
 MainWidget::MainWidget(QWidget *parent) :
@@ -32,6 +33,9 @@ void MainWidget::addDataSet(vector<vector<string> > data, const QString &filePat
     //TODO si le nom est null, l'onglet doit s'appeler "nouvel onglet" mais on doit quand même mettre nullptr dans setFileName()
     newTabContentWidget->setFileName(filePath);
     fillTable(newTabContentWidget->getTable(), data);
+
+    GraphRenderer * renderer = new GraphRenderer(data, &newTabContentWidget->getGraphArea());
+
     tabs->setCurrentIndex(tabCounter);
     TabContentWidget & newTabContentWidgetRef = *newTabContentWidget;
     // ----------- tabContents.push_back(newTabContentWidgetRef);
