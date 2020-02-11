@@ -21,13 +21,16 @@ void MainWidget::fillTable(QTableWidget &tableWidget, vector<vector<string>> dat
     }
 }
 
-void MainWidget::addDataSet(vector<vector<string> > data, const QString &name) {
+void MainWidget::addDataSet(vector<vector<string> > data, const QString &filePath) {
     if (tabCounter == -1) {
         tabs->removeTab(0);
     }
     TabContentWidget * newTabContentWidget = new TabContentWidget(this);
-    tabCounter = tabs->addTab(newTabContentWidget, name);
+    tabCounter = tabs->addTab(newTabContentWidget, QString::fromStdString(getNameFromPath(filePath)));
     newTabContentWidget->setTableSize(maxColCount(data), data.size());
+
+    //TODO si le nom est null, l'onglet doit s'appeler "nouvel onglet" mais on doit quand même mettre nullptr dans setFileName()
+    newTabContentWidget->setFileName(filePath);
     fillTable(newTabContentWidget->getTable(), data);
     tabs->setCurrentIndex(tabCounter);
     TabContentWidget & newTabContentWidgetRef = *newTabContentWidget;
@@ -49,3 +52,16 @@ int MainWidget::maxColCount(vector<vector<string>> data) {
 //    TabContentWidget * ptr = &tabContents.at(tabs->currentIndex());
 //    return ptr;
 //}
+
+
+
+std::string MainWidget::getNameFromPath(const QString path) {
+
+    std::string path_ = path.toStdString();
+    std::string result = "";
+    while (path.back() != '/') {
+        result.insert(0, &path_.back());
+        path_.pop_back();
+    }
+    return result;
+}

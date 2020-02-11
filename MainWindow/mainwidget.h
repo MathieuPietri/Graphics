@@ -20,6 +20,7 @@ public:
 private:
     static int maxColCount(vector<vector<string>> data);
     // ----------- vector<TabContentWidget> tabContents;
+    static std::string getNameFromPath(QString path);
 
 };
 #endif // MAINWIDGET_H

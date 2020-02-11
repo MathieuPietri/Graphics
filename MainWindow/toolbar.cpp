@@ -93,6 +93,7 @@ ToolBar::ToolBar(QWidget *parent) :
 void ToolBar::tableauAleatoire()
 {
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
+    // TODO donner nullptr comme nom
 }
 
 void ToolBar::tableauOuvrir()
@@ -108,7 +109,7 @@ void ToolBar::tableauOuvrir()
    if(fichier != NULL){
        try {
            vector<vector<string>> file = openFromCSV(filePath);
-           mainWidget->addDataSet(file, QString::fromStdString(getNameFromPath(filePath)));
+           mainWidget->addDataSet(file, QString::fromStdString(filePath));
            QMessageBox::information(this, tr("Fichier"), tr("Vous avez sélectionné :\n") + fichier);
        } catch (exception &e) {
             string str = e.what();
@@ -123,7 +124,7 @@ void ToolBar::tableauOuvrir()
 void ToolBar::sauvegarder()
 {
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
-    if(true){
+    if(mainWidget->getCurrentTabContent()->getFileName() != nullptr){
 
     }
     else {
@@ -318,12 +319,3 @@ ToolBar::~ToolBar()
     delete this;
 }
 */
-
-std::string ToolBar::getNameFromPath(std::string path) {
-    std::string result = "";
-    while (path.back() != '/') {
-        result.insert(0, &path.back());
-        path.pop_back();
-    }
-    return result;
-}

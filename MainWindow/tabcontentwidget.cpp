@@ -22,3 +22,11 @@ void TabContentWidget::setTableSize(int cols, int rows) {
     table->setRowCount(rows);
 }
 
+QString TabContentWidget::getFileName() {
+    return this->fileName;
+}
+
+void TabContentWidget::setFileName(QString fileName) {
+    this->fileName = fileName;
+}
+
