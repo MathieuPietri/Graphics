@@ -15,8 +15,11 @@ public:
     explicit MainWidget(QWidget *parent = nullptr);
     void fillTable(QTableWidget &tableWidget, std::vector<std::vector<std::string>> data);
     void addDataSet(vector<vector<string>> data, const QString &name);
+    TabContentWidget * getCurrentTabContent();
 
 private:
     static int maxColCount(vector<vector<string>> data);
+    // ----------- vector<TabContentWidget> tabContents;
+
 };
 #endif // MAINWIDGET_H

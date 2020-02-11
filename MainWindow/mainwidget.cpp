@@ -23,15 +23,18 @@ void MainWidget::fillTable(QTableWidget &tableWidget, vector<vector<string>> dat
 
 void MainWidget::addDataSet(vector<vector<string> > data, const QString &name) {
     if (tabCounter == -1) {
-        tabContentWidget_1->setTableSize(maxColCount(data), data.size());
         tabs->removeTab(0);
     }
-    TabContentWidget *newTabContentWidget = new TabContentWidget(this);
+    TabContentWidget * newTabContentWidget = new TabContentWidget(this);
     tabCounter = tabs->addTab(newTabContentWidget, name);
     newTabContentWidget->setTableSize(maxColCount(data), data.size());
     fillTable(newTabContentWidget->getTable(), data);
     tabs->setCurrentIndex(tabCounter);
+    TabContentWidget & newTabContentWidgetRef = *newTabContentWidget;
+    // ----------- tabContents.push_back(newTabContentWidgetRef);
 }
+
+
 
 int MainWidget::maxColCount(vector<vector<string>> data) {
     int max = 0;
@@ -41,3 +44,8 @@ int MainWidget::maxColCount(vector<vector<string>> data) {
     }
     return max;
 }
+
+// -------------------- TabContentWidget * MainWidget::getCurrentTabContent() {
+//    TabContentWidget * ptr = &tabContents.at(tabs->currentIndex());
+//    return ptr;
+//}
