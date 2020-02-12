@@ -19,7 +19,7 @@ public:
 
 private:
     static int maxColCount(vector<vector<string>> data);
-    // ----------- vector<TabContentWidget> tabContents;
+    vector<TabContentWidget> tabContents;
     static std::string getNameFromPath(QString path);
 
 };
