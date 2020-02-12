@@ -17,7 +17,10 @@ public:
     void setFileName(QString fileName);
 
 private:
+    ~TabContentWidget();
     QString fileName;
 };
+
+
 
 #endif // TABCONTENTWIDGET_H

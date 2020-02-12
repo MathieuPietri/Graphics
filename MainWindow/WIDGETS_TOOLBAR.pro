@@ -29,6 +29,7 @@ SOURCES += \
         Graph/edge.cpp \
         Graph/graph.cpp \
         Graph/node.cpp \
+        helpdialog.cpp \
         mainwidget.cpp \
         main.cpp \
         tabcontentwidget.cpp \
@@ -37,11 +38,13 @@ SOURCES += \
 HEADERS += \
         Graph/csv.h \
         Graph/graph.h \
+        helpdialog.h \
         mainwidget.h \
         tabcontentwidget.h \
         toolbar.h
 
 FORMS += \
+        helpdialog.ui \
         mainwidget.ui \
         tabcontentwidget.ui \
         toolbar.ui

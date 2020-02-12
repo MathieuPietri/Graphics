@@ -30,3 +30,7 @@ void TabContentWidget::setFileName(QString fileName) {
     this->fileName = fileName;
 }
 
+
+TabContentWidget::~TabContentWidget() {
+    destroy(this);
+}
