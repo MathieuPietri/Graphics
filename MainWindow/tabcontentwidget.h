@@ -20,4 +20,6 @@ private:
     QString fileName;
 };
 
+
+
 #endif // TABCONTENTWIDGET_H

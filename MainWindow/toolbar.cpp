@@ -3,6 +3,7 @@
 #include <QDebug>
 #include <QToolBar>
 #include <QStatusBar>
+#include "helpdialog.h"
 ToolBar::ToolBar(QWidget *parent) :
     QMainWindow(parent)
 {
@@ -327,6 +328,8 @@ void ToolBar::aboutGraphEt()
 void ToolBar::aide()
 {
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
+    HelpDialog * help = new HelpDialog ();
+    help->show();
 }
 
 /*

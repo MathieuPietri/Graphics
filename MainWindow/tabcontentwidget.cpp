@@ -29,4 +29,3 @@ QString TabContentWidget::getFileName() {
 void TabContentWidget::setFileName(QString fileName) {
     this->fileName = fileName;
 }
-
