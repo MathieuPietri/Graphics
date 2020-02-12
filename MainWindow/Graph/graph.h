@@ -28,6 +28,7 @@ class Node : public QGraphicsItem{
         int getSelection(){return _selected;}
         void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)override;
         QRectF boundingRect() const override;
+        void mousePressEvent(QGraphicsSceneMouseEvent *event);
         
     private:
         std::string _nameId;
