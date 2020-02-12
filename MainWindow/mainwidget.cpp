@@ -62,8 +62,8 @@ void MainWidget::addDataSet(vector<vector<string> > data, const QString &filePat
 
     /* Ajout du TabContentWidget au vector */
 
-    TabContentWidget & newTabContentWidgetRef = *newTabContentWidget;
-    //tabContents.push_back(newTabContentWidgetRef); //A DEBUG
+
+    tabContents.push_back(newTabContentWidget); //A DEBUG
 
     qDebug() << "nb tabs :" << tabCounter;
 }
@@ -79,9 +79,8 @@ int MainWidget::maxColCount(vector<vector<string>> data) {
     return max;
 }
 
-TabContentWidget * MainWidget::getCurrentTabContent() {
-    TabContentWidget * ptr = &tabContents.at(tabs->currentIndex());
-    return ptr;
+TabContentWidget * MainWidget::getCurrentTabContent(){
+    return tabContents[tabs->currentIndex()];
 }
 
 
