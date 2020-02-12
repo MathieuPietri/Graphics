@@ -35,7 +35,8 @@ void MainWidget::addDataSet(vector<vector<string> > data, const QString &filePat
     fillTable(newTabContentWidget->getTable(), data);
 
     GraphRenderer * renderer = new GraphRenderer(data, &newTabContentWidget->getGraphArea());
-
+    //Graph(data) graph;
+    //graph.addToScene(newTabContentWidget->getGraphArea().scene());
     tabs->setCurrentIndex(tabCounter);
     TabContentWidget & newTabContentWidgetRef = *newTabContentWidget;
     // ----------- tabContents.push_back(newTabContentWidgetRef);

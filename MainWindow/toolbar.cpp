@@ -94,6 +94,16 @@ void ToolBar::tableauAleatoire()
 {
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
     // TODO donner nullptr comme nom
+
+    /*
+    try{
+        vector<vector<string>> file = createCSV();
+        mainWidget->addDataSet(file, QString::fromStdString("nullptr"));
+    } catch (exception &e) {
+        string str = e.what();
+        cout << str;
+    }
+    */
 }
 
 void ToolBar::tableauOuvrir()
@@ -113,6 +123,7 @@ void ToolBar::tableauOuvrir()
            QMessageBox::information(this, tr("Fichier"), tr("Vous avez sélectionné :\n") + fichier);
        } catch (exception &e) {
             string str = e.what();
+            cout << str;
        }
    }
    else {
@@ -125,7 +136,7 @@ void ToolBar::sauvegarder()
 {
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
     if(mainWidget->getCurrentTabContent()->getFileName() != nullptr){
-
+        QString nomFichier = mainWidget->getCurrentTabContent()->getFileName();
     }
     else {
         enregistrerSous();
