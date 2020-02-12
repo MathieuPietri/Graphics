@@ -53,6 +53,7 @@ vector<vector<string>> createButNotFromCSV(){
     int ligne = qrand() % (10) + 1;
     cout << "Nombre de lignes: " << ligne << endl;
     cout << "Nombre de colonnes: " << colonne << endl;
+    cout << sizeof (int8_t);
     int i = 0;
 
     while(i < ligne){
@@ -60,14 +61,12 @@ vector<vector<string>> createButNotFromCSV(){
         cout << "Importing line " << i << endl;
         i++;
         string value = "";
-        for(int j = 0; j < colonne - 1;){
+        for(int j = 0; j < colonne;){
           value = "";
-          value = to_string(qrand() % (10) + 1);
+          value = to_string((qrand() % (INT_MAX/2 * 2)) - INT_MAX/2);
           j++;
           vectorLine.push_back(value);
         }
-        value += to_string(qrand() % (10) + 1);
-        vectorLine.push_back(value);
         result.push_back(vectorLine);
     }
     return result;
