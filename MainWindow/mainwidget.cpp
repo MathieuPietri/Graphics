@@ -4,6 +4,7 @@
 #include "Graph/csv.h"
 #include "tabcontentwidget.h"
 #include "Graph/graph.h"
+#include "QtDebug"
 
 using namespace std;
 MainWidget::MainWidget(QWidget *parent) :
@@ -23,28 +24,48 @@ void MainWidget::fillTable(QTableWidget &tableWidget, vector<vector<string>> dat
 }
 
 void MainWidget::addDataSet(vector<vector<string> > data, const QString &filePath) {
+
+    /* Destruction de la page 1 si on ouvre un premier fichier */
+
     if (tabCounter == -1) {
         tabs->removeTab(0);
     }
-    TabContentWidget * newTabContentWidget = new TabContentWidget(this);
-    tabCounter = tabs->addTab(newTabContentWidget, filePath);//QString::fromStdString(getNameFromPath(filePath)));
-    newTabContentWidget->setTableSize(maxColCount(data), data.size());
 
-    //TODO si le nom est null, l'onglet doit s'appeler "nouvel onglet" mais on doit quand même mettre nullptr dans setFileName()
-    newTabContentWidget->setFileName(filePath);
+    /* Création du TabContentWidget */
+
+    TabContentWidget * newTabContentWidget = new TabContentWidget(this);
+    newTabContentWidget->setFileName(filePath);  //TODO si le nom est null, l'onglet doit s'appeler "nouvel onglet" mais on doit quand même mettre nullptr dans setFileName()
+
+    if (filePath == "nullptr" || filePath == nullptr)
+        tabCounter = tabs->addTab(newTabContentWidget, "Fichier sans nom");
+    else {
+        std::string name = getNameFromPath(filePath);
+        cout << name;
+        tabCounter = tabs->addTab(newTabContentWidget, QString::fromStdString(name));
+
+    }
+    /* Remplissage de la table */
+
+    newTabContentWidget->setTableSize(maxColCount(data), data.size());
     fillTable(newTabContentWidget->getTable(), data);
 
-    //Graph(data) graph;
-    //graph.addToScene(newTabContentWidget->getGraphArea().scene());
+    /* Création du graph */
 
     Graph* graph = new Graph(data);
     newTabContentWidget->getGraphArea().setScene(new QGraphicsScene);
     graph->addToScene(newTabContentWidget->getGraphArea().scene());
     newTabContentWidget->update();
 
+    /* Focus sur le nouvel onglet */
+
     tabs->setCurrentIndex(tabCounter);
+
+    /* Ajout du TabContentWidget au vector */
+
     TabContentWidget & newTabContentWidgetRef = *newTabContentWidget;
-    //tabContents.push_back(newTabContentWidgetRef);
+    //tabContents.push_back(newTabContentWidgetRef); //A DEBUG
+
+    qDebug() << "nb tabs :" << tabCounter;
 }
 
 
@@ -69,7 +90,7 @@ std::string MainWidget::getNameFromPath(const QString path) {
 
     std::string path_ = path.toStdString();
     std::string result = "";
-    while (path.back() != '/') {
+    while (path_.back() != '/') {
         result.insert(0, &path_.back());
         path_.pop_back();
     }
