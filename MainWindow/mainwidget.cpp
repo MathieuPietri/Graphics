@@ -80,8 +80,8 @@ int MainWidget::maxColCount(vector<vector<string>> data) {
 }
 
 TabContentWidget * MainWidget::getCurrentTabContent() {
-    //TabContentWidget * ptr = &tabContents.at(tabs->currentIndex());
-    return nullptr;
+    TabContentWidget * ptr = &tabContents.at(tabs->currentIndex());
+    return ptr;
 }
 
 
