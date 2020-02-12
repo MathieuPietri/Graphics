@@ -29,3 +29,11 @@ QString TabContentWidget::getFileName() {
 void TabContentWidget::setFileName(QString fileName) {
     this->fileName = fileName;
 }
+
+void TabContentWidget::setGraph(Graph *graph){
+    this->graph = graph;
+}
+
+TabContentWidget::~TabContentWidget(){
+    if(this->graph != nullptr) delete(graph);
+}

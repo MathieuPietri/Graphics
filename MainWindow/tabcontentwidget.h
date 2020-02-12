@@ -3,6 +3,8 @@
 
 #include "ui_tabcontentwidget.h"
 #include <QGraphicsView>
+#include "Graph/graph.h"
+
 
 class TabContentWidget : public QWidget, private Ui::TabContentWidget
 {
@@ -15,9 +17,14 @@ public:
     void setTableSize(int x, int y);
     QString getFileName();
     void setFileName(QString fileName);
+    Graph getGraph(){return *graph;}
+    void setGraph(Graph *graph);
+    ~TabContentWidget();
 
 private:
     QString fileName;
+    Graph *graph = nullptr;
+
 };
 
 
