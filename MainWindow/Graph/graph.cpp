@@ -1,6 +1,8 @@
 #include "graph.h"
 using namespace std;
 #include <iostream>
+#include <vector>
+
 void Graph::addToScene(QGraphicsScene *scene){
     cout << "tzqt" << endl;
     for(int i=0 ; i<(int)edgeList.size() ; i++)
@@ -31,6 +33,20 @@ void Graph::setAllNodesCoordonates(){
             }
         }
     }
+}
+
+vector<Node*> Graph::getSelectedNodes(){
+    vector<Node*> selectedNodes;
+    for(int i=0 ; i<(int)nodeList.size() ; i++){
+        if(nodeList[i]->getSelection())
+            selectedNodes.push_back(nodeList[i]);
+    }
+    return selectedNodes;
+}
+
+void Graph::colorationSelectedNodes(QColor c){
+    for(Node* n : getSelectedNodes())
+        n->setColorFromColor(c);
 }
 
 Node* Graph::getNodeByName(string name){
@@ -84,7 +100,7 @@ Graph::~Graph(){
         delete tmp;
         tmp = nullptr;
     }
-    
+
     while(edgeList.size() > 0){
         Edge* tmp = edgeList.back();
         edgeList.pop_back();
