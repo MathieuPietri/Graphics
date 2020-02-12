@@ -67,6 +67,7 @@ protected slots:
      *
     */
     void aboutGraphEt();
+    void aide();
 
 };
 

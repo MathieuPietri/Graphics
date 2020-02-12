@@ -65,7 +65,7 @@ ToolBar::ToolBar(QWidget *parent) :
      *
     */
     connect(actionAbout, SIGNAL(triggered()), this, SLOT(aboutGraphEt()));
-
+    connect(actionManuelAide, SIGNAL(triggered()), this, SLOT(aide()));
 
 /*  Barre d'Outils (Icônes)
  *
@@ -95,7 +95,7 @@ void ToolBar::tableauAleatoire()
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
     // TODO donner nullptr comme nom
 
-    /*
+
     try{
         vector<vector<string>> file = createCSV();
         mainWidget->addDataSet(file, QString::fromStdString("nullptr"));
@@ -103,7 +103,7 @@ void ToolBar::tableauAleatoire()
         string str = e.what();
         cout << str;
     }
-    */
+
 }
 
 void ToolBar::tableauOuvrir()
@@ -322,6 +322,11 @@ void ToolBar::aboutGraphEt()
 {
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
     QMessageBox::information(this, tr("About GraphET"), tr("Cette application a été créé par :\n Alix, Anthony, Mathieu, Maxime, Oriane et Quentin \n en février 2020. \n"));
+}
+
+void ToolBar::aide()
+{
+    qDebug() << __FUNCTION__ << "The event sender is" << sender();
 }
 
 /*
