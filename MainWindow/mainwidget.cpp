@@ -16,7 +16,7 @@ MainWidget::MainWidget(QWidget *parent) :
 void MainWidget::fillTable(QTableWidget &tableWidget, vector<vector<string>> data) {
 
     for (int i = 0; i < (int)data.size(); i++) {
-        for (int j = 0; j < (int)data[0].size(); j++) {
+        for (int j = 0; j < (int)data[i].size(); j++) {
             tableWidget.setItem(i, j, new QTableWidgetItem(QString::fromStdString(data.at(i).at(j))));
         }
     }
