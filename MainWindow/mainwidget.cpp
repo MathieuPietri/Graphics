@@ -3,7 +3,7 @@
 #include "iostream"
 #include "Graph/csv.h"
 #include "tabcontentwidget.h"
-#include "Graph/graphrenderer.h"
+#include "Graph/graph.h"
 
 using namespace std;
 MainWidget::MainWidget(QWidget *parent) :
@@ -27,16 +27,21 @@ void MainWidget::addDataSet(vector<vector<string> > data, const QString &filePat
         tabs->removeTab(0);
     }
     TabContentWidget * newTabContentWidget = new TabContentWidget(this);
-    tabCounter = tabs->addTab(newTabContentWidget, QString::fromStdString(getNameFromPath(filePath)));
+    tabCounter = tabs->addTab(newTabContentWidget, filePath);//QString::fromStdString(getNameFromPath(filePath)));
     newTabContentWidget->setTableSize(maxColCount(data), data.size());
 
     //TODO si le nom est null, l'onglet doit s'appeler "nouvel onglet" mais on doit quand même mettre nullptr dans setFileName()
     newTabContentWidget->setFileName(filePath);
     fillTable(newTabContentWidget->getTable(), data);
 
-    GraphRenderer * renderer = new GraphRenderer(data, &newTabContentWidget->getGraphArea());
     //Graph(data) graph;
     //graph.addToScene(newTabContentWidget->getGraphArea().scene());
+
+    Graph* graph = new Graph(data);
+    newTabContentWidget->getGraphArea().setScene(new QGraphicsScene);
+    graph->addToScene(newTabContentWidget->getGraphArea().scene());
+    newTabContentWidget->update();
+
     tabs->setCurrentIndex(tabCounter);
     TabContentWidget & newTabContentWidgetRef = *newTabContentWidget;
     // ----------- tabContents.push_back(newTabContentWidgetRef);

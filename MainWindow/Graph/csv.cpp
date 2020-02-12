@@ -1,7 +1,4 @@
 #include "csv.h"
-#include "tabcontentwidget.h"
-#include <QTime>
-#include <qglobal.h>
 
 vector<vector<string>> openFromCSV(string fileName){
 
@@ -43,43 +40,3 @@ vector<vector<string>> openFromCSV(string fileName){
     }
     return result;
 }
-
-vector<vector<string>> createCSV(){
-    vector<vector<string>> result;
-
-    QTime time = QTime::currentTime();
-    qsrand((uint)time.msec());
-
-    string line;
-    int colonne = qrand() % (10) + 1;
-    int ligne = qrand() % (10) + 1;
-    int i = 0;
-
-    while(i < ligne){
-        vector<string> vectorLine;
-        cout << "Importing line " << i << endl;
-        i++;
-        string value = "";
-        for(int i = 0; i < colonne - 1;){
-          value += to_string(qrand() % (10) + 1) + ", ";
-        }
-        value += to_string(qrand() % (10) + 1);
-        vectorLine.push_back(value);
-        result.push_back(vectorLine);
-    }
-    return result;
-}
-
-string translateToGret(TabContentWidget & tabContent) {
-
-    string result = "unimplemented";
-
-    return result;
-}
-
-
-string protectValue(string value) {
-    return '"' + value + '"';
-}
-
-

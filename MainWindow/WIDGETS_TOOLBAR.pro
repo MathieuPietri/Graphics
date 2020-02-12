@@ -28,7 +28,6 @@ SOURCES += \
         Graph/csv.cpp \
         Graph/edge.cpp \
         Graph/graph.cpp \
-        Graph/graphrenderer.cpp \
         Graph/node.cpp \
         mainwidget.cpp \
         main.cpp \
@@ -38,7 +37,6 @@ SOURCES += \
 HEADERS += \
         Graph/csv.h \
         Graph/graph.h \
-        Graph/graphrenderer.h \
         mainwidget.h \
         tabcontentwidget.h \
         toolbar.h
@@ -57,6 +55,4 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 DISTFILES +=
 
-RESOURCES += \
-    Graph/csv.qrc
 

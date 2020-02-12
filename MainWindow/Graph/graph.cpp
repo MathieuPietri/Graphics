@@ -1,6 +1,37 @@
 #include "graph.h"
 using namespace std;
+#include <iostream>
+void Graph::addToScene(QGraphicsScene *scene){
+    cout << "tzqt" << endl;
+    for(int i=0 ; i<(int)edgeList.size() ; i++)
+        scene->addItem(edgeList[i]);
 
+    for(int j=0 ; j<(int)nodeList.size() ; j++)
+        //drawNode(myGraph->getNodes()[j], scene);
+        scene->addItem(nodeList[j]);
+    cout << "added to scene" << endl;
+}
+
+void Graph::setAllNodesCoordonates(){
+    int available[nodeList.size()][nodeList.size()];
+    for(int i=0 ; i<(int)nodeList.size(); i++)
+        for(int j=0 ; j<(int)nodeList.size(); j++)
+            available[i][j] = 1;
+    int x;
+    int y;
+    for(int k=0 ; k<(int)nodeList.size() ; k++){
+        int success = 0;
+        while (success == 0){
+            x = rand() % nodeList.size();
+            y = rand() % nodeList.size();
+            if(available[x][y]){
+                nodeList[k]->setPos(x * 100 + 100, y * 100 + 100);
+                available[x][y]--;
+                success ++;
+            }
+        }
+    }
+}
 
 Node* Graph::getNodeByName(string name){
 
@@ -22,10 +53,10 @@ Edge* Graph::getEdgeByNodes(string n1, string n2){
 }
 
 Graph::Graph(vector<vector<string>> &csvData){
-    
+    cout << "doot"<<endl;
     for(int i=0 ; i<(int)csvData.size() ; i++){
         std::vector<std::string> nodeLinked;
-        nodeLinked.clear();        
+        nodeLinked.clear();
         for(int j=0 ; j<(int)csvData[i].size() ; j++){
             Node* currentNod = getNodeByName( csvData[i][j] );
             nodeLinked.push_back(csvData[i][j]);
@@ -33,7 +64,7 @@ Graph::Graph(vector<vector<string>> &csvData){
                 nodeList.push_back(new Node(csvData[i][j], 1));
             else { currentNod->setPonderation(currentNod->getPonderation()+1); }
         }
-        if (nodeLinked.size() >= 2){   
+        if (nodeLinked.size() >= 2){
             for(int k=0 ; k<(int)nodeLinked.size()-1 ; k++){
                 for(int j=k+1 ; j<(int)nodeLinked.size() ; j++){
                     if(getEdgeByNodes(nodeLinked[k], nodeLinked[j]) == nullptr){
@@ -43,6 +74,7 @@ Graph::Graph(vector<vector<string>> &csvData){
             }
         }
     }
+    setAllNodesCoordonates();
 }
 
 Graph::~Graph(){
