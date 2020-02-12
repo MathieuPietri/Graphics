@@ -13,17 +13,17 @@ void Graph::addToScene(QGraphicsScene *scene){
 }
 
 void Graph::setAllNodesCoordonates(){
-    int available[nodeList.size()][nodeList.size()];
-    for(int i=0 ; i<(int)nodeList.size(); i++)
-        for(int j=0 ; j<(int)nodeList.size(); j++)
+    int available[nodeList.size()/2][nodeList.size()/2];
+    for(int i=0 ; i<(int)nodeList.size()/2; i++)
+        for(int j=0 ; j<(int)nodeList.size()/2; j++)
             available[i][j] = 1;
     int x;
     int y;
     for(int k=0 ; k<(int)nodeList.size() ; k++){
         int success = 0;
         while (success == 0){
-            x = rand() % nodeList.size();
-            y = rand() % nodeList.size();
+            x = rand() % nodeList.size()/2;
+            y = rand() % nodeList.size()/2;
             if(available[x][y]){
                 nodeList[k]->setPos(x * 100 + 100, y * 100 + 100);
                 available[x][y]--;

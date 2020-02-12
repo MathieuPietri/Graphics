@@ -15,8 +15,8 @@ MainWidget::MainWidget(QWidget *parent) :
 
 void MainWidget::fillTable(QTableWidget &tableWidget, vector<vector<string>> data) {
 
-    for (int i = 0; i < data.size(); i++) {
-        for (int j = 0; j < data[0].size(); j++) {
+    for (int i = 0; i < (int)data.size(); i++) {
+        for (int j = 0; j < (int)data[0].size(); j++) {
             tableWidget.setItem(i, j, new QTableWidgetItem(QString::fromStdString(data.at(i).at(j))));
         }
     }
@@ -52,7 +52,7 @@ void MainWidget::addDataSet(vector<vector<string> > data, const QString &filePat
 int MainWidget::maxColCount(vector<vector<string>> data) {
     int max = 0;
     for (vector<string> v : data) {
-        if (v.size() > max)
+        if ((int)v.size() > max)
             max = v.size();
     }
     return max;
