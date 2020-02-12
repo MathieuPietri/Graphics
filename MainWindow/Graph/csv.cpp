@@ -40,3 +40,7 @@ vector<vector<string>> openFromCSV(string fileName){
     }
     return result;
 }
+
+vector<vector<string>> createButNotFromCSV(){
+    cout << "voilà";
+}

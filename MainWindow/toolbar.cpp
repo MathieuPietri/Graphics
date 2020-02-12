@@ -97,7 +97,7 @@ void ToolBar::tableauAleatoire()
 
 
     try{
-        vector<vector<string>> file = createCSV();
+        vector<vector<string>> file = createButNotFromCSV();
         mainWidget->addDataSet(file, QString::fromStdString("nullptr"));
     } catch (exception &e) {
         string str = e.what();

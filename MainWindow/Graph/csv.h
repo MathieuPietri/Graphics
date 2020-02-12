@@ -7,3 +7,4 @@
 using namespace std;
 
 vector<vector<string>> openFromCSV(string fileName);
+vector<vector<string>> createButNotFromCSV();
