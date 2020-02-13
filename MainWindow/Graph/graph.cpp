@@ -41,9 +41,104 @@ void Graph::changeSelectionState(){
     else selection_state = 0;
 }
 
+void Graph::cleanBadEdges(){
+    for(Edge *e : edgeList){
+        int check = 0;
+        for(Node *n : nodeList){
+            if(e->getNode1() == n && e->getNode2() == n) check++;
+        }
+        if(check != (int)nodeList.size()){
+            for(auto it3 = edgeList.begin(); it3 != edgeList.end(); it3++){
+                if(*it3 == e){
+                    edgeList.erase(it3--);
+                }
+            }
+            _scene->removeItem(e);
+        }
+    }
+
+}
+
 Node* Graph::mergeNodes(){
     vector<Node*> selectedNodes = getSelectedNodes();
     vector<Node*> enteringNodes;
+    enteringNodes.clear();
+
+    //listing of entering nodes
+    for(Edge *e : edgeList){
+        //checking if nodes are in selectedNodes
+        int check1 = 0;
+        int check2 = 0;
+        for(Node *n : selectedNodes){
+            if(n == e->getNode1()) check1++;
+            if(n == e->getNode2()) check2++;
+        }
+        //if both, we delete
+        if(check1 == 1 || check2 == 1){
+            for(auto it3 = edgeList.begin(); it3 != edgeList.end(); it3++){
+                if(*it3 == e){
+                    edgeList.erase(it3--);
+                }
+            }
+            _scene->removeItem(e);
+        }
+        //if only one, we save the entering node and delete the edge
+        else if(check1 == 1 && check2 == 0){
+
+            int check3 = 0;
+            for(unsigned int i=0 ; i<enteringNodes.size() ; i++) if(enteringNodes[i] == e->getNode2()) check3++;
+            if (check3 == 0) enteringNodes.push_back(e->getNode2());
+
+            _scene->removeItem(e);
+        }
+        else if(check1 == 0 && check2 == 1){
+
+            int check3 = 0;
+            for(unsigned int i=0 ; i<enteringNodes.size() ; i++) if(enteringNodes[i] == e->getNode1()) check3++;
+            if (check3 == 0) enteringNodes.push_back(e->getNode1());
+
+            _scene->removeItem(e);
+        }
+    }
+    //saving the intel
+    string metaName = "";
+    int metaPonderation = 0;
+    double metaCoordX = 0;
+    double metaCoordY = 0;
+    for(Node *n : selectedNodes){
+        metaName += n->getId() + " ";
+        metaPonderation += n->getPonderation();
+        metaCoordX += n->getX();
+        metaCoordY += n->getY();
+    }
+    //creating the metaNode
+    Node *metaNode = new Node(metaName, metaPonderation);
+    metaNode->setPos(metaCoordX/selectedNodes.size(), metaCoordY/selectedNodes.size());
+    nodeList.push_back(metaNode);
+    //creating the edges to the node
+    for(Node *n2 : enteringNodes){
+        Edge *e = new Edge(n2, metaNode);
+        edgeList.push_back(e);
+        _scene->addItem(e);
+    }
+    //deleting the selected nodes
+    for(Node *n3 : selectedNodes){
+        vector<Node*>::iterator it4 = find(nodeList.begin(), nodeList.end(), n3);
+        nodeList.erase(it4);
+        _scene->removeItem(n3);
+    }
+    selectedNodes.clear();
+    _scene->addItem(metaNode);
+    cleanBadEdges();
+    _scene->update();
+    return nullptr;
+}
+/*
+Node* Graph::mergeNodes(){
+    vector<Node*> selectedNodes = getSelectedNodes();
+    vector<Node*> enteringNodes;
+    enteringNodes.clear();
+
     //listing of entering nodes
     for(Edge *e : edgeList){
         //checking if nodes are in selectedNodes
@@ -57,19 +152,51 @@ Node* Graph::mergeNodes(){
         }
         //if only one, we save the entering node and delete the edge
         else if(it1 != selectedNodes.end() && it2 == selectedNodes.end()){
-            enteringNodes.push_back(e->getNode1());
+            vector<Node*>::iterator it3 = find(enteringNodes.begin(), enteringNodes.end(), e->getNode2());
+            if(it3 == enteringNodes.end()) enteringNodes.push_back(e->getNode2());
             _scene->removeItem(e);
         }
         else if(it1 == selectedNodes.end() && it2 != selectedNodes.end()){
-            enteringNodes.push_back(e->getNode2());
+            vector<Node*>::iterator it3 = find(enteringNodes.begin(), enteringNodes.end(), e->getNode1());
+            if(it3 == enteringNodes.end()) enteringNodes.push_back(e->getNode1());
             _scene->removeItem(e);
         }
     }
-    //saving the names
-
+    //saving the intel
+    string metaName = "";
+    int metaPonderation = 0;
+    double metaCoordX = 0;
+    double metaCoordY = 0;
+    for(Node *n : selectedNodes){
+        metaName += n->getId() + " ";
+        metaPonderation += n->getPonderation();
+        metaCoordX += n->getX();
+        metaCoordY += n->getY();
+    }
+    //creating the metaNode
+    Node *metaNode = new Node(metaName, metaPonderation);
+    metaNode->setPos(metaCoordX/selectedNodes.size(), metaCoordY/selectedNodes.size());
+    nodeList.push_back(metaNode);
+    //creating the edges to the node
+    for(Node *n2 : enteringNodes){
+        Edge *e = new Edge(n2, metaNode);
+        edgeList.push_back(e);
+        _scene->addItem(e);
+    }
+    //deleting the selected nodes
+    for(Node *n3 : selectedNodes){
+        vector<Node*>::iterator it4 = find(nodeList.begin(), nodeList.end(), n3);
+        nodeList.erase(it4);
+        _scene->removeItem(n3);
+    }
+    selectedNodes.clear();
+    _scene->addItem(metaNode);
+    cleanBadEdges();
     _scene->update();
     return nullptr;
-}
+
+
+}*/
 
 vector<Node*> Graph::getSelectedNodes(){
     vector<Node*> selectedNodes;

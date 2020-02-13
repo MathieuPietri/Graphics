@@ -218,7 +218,6 @@ void ToolBar::fusion()
 {
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
     mainWidget->getCurrentTabContent()->getGraph()->mergeNodes();
-    cout << mainWidget->getCurrentTabContent()->getGraph()->getEdges().size() << endl;
 }
 
 void ToolBar::choixCouleurs()
