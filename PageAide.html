@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Page d'aide de GraphET</title>
+<!--  <link rel="stylesheet" href="style.css"> -->
+<!--  <script src="script.js"></script> -->
+
+<style>
+img{
+margin:5px;
+width: 40px;
+height: 40px;
+vertical-align: middle;
+}
+img#graphet{
+margin:5px;
+width:70px;
+height:60px;
+}
+.menuItem {
+background-color: #1C1C1C;
+text-align: center;
+}
+.menuItem2 {
+color:#AEAEAE;;
+text-align: justify;
+}
+body{
+background-color:#1C1C1C;
+font-family:monospace;
+font-size: 16px;
+}
+h1{
+color:#F1F1F1;
+font-weight:bold;
+text-align:center;
+background-color:#0E0E0E;
+background-size: auto;
+}
+h2{
+color:#0ED9C3;
+font-weight:bold;
+text-align:justify;
+}
+h3{
+color:#4AB517;
+font-weight:bold;
+text-align:justify;
+}
+ul#ul1 {
+list-style: none;
+color:#979797;
+}
+ul#ul1 li:before{
+content: "\2192";
+}
+li{
+color:#979797;
+font-weight:auto;
+text-align:justify;
+}
+a:link
+{
+text-decoration:none;
+font-weight : bold;
+color: #0ED9C3;
+}
+a:hover{
+color: #7FDDD3;
+background-color: #268673;
+}
+a:visited{
+color:#006C57;
+}
+a#menu2{
+color:#979797;
+}
+a#a1{
+color:#C4005F;
+}
+a#a1:visited{
+color:#A41332;
+}
+a#a1:hover{
+color: #AF5266;
+background-color: #A41332;
+}
+p{
+color:#F5F5F5;
+font-weight:auto;
+text-align:justify;
+}
+p#p1{
+background-color:#A9A9A9;
+}
+b#b1{
+color:#C4005F;
+}
+u#u1{
+color:#C4005F;
+}
+</style>
+
+</head>
+<body>
+
+	<div id="menu2">
+		<div class="menuItem2"> <a id="menu2" href="tutorial.html">Tutoriel d'utilisation</a> </div>
+		<div class="menuItem2"> <a id="menu2" href="PageAide.html">Page d'aide</a> </div>
+		<div class="menuItem2"> <a id="menu2" href="faq.html">F.A.Q</a> </div>
+	</div>
+
+	<h1>Page d'Aide de GraphET</h1>
+
+	<div id="menu">
+		<div class="menuItem"> <a href="#titre1">A quoi sert l’application GraphET ?</a> </div>
+		<div class="menuItem"> <a href="#titre2">Qu’est-ce qu’un fichier csv et comment l’utiliser ?</a> </div>
+		<div class="menuItem menuItemActif"> <a href="#titre3">Comment afficher un graphe ?</a> </div>
+		<div class="menuItem"> <a href="#titre4">Comment ouvrir mon fichier csv ?</a> </div>
+		<div class="menuItem"> <a href="#titre5">Comment modifier/personnaliser mon graphe ?</a> </div>
+		<div class="menuItem"> <a href="#titre6">Comment sauvegarder mon graphe ?</a> </div>
+		<div class="menuItem"> <a href="#titre7">Comment exporter mon graphe sous forme d’image ?</a> </div>
+		<div class="menuItem"> <a href="#titre8">Comment utiliser le Zoom avant/ Zoom arrière sur GraphET ?</a> </div>
+		<div class="menuItem"> <a href="#titre9">Comment utiliser Annuler et Restaurer ?</a> </div>
+	</div><br/>
+  	<br/>
+  	<br/>
+
+  	<h2 id="titre1">A quoi sert l’application GraphET ?</h2>
+  	<p><b id="b1">GraphET</b> (dont la prononciation est : Grafiti) est un logiciel permettant de <u id="u1">visualiser des graphes à partir d’un fichier csv</u> (comma separated values). Ce dernier <u id="u1">affiche vos données sous forme de graphe</u> que vous pouvez ensuite personnaliser comme vous le souhaitez, comme par exemple déplacer les sommets ou les arêtes du graphe, ainsi que changer les couleurs du graphe.
+  	</p>
+	<p>Vous pourrez ensuite sauvegarder vos graphes et les exporter sous forme d’images pour les montrer à vos amis (si vous en avez) ou à vos collègues de travail.
+	</p><br/>
+
+	<h2 id="titre2">Qu’est-ce qu’un fichier csv et comment l’utiliser ?</h2>
+	<p>Un fichier csv est un fichier informatique de type tableur dont les valeurs sont séparées par des virgules comme son nom l’indique : Comma Separated Values.
+
+	<p>Pour écrire un fichier csv il vous suffit d’écrire une suite de valeurs forcément séparées par une virgule “,”.</p><br/>
+
+	<h3>Exemple :</h3>
+	<p>1, 3, 5, 8<br/>
+	<p>23, 500, 1<br/>
+	<p>4, 0.032, 45, 10, 55, 1<br/>
+	<br/>
+	<p>Et voilà, plutôt facile non ?</p></p>
+
+	<p>Le nombre de valeurs sur une ligne peut être supérieur ou inférieur à une autre ligne, cela n’est pas un problème. Tout ce qu’il faut savoir c’est que toute valeur présente dans le csv correspondra à un sommet et que si deux valeurs sont sur la même ligne elle seront reliées par un arête dans le graphe.</p><br/>
+
+	<h2 id="titre3">Comment afficher un graphe ?</h2>
+	<p>Vous avez deux possibilités pour afficher un graphe :</p>
+	<ul>
+		<li>Si vous souhaitez afficher un graphe aléatoire il vous suffira d’appuyer sur l’icône suivant :<img src="icons8-ajouter-48.png" /> </img></li><br/>
+		<ul>
+			<li>Vous pouvez aussi cliquer sur le menu déroulant <b id="b1">“Fichier”</b> puis sur <b id="b1">“Nouveau tableau aleatoire”</b></li><br/>
+			<li>Ou encore utiliser le raccourci <b>CTRL + N</b></li><br/>
+		</ul>
+		<li>Si vous souhaitez afficher vos propres données sous forme de graphe rendez-vous sur la partie <a id="a1" href="#titre4">Comment ouvrir mon fichier csv ?</a></li>
+	</ul><br/>
+
+	<h2 id="titre4">Comment ouvrir mon fichier csv ?</h2>
+	<p>Tout d’abord il vous faudra un fichier csv. Si vous ignorez ce qu’est un fichier csv retournez lire la partie <a id="a1" href="#titre2">Qu’est-ce qu’un fichier csv et comment l’utiliser ?</a></p><br/>
+
+	<p>Si vous possédez un fichier csv adéquat suivez les étapes suivantes :</p>
+
+	<ul id="ul1">
+		<li> Cliquez sur l’icône :<img src="icons8-ajouter-un-onglet-48(1).png" /> </img></li><br/>
+		<li> Dans la fenêtre qui s’est ouverte, sélectionnez le fichier .csv que vous souhaitez visualiser, puis cliquez sur <b id="b1">“ouvrir”</b> en bas de la fenêtre</li><br/>
+		<li> Vos données seront affichées sous forme d’un tableur à gauche de l’écran, tandis que votre graphe s’affichera à droite</li><br/>
+	</ul>
+
+	<p>Vous pouvez aussi passer par le menu déroulant <b>“Fichier”</b> et cliquer sur <b id="b1">“ouvrir tableau”.</b></p>
+
+	<p>Il vous est possible d’ouvrir deux fichiers csv à la fois, chacunes de vos données importées seront séparées en différents onglets auxquels vous aurez accès en cliquant dessus.</p><br/>
+
+	<p><b>Aide :</b> <i>Le raccourci clavier <b>“CTRL + O”</b> est une troisième façon d’ouvrir un tableau</i></p><br/>
+
+	<h2 id="titre5">Comment modifier/personnaliser mon graphe ?</h2>
+
+	<p><b id="b1">Déplacer les sommets du graphe :</b> Placer votre curseur sur le sommet que vous voulez déplacer et restez appuyé sur le clic gauche de la souris tout en déplaçant cette dernière.</p>
+
+	<p><b id="b1">Déplacer les arêtes du graphe :</b> Placer votre curseur sur le milieu d’une arête que vous souhaitez déplacer et restez appuyé sur le clic gauche de la souris tout en déplaçant cette dernière.<br/>
+
+	<b id="b1">Modifier la couleur d’un sommet :</b> Cliquez sur un sommet pour le sélectionner puis cliquez sur l’icône : <img src="icons8-cercle-rvb-40.png" /> </img>
+	Dans la fenêtre qui apparaît, sélectionnez la couleur de votre choix et cliquez sur “ok”.<br/>
+
+	<b id="b1">Fusionner deux sommets du graphe :</b> Sélectionnez deux sommets en utilisant le clic gauche de la souris, puis cliquez sur : <img src="icons8-pincer-48.png" /> </img></p><br/>
+
+	<h2 id="titre6">Comment sauvegarder mon graphe ?</h2>
+
+	<p>Pour sauvegarder votre graphe il vous suffira de cliquer sur l’icône suivant : <img src="icons8-sauvegarder-48.png" /> </img><br/>
+
+	Si après une sauvegarde vous avez fait des modifications sur votre graphe et que vous souhaitez sauvegarder une nouvelle fois votre graphe sans écraser votre ancienne sauvegarde du graphe utilisez l’icône “enregistrer sous” : <img src="icons8-enregistrer-sous-48.png" /> </img><br/>
+
+	Vous pouvez dans les deux cas passer par le menu déroulant <b>“Fichier”</b> et cliquer soit sur <b>“Enregistrer”</b> ou <b>“Enregistrer sous”</b>.
+
+	<b>Aide :</b> <i>Le raccourci clavier pour enregistrer est <b>CTRL+S</b> et le raccourci clavier pour enregistrer sous est <b>CTRL+SHIFT+S</b></i></p><br/>
+
+	<h2 id="titre7">Comment exporter mon graphe sous forme d’image ?</h2>
+
+	<p>Il vous est possible d’exporter votre graphe en cliquant sur l’icône : <img src="icons8-image-entière-48.png" /> </img></p><br/>
+
+	<h2 id="titre8">Comment utiliser le Zoom avant/ Zoom arrière sur GraphET ?</h2>
+
+	<p><b>(non implémenté pour le moment, revenez plus tard, arigatou gozaimasu)</b></p><br/>
+
+
+	<h2 id="titre9">Comment utiliser Annuler et Restaurer ?</h2>
+
+	<p><b>(oubliez pas les modifications que vous avez faites, cette fonctionnalité n’a pas encore été implémentée, mais elle arrive dans un futur proche ;) )</b></p><br/>
+	<br/>
+	
+
+	<img id="graphet" src="graphet.png"/> </img>
+</body>
+
+<footer>
+	<a href="#menu2">Retour en haut de la page</a><br/>
+	<p style="text-align: right;">Développé par : Maxime, Oriane, Anthony, Quentin, Mathieu, Alix<br/>
+	2020</p>
+</footer>
+</html>
