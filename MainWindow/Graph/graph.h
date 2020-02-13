@@ -29,12 +29,15 @@ class Node : public QGraphicsItem{
         void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)override;
         QRectF boundingRect() const override;
         void mouseReleaseEvent(QGraphicsSceneMouseEvent *event) override;
+        void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
 
     private:
         std::string _nameId;
         int _ponderation;
         QColor _color;
         int _selected = 0;
+        double _XOnMousePressed;
+        double _YOnMousePressed;
 };
 
 class Edge:public QGraphicsItem{

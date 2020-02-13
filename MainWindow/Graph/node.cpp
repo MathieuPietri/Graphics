@@ -27,9 +27,17 @@ QRectF Node::boundingRect() const{
 }
 
 void Node::mouseReleaseEvent(QGraphicsSceneMouseEvent *event){
-    if(getSelection()) unselect();
-    else select();
+    if(_YOnMousePressed == getY() && _XOnMousePressed == getX()){
+        if(getSelection()) unselect();
+        else select();
+    }
     update();
     QGraphicsItem::mouseReleaseEvent(event);
 
+}
+
+void Node::mousePressEvent(QGraphicsSceneMouseEvent *event){
+    _XOnMousePressed = getX();
+    _YOnMousePressed = getY();
+    QGraphicsItem::mousePressEvent(event);
 }
