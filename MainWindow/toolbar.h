@@ -26,6 +26,7 @@ protected slots:
     void tableauOuvrir();
     void sauvegarder();
     void enregistrerSous();
+    void modifierContenu(QString nomFichier);
     void exporter();
     void imprimer();
 

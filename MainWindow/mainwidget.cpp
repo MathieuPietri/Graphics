@@ -46,12 +46,15 @@ void MainWidget::addDataSet(vector<vector<string> > data, const QString &filePat
     }
     /* Remplissage de la table */
 
+    cout << "colonne count de data: " << maxColCount(data) << endl;
+    cout << "size de data: " << data.size() << endl;
+    cout << "size de data[1] " << data[1].size() << endl;
     newTabContentWidget->setTableSize(maxColCount(data), data.size());
     fillTable(newTabContentWidget->getTable(), data);
 
     /* Création du graph */
 
-    Graph* graph = new Graph(data);
+    /* SA BUG ISSI */                                                                   Graph* graph = new Graph(data);
     newTabContentWidget->getGraphArea().setScene(new QGraphicsScene);
     graph->addToScene(newTabContentWidget->getGraphArea().scene());
     newTabContentWidget->update();
@@ -93,4 +96,8 @@ std::string MainWidget::getNameFromPath(const QString path) {
         path_.pop_back();
     }
     return result;
+}
+
+void MainWidget::renameCurrentTab(const QString name) {
+    tabs->setTabText(tabs->currentIndex(), name);
 }
