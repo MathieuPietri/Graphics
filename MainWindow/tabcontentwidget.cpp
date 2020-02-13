@@ -7,6 +7,7 @@ TabContentWidget::TabContentWidget(QWidget *parent) :
     QWidget(parent)
 {
     setupUi(this);
+    table->setEditTriggers(QAbstractItemView::NoEditTriggers);
 }
 
 

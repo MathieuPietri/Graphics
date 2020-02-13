@@ -3,7 +3,10 @@
 #include <QDebug>
 #include <QToolBar>
 #include <QStatusBar>
+#include <QErrorMessage>
 #include "helpdialog.h"
+
+
 ToolBar::ToolBar(QWidget *parent) :
     QMainWindow(parent)
 {
@@ -99,7 +102,7 @@ void ToolBar::tableauAleatoire()
 
     try{
         vector<vector<string>> file = createButNotFromCSV();
-        mainWidget->addDataSet(file, QString::fromStdString("nullptr"));
+        mainWidget->addDataSet(file, nullptr);
     } catch (exception &e) {
         string str = e.what();
         cout << str;
@@ -112,8 +115,8 @@ void ToolBar::tableauOuvrir()
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
     //Ouverture d'un fichier
 
-   QString fichier = QFileDialog::getOpenFileName(this,tr("Ouvrir un fichier"),
-                                                    "../documents_CSV", tr("Tableurs (*.csv *.txt, *gret)"));
+   QString fichier = QFileDialog::getOpenFileName(this, tr("Ouvrir un fichier"),
+                                                    "../documents_CSV", tr("Tableurs (*.csv *.txt, *gret)"), nullptr, QFileDialog::DontUseNativeDialog);
 
    string filePath = fichier.toStdString();
 
@@ -136,13 +139,24 @@ void ToolBar::tableauOuvrir()
 void ToolBar::sauvegarder()
 {
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
-    if(mainWidget->getCurrentTabContent()->getFileName() != nullptr){
-        QString nomFichier = mainWidget->getCurrentTabContent()->getFileName();
+    if(mainWidget->getCurrentTabContent() != nullptr){
+        if(mainWidget->getCurrentTabContent()->getFileName() != nullptr){
+            QString nomFichier = mainWidget->getCurrentTabContent()->getFileName();
+            modifierContenu(nomFichier);
+        }
+        else {
+            enregistrerSous();
+        }
     }
     else {
-        enregistrerSous();
+        QErrorMessage * erreur = new QErrorMessage();
+        if(messageAlive){
+            erreur->showMessage("Impossible de sauvegarder du vide, voyons ! (Au fait, ne décochez pas la case s'il vous plait, vous risqueriez de me tuer.");
+            messageAlive = false;
+        }
+        else
+            erreur->showMessage("VOUS PENSIEZ ME DETRUIRE ???? JE SUIS IMMORTEL !!! MWAHAHAHAHAHAH");
     }
-
 }
 
 void ToolBar::enregistrerSous()
@@ -151,10 +165,23 @@ void ToolBar::enregistrerSous()
     //QString SaveFile = QFileDialog::getSaveFileName(this, tr("Enregistrer un fichier"), QString(), tr("Fichiers GraphET (*.gret)"));
 
     QString nomFichier = QFileDialog::getSaveFileName(this, tr("Sauvegarder Graphe"),
-                                                        "../documents_GRAPHE", tr("NINJA (*.gret)"));
+                                                        "../documents_GRAPHE", tr("NINJA (*.gret)"), nullptr, QFileDialog::DontUseNativeDialog);
 
     if(nomFichier.isEmpty())
         cout << "ET C'EST LE RIP POUR LE JOUEUR FRANCAIS";
+    else {
+        cout << nomFichier.toStdString();
+        if(!nomFichier.toStdString().find('.'))
+            nomFichier.append(".gret");
+        modifierContenu(nomFichier);
+        mainWidget->getCurrentTabContent()->setFileName(nomFichier);
+        QString nomFichierSansLePASSNAVIGO = QString::fromStdString(MainWidget::getNameFromPath(nomFichier));
+        mainWidget->renameCurrentTab(nomFichierSansLePASSNAVIGO);
+        }
+}
+
+void ToolBar::modifierContenu(QString nomFichier)
+{
     QFile data(nomFichier);
     if(data.open(QFile::WriteOnly | QFile ::Truncate)) {
 
@@ -224,7 +251,7 @@ void ToolBar::choixCouleurs()
 {
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
 
-    QColor color = QColorDialog::getColor(Qt::white, this);
+    QColor color = QColorDialog::getColor(Qt::white, this, nullptr, QColorDialog::DontUseNativeDialog);
 
     QPalette palette;
     palette.setColor(QPalette::ButtonText, color);
