@@ -5,6 +5,10 @@
 #include <QStatusBar>
 #include "helpdialog.h"
 #include "graphaction.h"
+
+
+
+
 ToolBar::ToolBar(QWidget *parent) :
     QMainWindow(parent)
 {
