@@ -28,6 +28,7 @@ SOURCES += \
         Graph/csv.cpp \
         Graph/edge.cpp \
         Graph/graph.cpp \
+        Graph/gret.cpp \
         Graph/node.cpp \
         helpdialog.cpp \
         mainwidget.cpp \
@@ -38,6 +39,7 @@ SOURCES += \
 HEADERS += \
         Graph/csv.h \
         Graph/graph.h \
+        Graph/gret.h \
         helpdialog.h \
         mainwidget.h \
         tabcontentwidget.h \
