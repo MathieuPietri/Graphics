@@ -26,10 +26,18 @@ QRectF Node::boundingRect() const{
     return QRectF(x()/110, y()/110, _ponderation*15, _ponderation*15);
 }
 
-void Node::mousePressEvent(QGraphicsSceneMouseEvent *event){
-    if(getSelection()) unselect();
-    else select();
+void Node::mouseReleaseEvent(QGraphicsSceneMouseEvent *event){
+    if(_YOnMousePressed == getY() && _XOnMousePressed == getX()){
+        if(getSelection()) unselect();
+        else select();
+    }
     update();
-    QGraphicsItem::mousePressEvent(event);
+    QGraphicsItem::mouseReleaseEvent(event);
 
+}
+
+void Node::mousePressEvent(QGraphicsSceneMouseEvent *event){
+    _XOnMousePressed = getX();
+    _YOnMousePressed = getY();
+    QGraphicsItem::mousePressEvent(event);
 }

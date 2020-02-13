@@ -17,7 +17,7 @@ public:
     void setTableSize(int x, int y);
     QString getFileName();
     void setFileName(QString fileName);
-    Graph getGraph(){return *graph;}
+    Graph* getGraph();
     void setGraph(Graph *graph);
     ~TabContentWidget();
 

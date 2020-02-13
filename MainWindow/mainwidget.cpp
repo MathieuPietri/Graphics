@@ -59,10 +59,9 @@ void MainWidget::addDataSet(vector<vector<string> > data, const QString &filePat
     /* Focus sur le nouvel onglet */
 
     tabs->setCurrentIndex(tabCounter);
-
     /* Ajout du TabContentWidget au vector */
 
-
+    newTabContentWidget->setGraph(graph);
     tabContents.push_back(newTabContentWidget); //A DEBUG
 
     qDebug() << "nb tabs :" << tabCounter;

@@ -1,4 +1,7 @@
 #include "tabcontentwidget.h"
+using namespace std;
+#include <iostream>
+
 
 TabContentWidget::TabContentWidget(QWidget *parent) :
     QWidget(parent)
@@ -36,4 +39,13 @@ void TabContentWidget::setGraph(Graph *graph){
 
 TabContentWidget::~TabContentWidget(){
     if(this->graph != nullptr) delete(graph);
+}
+
+Graph* TabContentWidget::getGraph(){
+    if (this->graph == nullptr)
+        cout << "error no graph in tabcontentwidget" << endl;
+    else {
+        cout << "graph imported correctly from tabcontentwidget" << endl;
+    }
+    return graph;
 }
