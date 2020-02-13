@@ -17,11 +17,11 @@ public:
     void addDataSet(vector<vector<string>> data, const QString &name);
     TabContentWidget *getCurrentTabContent();
     void renameCurrentTab(QString name);
+    static std::string getNameFromPath(QString path);
 
 private:
     static int maxColCount(vector<vector<string>> data);
     vector<TabContentWidget*> tabContents;
-    static std::string getNameFromPath(QString path);
 
 };
 #endif // MAINWIDGET_H
