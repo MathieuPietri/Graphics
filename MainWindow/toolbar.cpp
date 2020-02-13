@@ -212,12 +212,14 @@ void ToolBar::fusion()
 void ToolBar::choixCouleurs()
 {
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
+
     QColor color = QColorDialog::getColor(Qt::white, this);
 
     QPalette palette;
     palette.setColor(QPalette::ButtonText, color);
     //this -> setPalette(palette);
-    mainWidget->getCurrentTabContent()->getGraph();
+    mainWidget->getCurrentTabContent()->getGraph()->colorationSelectedNodes(color);
+
 }
 
 /*

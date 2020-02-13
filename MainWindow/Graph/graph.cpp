@@ -73,8 +73,10 @@ void Graph::printSelectedNodes(){
 }
 
 void Graph::colorationSelectedNodes(QColor c){
-    for(Node* n : getSelectedNodes())
-        n->setColorFromColor(c);
+    for(Node* n : getSelectedNodes()){
+        n->setColor(c.red(), c.green(), c.blue());
+    }
+
 }
 
 Node* Graph::getNodeByName(string name){

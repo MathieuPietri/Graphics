@@ -41,11 +41,11 @@ TabContentWidget::~TabContentWidget(){
     if(this->graph != nullptr) delete(graph);
 }
 
-Graph TabContentWidget::getGraph(){
+Graph* TabContentWidget::getGraph(){
     if (this->graph == nullptr)
         cout << "error no graph in tabcontentwidget" << endl;
     else {
         cout << "graph imported correctly from tabcontentwidget" << endl;
     }
-    return *graph;
+    return graph;
 }
