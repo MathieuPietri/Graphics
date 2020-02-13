@@ -97,3 +97,7 @@ std::string MainWidget::getNameFromPath(const QString path) {
     }
     return result;
 }
+
+void MainWidget::renameCurrentTab(const QString name) {
+    tabs->setTabText(tabs->currentIndex(), name);
+}
