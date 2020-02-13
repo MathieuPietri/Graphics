@@ -12,6 +12,7 @@ MainWidget::MainWidget(QWidget *parent) :
 {
     setupUi(this);
     tabs->removeTab(1);
+    tabs->setTabText(0, "Fichier sans nom");
 }
 
 void MainWidget::fillTable(QTableWidget &tableWidget, vector<vector<string>> data) {
