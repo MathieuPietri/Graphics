@@ -63,6 +63,7 @@ class Graph{
         Node* getNodeByName(std::string name);
         Edge* getEdgeByNodes(std::string n1, std::string n2);
         Node* mergeNodes();
+        void cleanBadEdges();
         const std::vector<Edge*> getEdges(){return edgeList;};
         const std::vector<Node*> getNodes(){return nodeList;};
         std::vector<Node*> getSelectedNodes();

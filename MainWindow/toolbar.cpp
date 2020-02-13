@@ -3,10 +3,8 @@
 #include <QDebug>
 #include <QToolBar>
 #include <QStatusBar>
+#include <QErrorMessage>
 #include "helpdialog.h"
-#include "graphaction.h"
-
-
 
 
 ToolBar::ToolBar(QWidget *parent) :
@@ -141,7 +139,7 @@ void ToolBar::tableauOuvrir()
 void ToolBar::sauvegarder()
 {
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
-    try {
+    if(mainWidget->getCurrentTabContent() != nullptr){
         if(mainWidget->getCurrentTabContent()->getFileName() != nullptr){
             QString nomFichier = mainWidget->getCurrentTabContent()->getFileName();
             modifierContenu(nomFichier);
@@ -149,12 +147,16 @@ void ToolBar::sauvegarder()
         else {
             enregistrerSous();
         }
-    } catch (exception &e) {
-        string str = e.what();
-        cout << str << endl;
     }
-
-
+    else {
+        QErrorMessage * erreur = new QErrorMessage();
+        if(messageAlive){
+            erreur->showMessage("Impossible de sauvegarder du vide, voyons ! (Au fait, ne décochez pas la case s'il vous plait, vous risqueriez de me tuer.");
+            messageAlive = false;
+        }
+        else
+            erreur->showMessage("VOUS PENSIEZ ME DETRUIRE ???? JE SUIS IMMORTEL !!! MWAHAHAHAHAHAH");
+    }
 }
 
 void ToolBar::enregistrerSous()
@@ -169,7 +171,12 @@ void ToolBar::enregistrerSous()
         cout << "ET C'EST LE RIP POUR LE JOUEUR FRANCAIS";
     else {
         cout << nomFichier.toStdString();
+        if(!nomFichier.toStdString().find('.'))
+            nomFichier.append(".gret");
         modifierContenu(nomFichier);
+        mainWidget->getCurrentTabContent()->setFileName(nomFichier);
+        QString nomFichierSansLePASSNAVIGO = QString::fromStdString(MainWidget::getNameFromPath(nomFichier));
+        mainWidget->renameCurrentTab(nomFichierSansLePASSNAVIGO);
         }
 }
 
@@ -207,13 +214,11 @@ void ToolBar::imprimer()
 void ToolBar::annuler()
 {
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
-    mainWidget->getCurrentTabContent()->undoLast();
 }
 
 void ToolBar::restaurer()
 {
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
-    mainWidget->getCurrentTabContent()->redoLast();
 }
 
 void ToolBar::totaleSelection()
@@ -240,7 +245,6 @@ void ToolBar::fusion()
 {
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
     mainWidget->getCurrentTabContent()->getGraph()->mergeNodes();
-    cout << mainWidget->getCurrentTabContent()->getGraph()->getEdges().size() << endl;
 }
 
 void ToolBar::choixCouleurs()
@@ -252,8 +256,6 @@ void ToolBar::choixCouleurs()
     QPalette palette;
     palette.setColor(QPalette::ButtonText, color);
     //this -> setPalette(palette);
-    vector<Node*> selectedNodes = mainWidget->getCurrentTabContent()->getGraph()->getSelectedNodes();
-    mainWidget->getCurrentTabContent()->addGraphAction(new ColorChangedAction(selectedNodes, color));
     mainWidget->getCurrentTabContent()->getGraph()->colorationSelectedNodes(color);
 
 }
