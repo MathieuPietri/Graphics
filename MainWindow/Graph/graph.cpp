@@ -35,6 +35,29 @@ void Graph::setAllNodesCoordonates(){
     }
 }
 
+/*Node Graph::mergeNodes(vector<Node*> selectedNodes){
+    vector<Node*> enteringNodes;
+    //listing of entering nodes
+    for(Edge *e : edgeList){
+        //checking if nodes are in selectedNodes
+        vector<Node*>::iterator it1 = find(selectedNodes.begin(), selectedNodes.end(), e->getNode1());
+        vector<Node*>::iterator it2 = find(selectedNodes.begin(), selectedNodes.end(), e->getNode2());
+        //if both, we delete
+        if(it1 != selectedNodes.end() && it2 != selectedNodes.end()){
+            vector<Edge*>::iterator it3 = find(edgeList.begin(), edgeList.end(), e);
+            edgeList.erase(it3);
+        }
+        //if only one, we save the entering node
+        else if(it1 != selectedNodes.end() && it2 == selectedNodes.end()){
+            enteringNodes.push_back(e->getNode1());
+        }
+        else if(it1 == selectedNodes.end() && it2 != selectedNodes.end()){
+            enteringNodes.push_back(e->getNode2());
+        }
+    }
+
+}*/
+
 vector<Node*> Graph::getSelectedNodes(){
     vector<Node*> selectedNodes;
     for(int i=0 ; i<(int)nodeList.size() ; i++){
@@ -42,6 +65,11 @@ vector<Node*> Graph::getSelectedNodes(){
             selectedNodes.push_back(nodeList[i]);
     }
     return selectedNodes;
+}
+
+void Graph::printSelectedNodes(){
+    for(Node* n : getSelectedNodes())
+        cout << n->getId() << endl;
 }
 
 void Graph::colorationSelectedNodes(QColor c){
@@ -60,7 +88,7 @@ Node* Graph::getNodeByName(string name){
 
 Edge* Graph::getEdgeByNodes(string n1, string n2){
     for(int i=0 ; i<(int)edgeList.size() ; i++){
-        std::string id1 = edgeList[i]->getNode1()->getId();
+        std::string id1 = edgeList  [i]->getNode1()->getId();
         std::string id2 = edgeList[i]->getNode2()->getId();
         if( id1 == n1 && id2 == n2 ) return edgeList[i];
         else if (id1 == n2 && id2 == n1) return edgeList[i];

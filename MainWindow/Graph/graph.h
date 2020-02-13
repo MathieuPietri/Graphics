@@ -28,7 +28,7 @@ class Node : public QGraphicsItem{
         int getSelection(){return _selected;}
         void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget)override;
         QRectF boundingRect() const override;
-        void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
+        void mouseReleaseEvent(QGraphicsSceneMouseEvent *event) override;
 
     private:
         std::string _nameId;
@@ -58,11 +58,12 @@ class Graph{
         void setAllNodesCoordonates();
         Node* getNodeByName(std::string name);
         Edge* getEdgeByNodes(std::string n1, std::string n2);
-        //Node mergeNodes(Node* n1, Node* n2);
+        Node mergeNodes(std::vector<Node*> selectedNodes);
         const std::vector<Edge*> getEdges(){return edgeList;};
         const std::vector<Node*> getNodes(){return nodeList;};
         std::vector<Node*> getSelectedNodes();
         void colorationSelectedNodes(QColor c);
+        void printSelectedNodes();
 
     private:
         std::vector<Node*> nodeList;

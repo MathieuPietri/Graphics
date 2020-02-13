@@ -217,7 +217,7 @@ void ToolBar::choixCouleurs()
     QPalette palette;
     palette.setColor(QPalette::ButtonText, color);
     //this -> setPalette(palette);
-
+    mainWidget->getCurrentTabContent()->getGraph();
 }
 
 /*
