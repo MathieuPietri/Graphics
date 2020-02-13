@@ -12,6 +12,7 @@ MainWidget::MainWidget(QWidget *parent) :
 {
     setupUi(this);
     tabs->removeTab(1);
+    tabs->setTabText(0, "Fichier sans nom");
 }
 
 void MainWidget::fillTable(QTableWidget &tableWidget, vector<vector<string>> data) {
@@ -82,6 +83,8 @@ int MainWidget::maxColCount(vector<vector<string>> data) {
 }
 
 TabContentWidget * MainWidget::getCurrentTabContent(){
+    if (tabCounter == -1)
+        return nullptr;
     return tabContents[tabs->currentIndex()];
 }
 
@@ -96,4 +99,8 @@ std::string MainWidget::getNameFromPath(const QString path) {
         path_.pop_back();
     }
     return result;
+}
+
+void MainWidget::renameCurrentTab(const QString name) {
+    tabs->setTabText(tabs->currentIndex(), name);
 }

@@ -16,6 +16,9 @@ class ToolBar : public QMainWindow, private Ui::ToolBar
 public:
     explicit ToolBar(QWidget *parent = nullptr);
 
+private:
+    int messageAlive = true;
+
 protected slots:
 
     /* Barre de Menu section Fichier
