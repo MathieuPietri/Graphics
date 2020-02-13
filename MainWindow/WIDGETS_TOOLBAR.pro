@@ -29,6 +29,7 @@ SOURCES += \
         Graph/edge.cpp \
         Graph/graph.cpp \
         Graph/node.cpp \
+        graphaction.cpp \
         helpdialog.cpp \
         mainwidget.cpp \
         main.cpp \
@@ -38,6 +39,7 @@ SOURCES += \
 HEADERS += \
         Graph/csv.h \
         Graph/graph.h \
+        graphaction.h \
         helpdialog.h \
         mainwidget.h \
         tabcontentwidget.h \

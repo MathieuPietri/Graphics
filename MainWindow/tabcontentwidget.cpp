@@ -49,3 +49,28 @@ Graph* TabContentWidget::getGraph(){
     }
     return graph;
 }
+
+void TabContentWidget::undoLast(){
+    if(_undoList.size() > 0){
+        _undoList.back()->undo();
+        _redoList.push_back(_undoList.back());
+        _undoList.pop_back();
+        graphArea->update();
+    }
+}
+void TabContentWidget::redoLast(){
+    if(_redoList.size() > 0){
+        _redoList.back()->redo();
+        _undoList.push_back(_redoList.back());
+        _redoList.pop_back();
+        graphArea->update();
+    }
+}
+void TabContentWidget::addGraphAction(GraphAction* action){
+    _undoList.push_back(action);
+    for(auto act:_redoList){
+        delete act;
+        act = nullptr;
+    }
+    _redoList.clear();
+}

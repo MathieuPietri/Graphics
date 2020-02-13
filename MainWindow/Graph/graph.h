@@ -30,6 +30,7 @@ class Node : public QGraphicsItem{
         QRectF boundingRect() const override;
         void mouseReleaseEvent(QGraphicsSceneMouseEvent *event) override;
         void mousePressEvent(QGraphicsSceneMouseEvent *event) override;
+        QColor getColor(){return _color;}
 
     private:
         std::string _nameId;
