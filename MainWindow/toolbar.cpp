@@ -136,12 +136,19 @@ void ToolBar::tableauOuvrir()
 void ToolBar::sauvegarder()
 {
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
-    if(mainWidget->getCurrentTabContent()->getFileName() != nullptr){
-        QString nomFichier = mainWidget->getCurrentTabContent()->getFileName();
+    try {
+        if(mainWidget->getCurrentTabContent()->getFileName() != nullptr){
+            QString nomFichier = mainWidget->getCurrentTabContent()->getFileName();
+            modifierContenu(nomFichier);
+        }
+        else {
+            enregistrerSous();
+        }
+    } catch (exception &e) {
+        string str = e.what();
+        cout << str << endl;
     }
-    else {
-        enregistrerSous();
-    }
+
 
 }
 
@@ -155,6 +162,14 @@ void ToolBar::enregistrerSous()
 
     if(nomFichier.isEmpty())
         cout << "ET C'EST LE RIP POUR LE JOUEUR FRANCAIS";
+    else {
+        cout << nomFichier.toStdString();
+        modifierContenu(nomFichier);
+        }
+}
+
+void ToolBar::modifierContenu(QString nomFichier)
+{
     QFile data(nomFichier);
     if(data.open(QFile::WriteOnly | QFile ::Truncate)) {
 

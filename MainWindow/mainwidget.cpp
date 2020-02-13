@@ -54,7 +54,7 @@ void MainWidget::addDataSet(vector<vector<string> > data, const QString &filePat
 
     /* Création du graph */
 
-    // SA BUG ISSI                                                                    Graph* graph = new Graph(data);
+    /* SA BUG ISSI */                                                                   Graph* graph = new Graph(data);
     newTabContentWidget->getGraphArea().setScene(new QGraphicsScene);
     graph->addToScene(newTabContentWidget->getGraphArea().scene());
     newTabContentWidget->update();
