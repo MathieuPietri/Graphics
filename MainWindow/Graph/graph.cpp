@@ -35,7 +35,13 @@ void Graph::setAllNodesCoordonates(){
     }
 }
 
-/*Node Graph::mergeNodes(vector<Node*> selectedNodes){
+void Graph::changeSelectionState(){
+    if(selection_state == 0) selection_state = 1;
+    else selection_state = 0;
+}
+
+Node* Graph::mergeNodes(){
+    vector<Node*> selectedNodes = getSelectedNodes();
     vector<Node*> enteringNodes;
     //listing of entering nodes
     for(Edge *e : edgeList){
@@ -55,8 +61,8 @@ void Graph::setAllNodesCoordonates(){
             enteringNodes.push_back(e->getNode2());
         }
     }
-
-}*/
+    return nullptr;
+}
 
 vector<Node*> Graph::getSelectedNodes(){
     vector<Node*> selectedNodes;

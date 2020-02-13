@@ -58,16 +58,19 @@ class Graph{
         void setAllNodesCoordonates();
         Node* getNodeByName(std::string name);
         Edge* getEdgeByNodes(std::string n1, std::string n2);
-        Node mergeNodes(std::vector<Node*> selectedNodes);
+        Node* mergeNodes();
         const std::vector<Edge*> getEdges(){return edgeList;};
         const std::vector<Node*> getNodes(){return nodeList;};
         std::vector<Node*> getSelectedNodes();
         void colorationSelectedNodes(QColor c);
         void printSelectedNodes();
+        int getSelectionState(){return selection_state;}
+        void changeSelectionState();
 
     private:
         std::vector<Node*> nodeList;
         std::vector<Edge*> edgeList;
+        int selection_state;
 };
 
 #endif

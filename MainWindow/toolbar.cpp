@@ -197,6 +197,16 @@ void ToolBar::restaurer()
 void ToolBar::totaleSelection()
 {
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
+    Graph *graph = mainWidget->getCurrentTabContent()->getGraph();
+
+    if(graph->getSelectionState() == 0) {
+        graph->changeSelectionState();
+        for(Node *n : graph->getNodes()) n->select();
+    }
+    else {
+        graph->changeSelectionState();
+        for(Node *n : graph->getNodes()) n->unselect();
+    }
 }
 
 void ToolBar::copier()
@@ -207,6 +217,7 @@ void ToolBar::copier()
 void ToolBar::fusion()
 {
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
+    //mainWidget->getCurrentTabContent()->getGraph()->mergeNodes();
 }
 
 void ToolBar::choixCouleurs()
