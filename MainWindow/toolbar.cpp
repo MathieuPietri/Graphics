@@ -112,8 +112,8 @@ void ToolBar::tableauOuvrir()
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
     //Ouverture d'un fichier
 
-   QString fichier = QFileDialog::getOpenFileName(this,tr("Ouvrir un fichier"),
-                                                    "../documents_CSV", tr("Tableurs (*.csv *.txt, *gret)"));
+   QString fichier = QFileDialog::getOpenFileName(this, tr("Ouvrir un fichier"),
+                                                    "../documents_CSV", tr("Tableurs (*.csv *.txt, *gret)"), nullptr, QFileDialog::DontUseNativeDialog);
 
    string filePath = fichier.toStdString();
 
@@ -158,7 +158,7 @@ void ToolBar::enregistrerSous()
     //QString SaveFile = QFileDialog::getSaveFileName(this, tr("Enregistrer un fichier"), QString(), tr("Fichiers GraphET (*.gret)"));
 
     QString nomFichier = QFileDialog::getSaveFileName(this, tr("Sauvegarder Graphe"),
-                                                        "../documents_GRAPHE", tr("NINJA (*.gret)"));
+                                                        "../documents_GRAPHE", tr("NINJA (*.gret)"), nullptr, QFileDialog::DontUseNativeDialog);
 
     if(nomFichier.isEmpty())
         cout << "ET C'EST LE RIP POUR LE JOUEUR FRANCAIS";
@@ -240,7 +240,7 @@ void ToolBar::choixCouleurs()
 {
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
 
-    QColor color = QColorDialog::getColor(Qt::white, this);
+    QColor color = QColorDialog::getColor(Qt::white, this, nullptr, QColorDialog::DontUseNativeDialog);
 
     QPalette palette;
     palette.setColor(QPalette::ButtonText, color);
