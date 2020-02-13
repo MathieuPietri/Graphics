@@ -11,6 +11,7 @@ void Graph::addToScene(QGraphicsScene *scene){
     for(int j=0 ; j<(int)nodeList.size() ; j++)
         //drawNode(myGraph->getNodes()[j], scene);
         scene->addItem(nodeList[j]);
+    _scene = scene;
     cout << "added to scene" << endl;
 }
 
@@ -52,15 +53,21 @@ Node* Graph::mergeNodes(){
         if(it1 != selectedNodes.end() && it2 != selectedNodes.end()){
             vector<Edge*>::iterator it3 = find(edgeList.begin(), edgeList.end(), e);
             edgeList.erase(it3);
+            _scene->removeItem(e);
         }
-        //if only one, we save the entering node
+        //if only one, we save the entering node and delete the edge
         else if(it1 != selectedNodes.end() && it2 == selectedNodes.end()){
             enteringNodes.push_back(e->getNode1());
+            _scene->removeItem(e);
         }
         else if(it1 == selectedNodes.end() && it2 != selectedNodes.end()){
             enteringNodes.push_back(e->getNode2());
+            _scene->removeItem(e);
         }
     }
+    //saving the names
+
+    _scene->update();
     return nullptr;
 }
 

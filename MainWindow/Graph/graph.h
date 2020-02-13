@@ -74,6 +74,7 @@ class Graph{
         std::vector<Node*> nodeList;
         std::vector<Edge*> edgeList;
         int selection_state;
+        QGraphicsScene* _scene;
 };
 
 #endif
