@@ -99,6 +99,7 @@ ToolBar::ToolBar(QWidget *parent) :
     connect(actionOuvrirTool, SIGNAL(triggered()), this, SLOT(tableauOuvrir()));
     connect(actionChoisirCouleurTool, SIGNAL(triggered()), this, SLOT(choixCouleurs()));
     connect(actionNouveauTableauAleatoireTool, SIGNAL(triggered()), this, SLOT(tableauAleatoire()));
+    connect(actionExporterTool, SIGNAL(triggered()), this, SLOT(exporter()));
 
 
 }
@@ -212,7 +213,31 @@ void ToolBar::modifierContenu(QString nomFichier)
 void ToolBar::exporter()
 {
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
-    QMessageBox::information(this, tr("Fonctionnalité disponible bientôt"), tr("Cette fonctionnalité sera disponible très prochainement !"));
+    QGraphicsView &view = mainWidget->getCurrentTabContent()->getGraphArea();
+/*
+    QString fileName = "file_name.png";
+    QPixmap pixMap = view.grab(view.sceneRect().toRect());
+    pixMap.save(fileName);
+    //Uses QWidget::grab function to create a pixmap and paints the QGraphicsView inside it.
+
+
+    QImage image;
+    QPainter painter(&image);
+    painter.setRenderHint(QPainter::Antialiasing);
+    view.render(&painter);
+    image.save("file_name.png");
+    */
+    view.scene()->clearSelection();                                                  // Selections would also render to the file
+     view.scene()->setSceneRect( view.scene()->itemsBoundingRect());                          // Re-shrink the scene to it's bounding contents
+    QImage image( view.scene()->sceneRect().size().toSize(), QImage::Format_ARGB32);  // Create the image with the exact size of the shrunk scene
+    image.fill(Qt::transparent);                                              // Start all pixels transparent
+
+    QPainter painter(&image);
+    view.scene()->render(&painter);
+    QString nomFichier = QFileDialog::getSaveFileName(this, tr("Exporter une image"),
+                                                     "../documents_GRAPHE", tr("PNG (*.png)"), nullptr, QFileDialog::DontUseNativeDialog);
+    image.save(nomFichier+".png");
+
 }
 
 void ToolBar::imprimer()
