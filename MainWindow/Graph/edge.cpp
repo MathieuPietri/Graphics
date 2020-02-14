@@ -13,7 +13,8 @@ void Edge::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWid
                       , getNode2()->getX() + getNode2()->getPonderation()*7.5
                       , getNode2()->getY() + getNode2()->getPonderation()*7.5
                       );
-    scene()->update();
+    if(scene() != nullptr)
+        scene()->update();
 }
 
 QRectF Edge::boundingRect() const{

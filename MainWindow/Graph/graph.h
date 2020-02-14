@@ -11,6 +11,7 @@
 #include <QPainter>
 #include <QRectF>
 #include <QGraphicsScene>
+class Edge;
 
 class Node : public QGraphicsItem{
     public:
