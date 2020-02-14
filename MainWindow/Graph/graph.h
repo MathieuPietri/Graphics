@@ -71,6 +71,7 @@ class Graph{
         void printSelectedNodes();
         int getSelectionState(){return selection_state;}
         void changeSelectionState();
+        int isPartOfNodelist(std::vector<Node*> list, Node* n);
 
     private:
         std::vector<Node*> nodeList;
