@@ -3,6 +3,8 @@ using namespace std;
 #include <iostream>
 #include <vector>
 #include <QtAlgorithms>
+#include <stdlib.h>
+
 
 void Graph::addToScene(QGraphicsScene *scene){
     for(int i=0 ; i<(int)edgeList.size() ; i++)
@@ -225,6 +227,32 @@ Graph::Graph(vector<vector<string>> &csvData){
         }
     }
     setAllNodesCoordonates();
+}
+
+Graph::Graph(vector<vector<string>> &nodeData,
+             vector<vector<string>> &edgeData,
+             vector<vector<string>> &metaNodeData){
+    nodeList.clear();
+    edgeList.clear();
+    for(int i=0 ; i<(int)nodeData.size() ; i++){
+        Node* n = getNodeByName((string)nodeData[i][0]);
+        n->setPos(stod(nodeData[i][1]), stod(nodeData[i][2]));
+        int r = stoi(nodeData[i][3]);
+        int g = stoi(nodeData[i][4]);
+        int b = stoi(nodeData[i][5]);
+        n->setColor(r, g, b);
+        n->setPonderation(stoi(nodeData[i][6]));
+        nodeList.push_back(n);
+    }
+    for(int i=0 ; i<(int)edgeData.size() ; i ++){
+        int pos1; string name1 = edgeData[i][0];
+        int pos2; string name2 = edgeData[i][1];
+        for(int j=0 ; j<(int)nodeList.size() ; j++){
+            if ( nodeList[j]->getId() == name1 ) pos1 = j;
+            if ( nodeList[j]->getId() == name2 ) pos2 = j;
+        }
+        edgeList.push_back(new Edge(nodeList[pos1], nodeList[pos2]));
+    }
 }
 
 Graph::~Graph(){
