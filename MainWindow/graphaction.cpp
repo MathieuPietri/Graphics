@@ -4,7 +4,7 @@
 GraphAction::GraphAction(){}
 GraphAction::~GraphAction(){}
 
-
+//METHODS FOR COLORCHANGED ACTION
 ColorChangedAction::ColorChangedAction(std::vector<Node*> nodes, QColor to){
     _colorTo = to;
     for(unsigned int i = 0; i < nodes.size(); i++){
@@ -32,3 +32,28 @@ void ColorChangedAction::redo(){
 }
 
 ColorChangedAction::~ColorChangedAction(){}
+
+//METHODS FOR NODE MOVED ACTION
+//FOR FUTURE FEATURE, NODE CAN'T ADD THIS TO THE TAB YET
+NodeMovedAction::NodeMovedAction(Node* node, double fromX, double fromY, double toX, double toY){
+    _affectedNode = node;
+    _fromX = fromX;
+    _fromY = fromY;
+    _toX = toX;
+    _toY = toY;
+}
+
+void NodeMovedAction::undo(){
+    if(_affectedNode != nullptr){
+        _affectedNode->setPos(_fromX, _fromY);
+    }
+}
+
+void NodeMovedAction::redo(){
+    if(_affectedNode != nullptr){
+        _affectedNode->setPos(_toX, _toY);
+    }
+}
+
+NodeMovedAction::~NodeMovedAction(){
+}

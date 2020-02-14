@@ -11,6 +11,7 @@
 #include <QPainter>
 #include <QRectF>
 #include <QGraphicsScene>
+class Edge;
 
 class Node : public QGraphicsItem{
     public:
@@ -57,6 +58,9 @@ class Edge:public QGraphicsItem{
 class Graph{
     public:
         explicit Graph(std::vector<std::vector<std::string>> &csvData);
+        explicit Graph(std::vector<std::vector<std::string>> &nodeData,
+                       std::vector<std::vector<std::string>> &edgeData,
+                       std::vector<std::vector<std::string>> &metaNodeData);
         ~Graph();
         void addToScene(QGraphicsScene *scene);
         void setAllNodesCoordonates();
@@ -71,6 +75,7 @@ class Graph{
         void printSelectedNodes();
         int getSelectionState(){return selection_state;}
         void changeSelectionState();
+        int isPartOfNodelist(std::vector<Node*> list, Node* n);
 
     private:
         std::vector<Node*> nodeList;

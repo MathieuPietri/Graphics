@@ -12,7 +12,19 @@ ToolBar::ToolBar(QWidget *parent) :
     QMainWindow(parent)
 {
     setupUi(this);
+    barreDeStatut->addPermanentWidget(nbNodesLabel);
+    barreDeStatut->addPermanentWidget(nbEdgesLabel);
+    barreDeStatut->addPermanentWidget(nodeWeightLabel);
+    barreDeStatut->addPermanentWidget(nbNodesSelected);
     barreDeStatut->addPermanentWidget(progressBar);
+
+    /*
+    progressBar->setVisible(false);
+    nbNodesLabel->setVisible(false);
+    nbEdgesLabel->setVisible(false);
+    nodeWeightLabel->setVisible(false);
+    nbNodesSelected->setVisible(false);
+
 
 /* Barre de Menus
  * section fichier
@@ -273,16 +285,19 @@ void ToolBar::choixCouleurs()
 void ToolBar::zoomPlus()
 {
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
+    mainWidget->getCurrentTabContent()->getGraphArea().scale(1.3, 1.3);
 }
 
 void ToolBar::zoomMoins()
 {
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
+    mainWidget->getCurrentTabContent()->getGraphArea().scale(0.8, 0.8);
 }
 
 void ToolBar::zoomTailleReelle()
 {
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
+    mainWidget->getCurrentTabContent()->getGraphArea().resetTransform();
 }
 
 void ToolBar::pleinEcran()

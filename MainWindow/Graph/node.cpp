@@ -14,6 +14,7 @@ void Node::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWid
     QBrush coloredBrush(_color);
     QPen outlinePen(Qt::black);
     if (getSelection() == 0) outlinePen.setWidth(2);
+
     else outlinePen.setWidth(4);
     painter->setBrush(coloredBrush);
     painter->setPen(outlinePen);
@@ -41,3 +42,4 @@ void Node::mousePressEvent(QGraphicsSceneMouseEvent *event){
     _YOnMousePressed = getY();
     QGraphicsItem::mousePressEvent(event);
 }
+
