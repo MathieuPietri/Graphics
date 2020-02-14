@@ -1,0 +1,22 @@
+scenario 1
+ouvrir graphe espaces
+dézoomer si nécessaire
+selectionner tout les noeuds avec des noms et prénoms
+les merger 
+selectionner les addresses complète en utilisant le tool de coloration
+annuler et restaurer autant qu'on veut et choisir la couleur que l'on préfère
+enregistrer 
+quitter
+
+scenario 2
+ouvrir fichier enregistré précèdement 
+sélectionner et merger tout les noeuds avec une seule pondération
+exporter le pnj
+quitter
+
+scenario 3
+ouvrir autant de tableaux aléatoires que l'on veut
+zoomer et dézoomer à sa guise 
+ctrl + a et changer la couleur de tout les noeuds 
+enregistrer
+quitter
