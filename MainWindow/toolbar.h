@@ -15,6 +15,7 @@ class ToolBar : public QMainWindow, private Ui::ToolBar
 
 public:
     explicit ToolBar(QWidget *parent = nullptr);
+    void APPELDELAMORTQUITUE();
 
 private:
     int messageAlive = true;
