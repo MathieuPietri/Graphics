@@ -1,5 +1,6 @@
 #include "toolbar.h"
 #include "Graph/csv.h"
+#include "Graph/gret.h"
 #include <QDebug>
 #include <QToolBar>
 #include <QStatusBar>
@@ -121,7 +122,6 @@ void ToolBar::tableauAleatoire()
         string str = e.what();
         cout << str;
     }
-
 }
 
 void ToolBar::tableauOuvrir()
@@ -136,9 +136,22 @@ void ToolBar::tableauOuvrir()
 
    if(fichier != NULL){
        try {
-           vector<vector<string>> file = openFromCSV(filePath);
-           mainWidget->addDataSet(file, QString::fromStdString(filePath));
-           QMessageBox::information(this, tr("Fichier"), tr("Vous avez sélectionné :\n") + fichier);
+
+           if (filePath.substr(filePath.size()-3, filePath.size()-1) == "csv") {
+               vector<vector<string>> csv_data = openFromCSV(filePath);
+               mainWidget->addDataSet(csv_data, QString::fromStdString(filePath));
+               QMessageBox::information(this, tr("Fichier"), tr("Vous avez sélectionné :\n") + QString::fromStdString(MainWidget::getNameFromPath(fichier)));
+           }
+           else if (filePath.substr(filePath.size()-4, filePath.size()-1) == "gret") {
+                vector<vector<string>> & csv_data = *new vector<vector<string>> () ;
+                Graph * g = openFromGRET(filePath, & csv_data);
+                mainWidget->addDataSet(csv_data, QString::fromStdString(filePath), g);
+                QMessageBox::information(this, tr("Fichier"), tr("Vous avez sélectionné :\n") + QString::fromStdString(MainWidget::getNameFromPath(fichier)));
+           }
+           else {
+               cout << filePath.substr(filePath.size()-4, filePath.size()-1) << endl;
+               QMessageBox::information(this, tr("Erreur"), tr("Le format sélectionné n'est pas pris en charge\n"));
+           }
        } catch (exception &e) {
             string str = e.what();
             cout << str;
@@ -149,6 +162,7 @@ void ToolBar::tableauOuvrir()
    }
 
 }
+
 
 void ToolBar::sauvegarder()
 {

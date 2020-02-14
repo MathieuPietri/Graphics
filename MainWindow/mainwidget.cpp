@@ -58,6 +58,7 @@ void MainWidget::addDataSet(vector<vector<string> > data, const QString &filePat
     if (graph == nullptr)
         graph = new Graph(data);
     newTabContentWidget->getGraphArea().setScene(new QGraphicsScene);
+    graph->printGraph();
     graph->addToScene(newTabContentWidget->getGraphArea().scene());
     newTabContentWidget->update();
 
