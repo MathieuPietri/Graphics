@@ -120,6 +120,8 @@ ToolBar::ToolBar(QWidget *parent) :
     connect(actionRestaurer, SIGNAL(triggered()), this, SLOT(changeStatusBar()));
     connect(actionBarreDeStatus, SIGNAL(triggered()), this, SLOT(changeStatusBar()));
 
+
+
 }
 
 /*
@@ -495,6 +497,11 @@ void ToolBar::changeStatusBar()
 
     string select = "Nombre de nœuds sélectionnés: " + to_string(nombreDeNoeudsSelectionnesParLAZONE);
     nbNodesSelected->setText(QString::fromStdString(select));
+}
+
+void ToolBar::APPELDELAMORTQUITUE()
+{
+    changeStatusBar();
 }
 
 /*

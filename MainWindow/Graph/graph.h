@@ -74,7 +74,7 @@ class Graph{
         void colorationSelectedNodes(QColor c);
         void printSelectedNodes();
         int getSelectionState(){return selection_state;}
-        void changeSelectionState();
+        int changeSelectionState();
         int isPartOfNodelist(std::vector<Node*> list, Node* n);
         void printGraph();
 

@@ -38,9 +38,10 @@ void Graph::setAllNodesCoordonates(){
     }
 }
 
-void Graph::changeSelectionState(){
+int Graph::changeSelectionState(){
     if(selection_state == 0) selection_state = 1;
     else selection_state = 0;
+    return 1;
 }
 
 void Graph::cleanBadEdges(){
