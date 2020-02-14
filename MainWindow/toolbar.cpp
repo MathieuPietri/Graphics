@@ -226,11 +226,13 @@ void ToolBar::modifierContenu(QString nomFichier)
 void ToolBar::exporter()
 {
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
+    QMessageBox::information(this, tr("Fonctionnalité disponible bientôt"), tr("Cette fonctionnalité sera disponible très prochainement !"));
 }
 
 void ToolBar::imprimer()
 {
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
+    QMessageBox::information(this, tr("Fonctionnalité disponible bientôt"), tr("Cette fonctionnalité sera disponible très prochainement !"));
 }
 
 
@@ -268,6 +270,7 @@ void ToolBar::totaleSelection()
 void ToolBar::copier()
 {
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
+    QMessageBox::information(this, tr("Fonctionnalité disponible bientôt"), tr("Cette fonctionnalité sera disponible très prochainement !"));
 }
 
 void ToolBar::fusion()
@@ -385,6 +388,7 @@ void ToolBar::modeSombre()
 void ToolBar::langues()
 {
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
+    QMessageBox::information(this, tr("Fonctionnalité disponible bientôt"), tr("Cette fonctionnalité sera disponible très prochainement !"));
 }
 
 
@@ -397,7 +401,7 @@ void ToolBar::langues()
 void ToolBar::aboutGraphEt()
 {
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
-    QMessageBox::information(this, tr("About GraphET"), tr("Cette application a été créé par :\n Alix, Anthony, Mathieu, Maxime, Oriane et Quentin \n en février 2020. \n"));
+    QMessageBox::information(this, tr("About GraphET"), tr("Cette application a été créé par :\n Alix Eymar,Maxime Graziano, Anthony Gignac,\n Mathieu Pietri, Oriane Donadio et Quentin Decloitre \n en février 2020. \n"));
 }
 
 void ToolBar::aide()
