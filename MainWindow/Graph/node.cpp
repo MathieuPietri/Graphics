@@ -43,7 +43,3 @@ void Node::mousePressEvent(QGraphicsSceneMouseEvent *event){
     QGraphicsItem::mousePressEvent(event);
 }
 
-
-vector<Edge*>
-
-
