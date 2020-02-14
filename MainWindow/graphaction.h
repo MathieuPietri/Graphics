@@ -31,4 +31,19 @@ private:
 
 };
 
+class NodeMovedAction:public GraphAction
+{
+public:
+    NodeMovedAction(Node* node, double fromX, double fromY, double toX, double toY);
+    void undo() override;
+    void redo() override;
+    ~NodeMovedAction();
+private:
+    double _fromX;
+    double _fromY;
+    double _toX;
+    double _toY;
+    Node* _affectedNode;
+};
+
 #endif // GRAPHACTION_H
