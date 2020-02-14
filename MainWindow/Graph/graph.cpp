@@ -50,62 +50,116 @@ void Graph::cleanBadEdges(){
     }
 }
 
-/*
+int Graph::isPartOfNodelist(vector<Node*> list, Node* n){
+    for(int i=0 ; i<(int)list.size() ; i++){
+        if(list[i] == n){
+            return 1;
+        }
+     }
+    return 0;
+}
+
 Node* Graph::mergeNodes(){
     vector<Node*> selectedNodes;
     selectedNodes.clear();
-    selectedNodes = getSelectedNodes();
     vector<Node*> enteringNodes;
     enteringNodes.clear();
+    for(int i=0 ; i<(int)nodeList.size() ; i++)
+        _scene->removeItem(nodeList[i]);
+    for(int i=0 ; i<(int)edgeList.size() ; i++)
+        _scene->removeItem(edgeList[i]);
 
-    //listing of all entering nodes (nodes that will be connected to metaNode
-
-}*/
-
-
-Node* Graph::mergeNodes(){
-    vector<Node*> selectedNodes = getSelectedNodes();
-    vector<Edge*> selectedEdges;
-
-    string newName = "";
-    int newPonderation = 0;
-    double newX = 0.0;
-    double newY = 0.0;
-    for(Node* n:selectedNodes){
-        newName += n->getId();
-        newPonderation += n->getPonderation();
-        newX = newX + n->getX()/selectedNodes.size();
-        newY = newY + n->getY()/selectedNodes.size();
+    for(int i=0 ; i<(int)getSelectedNodes().size() ; i++){
+        selectedNodes.push_back(getSelectedNodes()[i]);
     }
 
-    Node* newNode = new Node(newName, newPonderation);
-    newNode->setPos(newX, newY);
+    //listing of entering nodes and deleting the edges
+    for(int it1=0 ; it1<(int)edgeList.size() ; it1++){
+        //checking if nodes are in selectedNodes
+        int check1 = 0;
+        int check2 = 0;
+        for(int k=0 ; k<(int)selectedNodes.size() ; k++){
+            if(selectedNodes[k] == edgeList[it1]->getNode1()) check1 = 1;
+            if(selectedNodes[k] == edgeList[it1]->getNode2()) check2 = 1;
+        }
+        //if both, we delete
+        if(check1 == 1 && check2 == 1){
+            for(int i=0 ; i<(int)edgeList.size() ; i++){
+                if(edgeList[it1] == edgeList[i]){
+                    edgeList.erase(edgeList.begin() + i);
+                    it1 = it1 -1;
+                }
+            }
+        }
 
-    for(Edge* e:edgeList){
-        for(Node* n:selectedNodes){
-            if(e->getNode1() == n || e->getNode2() == n){
-                selectedEdges.push_back(e);
-                break;
+        //if only one, we save the entering node and delete the edge
+        //case if we have nodeToFuse -> enteringNode
+        else if(check1 == 1 && check2 == 0){
+            //first we check if we didn't already save the entering node
+            int isSaved = 0;
+            for(int i=0 ; i<(int)enteringNodes.size() ; i++)
+                if(enteringNodes[i] == edgeList[it1]->getNode2()) isSaved = 1;
+            //then if we didn't we save the guy
+            if (isSaved == 0)
+                enteringNodes.push_back(edgeList[it1]->getNode2());
+            //then we look for the edge in the graph to delete him and remove him from the scene
+            for(int i=0 ; i<(int)edgeList.size() ; i++){
+                if(edgeList[it1] == edgeList[i]){
+                    edgeList.erase(edgeList.begin() + i);
+                    it1 = it1 - 1;
+                }
+            }
+        }
+        //case if we have enteringNode -> nodeToFuse
+        else if(check1 == 0 && check2 == 1){
+            //first we check if we didn't already save the entering node
+            int isSaved = 0;
+            for(unsigned int i=0 ; i<enteringNodes.size() ; i++)
+                if(enteringNodes[i] == edgeList[it1]->getNode1()) isSaved++;
+            //then if we didn't we save the guy
+            if (isSaved == 0)
+                enteringNodes.push_back(edgeList[it1]->getNode1());
+            //then we look for the edge in the graph to delete him and remove him from the scene
+            for(int i=0 ; i<(int)edgeList.size() ; i++){
+                if(edgeList[it1] == edgeList[i]){
+                    edgeList.erase(edgeList.begin() + i);
+                    it1 = it1 - 1;
+                }
             }
         }
     }
-
-    for(Edge* e:selectedEdges){
-        bool node1IsIn = false;
-        bool node2IsIn = false;
-
-        for(Node* n:selectedNodes){
-            if(n == e->getNode1())
-                node1IsIn = true;
-            if(n == e->getNode2())
-                node2IsIn = true;
-        }
-
-        if(node1IsIn && node2IsIn){
-            edgeList.e
-        }
+    //saving the intel
+    string metaName = "";
+    int metaPonderation = 0;
+    double metaCoordX = 0;
+    double metaCoordY = 0;
+    for(int i=0 ; i<(int)selectedNodes.size() ; i++){
+        metaName += selectedNodes[i]->getId() + " ";
+        metaPonderation += selectedNodes[i]->getPonderation();
+        metaCoordX += selectedNodes[i]->getX();
+        metaCoordY += selectedNodes[i]->getY();
     }
-
+    //creating the metaNode
+    Node *metaNode = new Node(metaName, metaPonderation);
+    metaNode->setPos(metaCoordX/selectedNodes.size(), metaCoordY/selectedNodes.size());
+    nodeList.push_back(metaNode);
+    //creating the edges from the entering nodes to the metaNode
+    for(int i=0 ; i<(int)enteringNodes.size() ; i++){
+        Edge *e = new Edge(enteringNodes[i], metaNode);
+        edgeList.push_back(e);
+    }
+    //deleting the selected nodes in the graph
+    for(int j=0 ; j<(int)selectedNodes.size() ; j++){
+        for(int i=0 ; i<(int)nodeList.size() ; i++){
+            if (selectedNodes[j] == nodeList[i]){
+                nodeList.erase(nodeList.begin() + i);
+            }
+         }
+    }
+    addToScene(_scene);
+    //cleanBadEdges();
+    _scene->update();
+    return metaNode;
 }
 
 vector<Node*> Graph::getSelectedNodes(){
@@ -149,7 +203,7 @@ Edge* Graph::getEdgeByNodes(string n1, string n2){
 }
 
 Graph::Graph(vector<vector<string>> &csvData){
-
+    cout << "doot"<<endl;
     for(int i=0 ; i<(int)csvData.size() ; i++){
         std::vector<std::string> nodeLinked;
         nodeLinked.clear();
@@ -161,10 +215,10 @@ Graph::Graph(vector<vector<string>> &csvData){
             else { currentNod->setPonderation(currentNod->getPonderation()+1); }
         }
         if (nodeLinked.size() >= 2){
-            for(int k=0 ; k<(int)nodeLinked.size()-1 ; k++){
-                for(int j=k+1 ; j<(int)nodeLinked.size() ; j++){
-                    if(getEdgeByNodes(nodeLinked[k], nodeLinked[j]) == nullptr){
-                        edgeList.push_back(new Edge(getNodeByName(nodeLinked[k]), getNodeByName(nodeLinked[j])));
+            for(int it2=0 ; it2<(int)nodeLinked.size()-1 ; it2++){
+                for(int j=it2+1 ; j<(int)nodeLinked.size() ; j++){
+                    if(getEdgeByNodes(nodeLinked[it2], nodeLinked[j]) == nullptr){
+                        edgeList.push_back(new Edge(getNodeByName(nodeLinked[it2]), getNodeByName(nodeLinked[j])));
                     }
                 }
             }
@@ -188,6 +242,31 @@ Graph::~Graph(){
         tmp = nullptr;
     }
 }
+
+
+
+/* ---- FAILS NE ME JUGEZ PAS
+
+
+
+ Node* Graph::mergeNodes(){
+    vector<Node*> selectedNodes;
+    selectedNodes.clear();
+    selectedNodes = getSelectedNodes();
+    vector<Node*> enteringNodes;
+    enteringNodes.clear();
+
+    //listing of all entering nodes (nodes that will be connected to metaNode)
+    for(int i=0 ; i<(int)edgeList.size() ; i++){
+        int node1isToFuse = isPartOfNodelist(selectedNodes, edgeList[i]->getNode1());
+        int node2isToFuse = isPartOfNodelist(selectedNodes, edgeList[i]->getNode2());
+        if ( node1isToFuse == 1 && node2isToFuse == 1)
+
+
+
+    }
+
+}*/
 
 
 /*
