@@ -11,7 +11,7 @@
 
 using namespace std;
 
-Graph * openFromGRET(const string & fileName);
+Graph * openFromGRET(const string & fileName, vector<vector<string>> * csv_result);
 string generateGRET(const Graph & g);
 
 

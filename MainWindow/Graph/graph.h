@@ -58,6 +58,9 @@ class Edge:public QGraphicsItem{
 class Graph{
     public:
         explicit Graph(std::vector<std::vector<std::string>> &csvData);
+        explicit Graph(std::vector<std::vector<std::string>> &nodeData,
+                       std::vector<std::vector<std::string>> &edgeData,
+                       std::vector<std::vector<std::string>> &metaNodeData);
         ~Graph();
         void addToScene(QGraphicsScene *scene);
         void setAllNodesCoordonates();
