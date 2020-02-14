@@ -68,15 +68,17 @@ class Graph{
         Edge* getEdgeByNodes(std::string n1, std::string n2);
         Node* mergeNodes();
         void cleanBadEdges();
-        const std::vector<Edge*> getEdges(){return edgeList;};
-        const std::vector<Node*> getNodes(){return nodeList;};
+        const std::vector<Edge*> getEdges(){return edgeList;}
+        const std::vector<Node*> getNodes(){return nodeList;}
         std::vector<Node*> getSelectedNodes();
         void colorationSelectedNodes(QColor c);
         void printSelectedNodes();
         int getSelectionState(){return selection_state;}
-        void changeSelectionState();
+        int changeSelectionState();
         int isPartOfNodelist(std::vector<Node*> list, Node* n);
         void printGraph();
+        std::vector<Node*> getNodeList() {return nodeList;}
+        std::vector<Edge*> getEdgeList() {return edgeList;}
 
     private:
         std::vector<Node*> nodeList;

@@ -1,4 +1,6 @@
 #include "graph.h"
+#include "../toolbar.h"
+
 using namespace std;
 #include <iostream>
 Node::Node(string id, int ponderation):QGraphicsItem(){
@@ -34,7 +36,6 @@ void Node::mouseReleaseEvent(QGraphicsSceneMouseEvent *event){
     }
     update();
     QGraphicsItem::mouseReleaseEvent(event);
-
 }
 
 void Node::mousePressEvent(QGraphicsSceneMouseEvent *event){

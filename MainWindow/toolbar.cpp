@@ -122,6 +122,8 @@ ToolBar::ToolBar(QWidget *parent) :
     connect(actionRestaurer, SIGNAL(triggered()), this, SLOT(changeStatusBar()));
     connect(actionBarreDeStatus, SIGNAL(triggered()), this, SLOT(changeStatusBar()));
 
+
+
 }
 
 /*
@@ -219,10 +221,10 @@ void ToolBar::enregistrerSous()
                                                         "../documents_GRAPHE", tr("Fichier GraphET(*.gret)"), nullptr, QFileDialog::DontUseNativeDialog);
 
     if(nomFichier.isEmpty())
-        cout << "ET C'EST LE RIP POUR LE JOUEUR FRANCAIS";
+        cout << "Fichier vide";
     else {
-        cout << nomFichier.toStdString();
-        if(!nomFichier.toStdString().find('.'))
+        cout << nomFichier.toStdString() << endl;
+        if(nomFichier.toStdString().find('.') == string::npos)
             nomFichier.append(".gret");
         modifierContenu(nomFichier);
         mainWidget->getCurrentTabContent()->setFileName(nomFichier);
@@ -236,14 +238,12 @@ void ToolBar::modifierContenu(QString nomFichier)
     QFile data(nomFichier);
     if(data.open(QFile::WriteOnly | QFile ::Truncate)) {
 
-        //TODOUDOU
-        /*
-        TabContentWidget *interieurOfTab = new TabContentWidget();
-        TabContentWidget & interieurOfTab_ = *interieurOfTab;
-
+        TabContentWidget * content = mainWidget->getCurrentTabContent();
+        QTableWidget & table = content->getTable();
+        Graph & graph = *content->getGraph();
+        QString dat = QString::fromStdString(generateGRET(table, graph));
         QTextStream out(&data);
-        out << translateToGret(interieurOfTab_);
-        */
+        out << dat;
     }
 }
 
@@ -484,6 +484,11 @@ void ToolBar::changeStatusBar()
 
     string select = "Nombre de nœuds sélectionnés: " + to_string(nombreDeNoeudsSelectionnesParLAZONE);
     nbNodesSelected->setText(QString::fromStdString(select));
+}
+
+void ToolBar::APPELDELAMORTQUITUE()
+{
+    changeStatusBar();
 }
 
 /*

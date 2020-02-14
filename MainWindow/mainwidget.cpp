@@ -24,32 +24,23 @@ void MainWidget::fillTable(QTableWidget &tableWidget, vector<vector<string>> dat
     }
 }
 
-void MainWidget::addDataSet(vector<vector<string> > data, const QString &filePath, Graph * graph) {
-
-    /* Destruction de la page 1 si on ouvre un premier fichier */
-
-    if (tabCounter == -1) {
-        tabs->removeTab(0);
-    }
+void MainWidget::addDataSet(vector<vector<string>> data, const QString &filePath, Graph * graph) {
 
     /* Création du TabContentWidget */
 
     TabContentWidget * newTabContentWidget = new TabContentWidget(this);
-    newTabContentWidget->setFileName(filePath);  //TODO si le nom est null, l'onglet doit s'appeler "nouvel onglet" mais on doit quand même mettre nullptr dans setFileName()
+    newTabContentWidget->setFileName(filePath);
 
     if (filePath == "nullptr" || filePath == nullptr)
-        tabCounter = tabs->addTab(newTabContentWidget, "Fichier sans nom");
+        tabs->addTab(newTabContentWidget, "Fichier sans nom");
     else {
         std::string name = getNameFromPath(filePath);
         cout << name;
-        tabCounter = tabs->addTab(newTabContentWidget, QString::fromStdString(name));
+        tabs->addTab(newTabContentWidget, QString::fromStdString(name));
 
     }
     /* Remplissage de la table */
 
-    cout << "colonne count de data: " << maxColCount(data) << endl;
-    cout << "size de data: " << data.size() << endl;
-    cout << "size de data[1] " << data[1].size() << endl;
     newTabContentWidget->setTableSize(maxColCount(data), data.size());
     fillTable(newTabContentWidget->getTable(), data);
 
@@ -64,13 +55,20 @@ void MainWidget::addDataSet(vector<vector<string> > data, const QString &filePat
 
     /* Focus sur le nouvel onglet */
 
-    tabs->setCurrentIndex(tabCounter);
+    tabs->setCurrentIndex(tabCounter+1);
     /* Ajout du TabContentWidget au vector */
 
     newTabContentWidget->setGraph(graph);
     tabContents.push_back(newTabContentWidget); //A DEBUG
 
     qDebug() << "nb tabs :" << tabCounter;
+
+    /* Destruction de la page 1 si on ouvre un premier fichier */
+
+    if (tabCounter == -1) {
+        tabs->removeTab(0);
+    }
+    tabCounter++;
 }
 
 

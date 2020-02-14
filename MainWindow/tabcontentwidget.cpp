@@ -1,4 +1,6 @@
 #include "tabcontentwidget.h"
+#include "mainwidget.h"
+
 using namespace std;
 #include <iostream>
 
@@ -9,7 +11,6 @@ TabContentWidget::TabContentWidget(QWidget *parent) :
     setupUi(this);
     table->setEditTriggers(QAbstractItemView::NoEditTriggers);
 }
-
 
 QTableWidget & TabContentWidget::getTable() {
     QTableWidget & table_ = *table;
