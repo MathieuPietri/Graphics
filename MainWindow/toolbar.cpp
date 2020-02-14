@@ -12,7 +12,19 @@ ToolBar::ToolBar(QWidget *parent) :
     QMainWindow(parent)
 {
     setupUi(this);
+    barreDeStatut->addPermanentWidget(nbNodesLabel);
+    barreDeStatut->addPermanentWidget(nbEdgesLabel);
+    barreDeStatut->addPermanentWidget(nodeWeightLabel);
+    barreDeStatut->addPermanentWidget(nbNodesSelected);
     barreDeStatut->addPermanentWidget(progressBar);
+
+    /*
+    progressBar->setVisible(false);
+    nbNodesLabel->setVisible(false);
+    nbEdgesLabel->setVisible(false);
+    nodeWeightLabel->setVisible(false);
+    nbNodesSelected->setVisible(false);
+
 
 /* Barre de Menus
  * section fichier
