@@ -90,7 +90,6 @@ TabContentWidget * MainWidget::getCurrentTabContent(){
 }
 
 
-
 std::string MainWidget::getNameFromPath(const QString path) {
 
     std::string path_ = path.toStdString();
