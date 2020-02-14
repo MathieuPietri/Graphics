@@ -195,9 +195,9 @@ void ToolBar::enregistrerSous()
                                                         "../documents_GRAPHE", tr("NINJA (*.gret)"), nullptr, QFileDialog::DontUseNativeDialog);
 
     if(nomFichier.isEmpty())
-        cout << "ET C'EST LE RIP POUR LE JOUEUR FRANCAIS";
+        cout << "Fichier vide";
     else {
-        cout << nomFichier.toStdString();
+        cout << nomFichier.toStdString() << endl;
         if(!nomFichier.toStdString().find('.'))
             nomFichier.append(".gret");
         modifierContenu(nomFichier);
@@ -212,14 +212,12 @@ void ToolBar::modifierContenu(QString nomFichier)
     QFile data(nomFichier);
     if(data.open(QFile::WriteOnly | QFile ::Truncate)) {
 
-        //TODOUDOU
-        /*
-        TabContentWidget *interieurOfTab = new TabContentWidget();
-        TabContentWidget & interieurOfTab_ = *interieurOfTab;
-
+        TabContentWidget * content = mainWidget->getCurrentTabContent();
+        QTableWidget & table = content->getTable();
+        Graph & graph = *content->getGraph();
+        QString dat = QString::fromStdString(generateGRET(table, graph));
         QTextStream out(&data);
-        out << translateToGret(interieurOfTab_);
-        */
+        out << dat;
     }
 }
 

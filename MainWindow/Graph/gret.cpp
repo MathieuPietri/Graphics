@@ -1,6 +1,7 @@
 #include "gret.h"
 #include <QTime>
 #include <qglobal.h>
+#include "graph.h"
 
 Graph * openFromGRET(const string & fileName, vector<vector<string>> * csv_result) {
 
@@ -148,7 +149,40 @@ Graph * openFromGRET(const string & fileName, vector<vector<string>> * csv_resul
     return g;
 }
 
+string replace(string s) {
+  replace(s.begin(), s.end(), ',', '.');
+  return s;
+}
 
-string generateGRET(const Graph & g) {
+string generateGRET(QTableWidget & table, Graph & graph) {
+    string result = "";
 
+    for (int i = 0; i < table.rowCount() ; i++) {
+        for (int j = 0; j < table.columnCount() ; j++) {
+            result.append("\"" + table.item(i, j)->text().toStdString() + (j!=table.columnCount()-1?"\", ":"\""));
+        }
+        result.append("\n");
+    }
+
+    result.append("#nodelist\n");
+    for (Node * node : graph.getNodes()) {
+        int r, g, b;
+        node->getColor().getRgb(&r, &g, &b);
+
+        string x, y;
+        x = to_string(node->getX());
+        y = to_string(node->getY());
+        result.append("\"" + node->getId() + "\", " + replace(x) + ", " + replace(y)
+                      + ", " + to_string(r) + ", " + to_string(g) + ", " + to_string(b)
+                      + ", " + to_string(node->getPonderation()));
+        result.append("\n");
+    }
+
+    result.append("#edgelist\n");
+    for (Edge * edge : graph.getEdgeList()) {
+        result.append("\"" + edge->getNode1()->getId() + "\", " + "\"" + edge->getNode2()->getId() + "\"" );
+        result.append("\n");
+    }
+
+    return result;
 }

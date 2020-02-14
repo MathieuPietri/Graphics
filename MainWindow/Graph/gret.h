@@ -8,11 +8,13 @@
 #include <algorithm>
 
 #include "graph.h"
+#include <QTableView>
+#include <QTableWidget>
 
 using namespace std;
 
 Graph * openFromGRET(const string & fileName, vector<vector<string>> * csv_result);
-string generateGRET(const Graph & g);
+string generateGRET(QTableWidget & table, Graph & graph);
 
 
 #endif // GRET_H
