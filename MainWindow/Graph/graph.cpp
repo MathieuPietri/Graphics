@@ -239,7 +239,7 @@ Edge* Graph::getEdgeByNodes(string n1, string n2){
 }
 
 Graph::Graph(vector<vector<string>> &csvData){
-    cout << "doot"<<endl;
+
     for(int i=0 ; i<(int)csvData.size() ; i++){
         std::vector<std::string> nodeLinked;
         nodeLinked.clear();
