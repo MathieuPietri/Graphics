@@ -260,8 +260,12 @@ Graph::Graph(vector<vector<string>> &nodeData,
         nodeList.push_back(n);
     }
     for(int i=0 ; i<(int)edgeData.size() ; i ++){
-        edgeList.push_back(new Edge(getNodeByName(edgeData[i][0]), getNodeByName(edgeData[i][1])));
-        cout << getNodeByName(edgeData[i][0]) << ", ega " << getNodeByName(edgeData[i][1]) << endl;
+
+        if (getNodeByName(edgeData[i][0]) != nullptr && getNodeByName(edgeData[i][1]) != nullptr)
+            edgeList.push_back(new Edge(getNodeByName(edgeData[i][0]), getNodeByName(edgeData[i][1])));
+        else {
+            cerr << "Une arête du graphe n'a pas pu être importée" << endl;
+        }
     }
 }
 

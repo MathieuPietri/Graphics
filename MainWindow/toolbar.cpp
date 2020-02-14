@@ -163,13 +163,13 @@ void ToolBar::tableauOuvrir()
            if (filePath.substr(filePath.size()-3, filePath.size()-1) == "csv") {
                vector<vector<string>> csv_data = openFromCSV(filePath);
                mainWidget->addDataSet(csv_data, QString::fromStdString(filePath));
-               QMessageBox::information(this, tr("Fichier"), tr("Vous avez sélectionné :\n") + QString::fromStdString(MainWidget::getNameFromPath(fichier)));
+               //QMessageBox::information(this, tr("Fichier"), tr("Vous avez sélectionné :\n") + QString::fromStdString(MainWidget::getNameFromPath(fichier)));
            }
            else if (filePath.substr(filePath.size()-4, filePath.size()-1) == "gret") {
                 vector<vector<string>> & csv_data = *new vector<vector<string>> () ;
                 Graph * g = openFromGRET(filePath, & csv_data);
                 mainWidget->addDataSet(csv_data, QString::fromStdString(filePath), g);
-                QMessageBox::information(this, tr("Fichier"), tr("Vous avez sélectionné :\n") + QString::fromStdString(MainWidget::getNameFromPath(fichier)));
+                //QMessageBox::information(this, tr("Fichier"), tr("Vous avez sélectionné :\n") + QString::fromStdString(MainWidget::getNameFromPath(fichier)));
            }
            else {
                cout << filePath.substr(filePath.size()-4, filePath.size()-1) << endl;
@@ -216,12 +216,12 @@ void ToolBar::enregistrerSous()
     //QString SaveFile = QFileDialog::getSaveFileName(this, tr("Enregistrer un fichier"), QString(), tr("Fichiers GraphET (*.gret)"));
 
     QString nomFichier = QFileDialog::getSaveFileName(this, tr("Sauvegarder Graphe"),
-                                                        "../documents_GRAPHE", tr("NINJA (*.gret)"), nullptr, QFileDialog::DontUseNativeDialog);
+                                                        "../documents_GRAPHE", tr("Fichier GraphET(*.gret)"), nullptr, QFileDialog::DontUseNativeDialog);
 
     if(nomFichier.isEmpty())
-        cout << "ET C'EST LE RIP POUR LE JOUEUR FRANCAIS";
+        cout << "Fichier vide";
     else {
-        cout << nomFichier.toStdString();
+        cout << nomFichier.toStdString() << endl;
         if(!nomFichier.toStdString().find('.'))
             nomFichier.append(".gret");
         modifierContenu(nomFichier);
@@ -236,14 +236,12 @@ void ToolBar::modifierContenu(QString nomFichier)
     QFile data(nomFichier);
     if(data.open(QFile::WriteOnly | QFile ::Truncate)) {
 
-        //TODOUDOU
-        /*
-        TabContentWidget *interieurOfTab = new TabContentWidget();
-        TabContentWidget & interieurOfTab_ = *interieurOfTab;
-
+        TabContentWidget * content = mainWidget->getCurrentTabContent();
+        QTableWidget & table = content->getTable();
+        Graph & graph = *content->getGraph();
+        QString dat = QString::fromStdString(generateGRET(table, graph));
         QTextStream out(&data);
-        out << translateToGret(interieurOfTab_);
-        */
+        out << dat;
     }
 }
 
@@ -251,19 +249,7 @@ void ToolBar::exporter()
 {
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
     QGraphicsView &view = mainWidget->getCurrentTabContent()->getGraphArea();
-/*
-    QString fileName = "file_name.png";
-    QPixmap pixMap = view.grab(view.sceneRect().toRect());
-    pixMap.save(fileName);
-    //Uses QWidget::grab function to create a pixmap and paints the QGraphicsView inside it.
 
-
-    QImage image;
-    QPainter painter(&image);
-    painter.setRenderHint(QPainter::Antialiasing);
-    view.render(&painter);
-    image.save("file_name.png");
-    */
     view.scene()->clearSelection();                                                  // Selections would also render to the file
      view.scene()->setSceneRect( view.scene()->itemsBoundingRect());                          // Re-shrink the scene to it's bounding contents
     QImage image( view.scene()->sceneRect().size().toSize(), QImage::Format_ARGB32);  // Create the image with the exact size of the shrunk scene
@@ -449,7 +435,10 @@ void ToolBar::langues()
 void ToolBar::aboutGraphEt()
 {
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
-    QMessageBox::information(this, tr("About GraphET"), tr("Cette application a été créé par :\n Alix Eymar,Maxime Graziano, Anthony Gignac,\n Mathieu Pietri, Oriane Donadio et Quentin Decloitre \n en février 2020. \n"));
+
+    QMessageBox::information(this, tr("About GraphET"), tr("Cette application a été créé par :\n "
+                                                           "Alix Eymar,Maxime Graziano, Anthony Gignac,\n "
+                                                           "Mathieu Pietri, Oriane Donadio et Quentin Decloitre \n en février 2020. \n "));
 }
 
 void ToolBar::aide()
