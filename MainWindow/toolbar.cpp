@@ -5,6 +5,7 @@
 #include <QStatusBar>
 #include <QErrorMessage>
 #include "helpdialog.h"
+#include "graphaction.h"
 
 
 ToolBar::ToolBar(QWidget *parent) :
@@ -214,11 +215,13 @@ void ToolBar::imprimer()
 void ToolBar::annuler()
 {
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
+    mainWidget->getCurrentTabContent()->undoLast();
 }
 
 void ToolBar::restaurer()
 {
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
+    mainWidget->getCurrentTabContent()->redoLast();
 }
 
 void ToolBar::totaleSelection()
@@ -256,6 +259,9 @@ void ToolBar::choixCouleurs()
     QPalette palette;
     palette.setColor(QPalette::ButtonText, color);
     //this -> setPalette(palette);
+    vector<Node*> selectedNodes = mainWidget->getCurrentTabContent()->getGraph()->getSelectedNodes();
+    mainWidget->getCurrentTabContent()->addGraphAction(new ColorChangedAction(selectedNodes, color));
+
     mainWidget->getCurrentTabContent()->getGraph()->colorationSelectedNodes(color);
 
 }

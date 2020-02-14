@@ -9,9 +9,9 @@ void Edge::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWid
     QPen outlinePen(Qt::black);
     outlinePen.setWidth(2);
     painter->drawLine(getNode1()->getX() + getNode1()->getPonderation()*7.5
-                      , getNode1()->getY()+ getNode1()->getPonderation()*7.5
-                      , getNode2()->getX()+ getNode2()->getPonderation()*7.5
-                      , getNode2()->getY()+ getNode2()->getPonderation()*7.5
+                      , getNode1()->getY() + getNode1()->getPonderation()*7.5
+                      , getNode2()->getX() + getNode2()->getPonderation()*7.5
+                      , getNode2()->getY() + getNode2()->getPonderation()*7.5
                       );
     scene()->update();
 }
