@@ -24,7 +24,7 @@ void MainWidget::fillTable(QTableWidget &tableWidget, vector<vector<string>> dat
     }
 }
 
-void MainWidget::addDataSet(vector<vector<string> > data, const QString &filePath) {
+void MainWidget::addDataSet(vector<vector<string> > data, const QString &filePath, Graph * graph) {
 
     /* Destruction de la page 1 si on ouvre un premier fichier */
 
@@ -55,7 +55,8 @@ void MainWidget::addDataSet(vector<vector<string> > data, const QString &filePat
 
     /* Création du graph */
 
-    /* SA BUG ISSI */                                                                   Graph* graph = new Graph(data);
+    if (graph == nullptr)
+        graph = new Graph(data);
     newTabContentWidget->getGraphArea().setScene(new QGraphicsScene);
     graph->addToScene(newTabContentWidget->getGraphArea().scene());
     newTabContentWidget->update();

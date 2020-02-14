@@ -14,7 +14,7 @@ public:
     int tabCounter = -1;
     explicit MainWidget(QWidget *parent = nullptr);
     void fillTable(QTableWidget &tableWidget, std::vector<std::vector<std::string>> data);
-    void addDataSet(vector<vector<string>> data, const QString &name);
+    void addDataSet(vector<vector<string>> data, const QString &name, Graph * g = nullptr);
     TabContentWidget *getCurrentTabContent();
     void renameCurrentTab(QString name);
     static std::string getNameFromPath(QString path);
