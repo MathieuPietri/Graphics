@@ -73,6 +73,11 @@ protected slots:
     void aboutGraphEt();
     void aide();
 
+    /* Barre de status
+     *
+     *
+     */
+    void changeStatusBar();
 };
 
 #endif // TOOLBAR_H

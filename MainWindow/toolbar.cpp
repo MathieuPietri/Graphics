@@ -1,12 +1,14 @@
 #include "toolbar.h"
 #include "Graph/csv.h"
+#include "helpdialog.h"
+#include "graphaction.h"
+#include "mainwidget.h"
 #include "Graph/gret.h"
+
 #include <QDebug>
 #include <QToolBar>
 #include <QStatusBar>
 #include <QErrorMessage>
-#include "helpdialog.h"
-#include "graphaction.h"
 
 
 ToolBar::ToolBar(QWidget *parent) :
@@ -19,7 +21,7 @@ ToolBar::ToolBar(QWidget *parent) :
     barreDeStatut->addPermanentWidget(nbNodesSelected);
     barreDeStatut->addPermanentWidget(progressBar);
 
-    /*
+
     progressBar->setVisible(false);
     nbNodesLabel->setVisible(false);
     nbEdgesLabel->setVisible(false);
@@ -100,7 +102,23 @@ ToolBar::ToolBar(QWidget *parent) :
     connect(actionOuvrirTool, SIGNAL(triggered()), this, SLOT(tableauOuvrir()));
     connect(actionChoisirCouleurTool, SIGNAL(triggered()), this, SLOT(choixCouleurs()));
     connect(actionNouveauTableauAleatoireTool, SIGNAL(triggered()), this, SLOT(tableauAleatoire()));
+    connect(actionExporterTool, SIGNAL(triggered()), this, SLOT(exporter()));
 
+/*  Barre d'états
+ *
+ *
+ *
+ */
+    connect(actionNouveauTableauAleatoire, SIGNAL(triggered()), this, SLOT(changeStatusBar()));
+    connect(actionNouveauTableauAleatoireTool, SIGNAL(triggered()), this, SLOT(changeStatusBar()));
+    connect(actionToutSelectionner, SIGNAL(triggered()), this, SLOT(changeStatusBar()));
+    connect(actionFusionTool, SIGNAL(triggered()), this, SLOT(changeStatusBar()));
+    connect(actionAnnulerTool, SIGNAL(triggered()), this, SLOT(changeStatusBar()));
+    connect(actionRestaurerTool, SIGNAL(triggered()), this, SLOT(changeStatusBar()));
+    connect(actionFusionner, SIGNAL(triggered()), this, SLOT(changeStatusBar()));
+    connect(actionAnnuler, SIGNAL(triggered()), this, SLOT(changeStatusBar()));
+    connect(actionRestaurer, SIGNAL(triggered()), this, SLOT(changeStatusBar()));
+    connect(actionBarreDeStatus, SIGNAL(triggered()), this, SLOT(changeStatusBar()));
 
 }
 
@@ -135,17 +153,21 @@ void ToolBar::tableauOuvrir()
 
    if(fichier != NULL){
        try {
+           vector<vector<string>> file = openFromCSV(filePath);
+           mainWidget->addDataSet(file, QString::fromStdString(filePath));
+           QMessageBox::information(this, tr("Fichier"), tr("Vous avez sélectionné :\n") + fichier);
+           changeStatusBar();
 
            if (filePath.substr(filePath.size()-3, filePath.size()-1) == "csv") {
                vector<vector<string>> csv_data = openFromCSV(filePath);
                mainWidget->addDataSet(csv_data, QString::fromStdString(filePath));
-               QMessageBox::information(this, tr("Fichier"), tr("Vous avez sélectionné :\n") + QString::fromStdString(MainWidget::getNameFromPath(fichier)));
+               //QMessageBox::information(this, tr("Fichier"), tr("Vous avez sélectionné :\n") + QString::fromStdString(MainWidget::getNameFromPath(fichier)));
            }
            else if (filePath.substr(filePath.size()-4, filePath.size()-1) == "gret") {
                 vector<vector<string>> & csv_data = *new vector<vector<string>> () ;
                 Graph * g = openFromGRET(filePath, & csv_data);
                 mainWidget->addDataSet(csv_data, QString::fromStdString(filePath), g);
-                QMessageBox::information(this, tr("Fichier"), tr("Vous avez sélectionné :\n") + QString::fromStdString(MainWidget::getNameFromPath(fichier)));
+                //QMessageBox::information(this, tr("Fichier"), tr("Vous avez sélectionné :\n") + QString::fromStdString(MainWidget::getNameFromPath(fichier)));
            }
            else {
                cout << filePath.substr(filePath.size()-4, filePath.size()-1) << endl;
@@ -192,7 +214,7 @@ void ToolBar::enregistrerSous()
     //QString SaveFile = QFileDialog::getSaveFileName(this, tr("Enregistrer un fichier"), QString(), tr("Fichiers GraphET (*.gret)"));
 
     QString nomFichier = QFileDialog::getSaveFileName(this, tr("Sauvegarder Graphe"),
-                                                        "../documents_GRAPHE", tr("NINJA (*.gret)"), nullptr, QFileDialog::DontUseNativeDialog);
+                                                        "../documents_GRAPHE", tr("Fichier GraphET(*.gret)"), nullptr, QFileDialog::DontUseNativeDialog);
 
     if(nomFichier.isEmpty())
         cout << "Fichier vide";
@@ -224,7 +246,19 @@ void ToolBar::modifierContenu(QString nomFichier)
 void ToolBar::exporter()
 {
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
-    QMessageBox::information(this, tr("Fonctionnalité disponible bientôt"), tr("Cette fonctionnalité sera disponible très prochainement !"));
+    QGraphicsView &view = mainWidget->getCurrentTabContent()->getGraphArea();
+
+    view.scene()->clearSelection();                                                  // Selections would also render to the file
+     view.scene()->setSceneRect( view.scene()->itemsBoundingRect());                          // Re-shrink the scene to it's bounding contents
+    QImage image( view.scene()->sceneRect().size().toSize(), QImage::Format_ARGB32);  // Create the image with the exact size of the shrunk scene
+    image.fill(Qt::transparent);                                              // Start all pixels transparent
+
+    QPainter painter(&image);
+    view.scene()->render(&painter);
+    QString nomFichier = QFileDialog::getSaveFileName(this, tr("Exporter une image"),
+                                                     "../documents_GRAPHE", tr("PNG (*.png)"), nullptr, QFileDialog::DontUseNativeDialog);
+    image.save(nomFichier+".png");
+
 }
 
 void ToolBar::imprimer()
@@ -399,7 +433,10 @@ void ToolBar::langues()
 void ToolBar::aboutGraphEt()
 {
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
-    QMessageBox::information(this, tr("About GraphET"), tr("Cette application a été créé par :\n Alix Eymar,Maxime Graziano, Anthony Gignac,\n Mathieu Pietri, Oriane Donadio et Quentin Decloitre \n en février 2020. \n"));
+
+    QMessageBox::information(this, tr("About GraphET"), tr("Cette application a été créé par :\n "
+                                                           "Alix Eymar,Maxime Graziano, Anthony Gignac,\n "
+                                                           "Mathieu Pietri, Oriane Donadio et Quentin Decloitre \n en février 2020. \n "));
 }
 
 void ToolBar::aide()
@@ -407,6 +444,46 @@ void ToolBar::aide()
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
     HelpDialog * help = new HelpDialog ();
     help->show();
+}
+
+/*
+ *
+ *
+ */
+
+void ToolBar::changeStatusBar()
+{
+    qDebug() << __FUNCTION__ << "The event sender is" << sender();
+    nbNodesLabel->setVisible(true);
+    nbEdgesLabel->setVisible(true);
+    nodeWeightLabel->setVisible(true);
+    nbNodesSelected->setVisible(true);
+
+    string nodes = "Nombre de nœuds: " + to_string(mainWidget->getCurrentTabContent()->getGraph()->getNodes().size());
+    nbNodesLabel->setText(QString::fromStdString(nodes));
+
+    string edges = "Nombre d'arêtes: " + to_string(mainWidget->getCurrentTabContent()->getGraph()->getEdges().size());
+    nbEdgesLabel->setText(QString::fromStdString(edges));
+
+    int nombreDeNoeudsSelectionnesParLAZONE = mainWidget->getCurrentTabContent()->getGraph()->getSelectedNodes().size();
+    if (nombreDeNoeudsSelectionnesParLAZONE == 1){
+        string weight = "Pondération du nœud choisi: " + to_string(mainWidget->getCurrentTabContent()->getGraph()->getSelectedNodes().at(0)->getPonderation());
+        nodeWeightLabel->setText(QString::fromStdString(weight));
+    }
+    else if (nombreDeNoeudsSelectionnesParLAZONE > 1){
+        int ponderationMoyenneLESANGLAZONEJUJUJUL = 0;
+        for(int i = 0; i < nombreDeNoeudsSelectionnesParLAZONE; i ++){
+            ponderationMoyenneLESANGLAZONEJUJUJUL += mainWidget->getCurrentTabContent()->getGraph()->getSelectedNodes().at(i)->getPonderation();
+        }
+        string weight = "Pondération moyenne des nœuds choisis: " + to_string((double)ponderationMoyenneLESANGLAZONEJUJUJUL/nombreDeNoeudsSelectionnesParLAZONE);
+        nodeWeightLabel->setText(QString::fromStdString(weight));
+    }
+    else {
+        nodeWeightLabel->setVisible(false);
+    }
+
+    string select = "Nombre de nœuds sélectionnés: " + to_string(nombreDeNoeudsSelectionnesParLAZONE);
+    nbNodesSelected->setText(QString::fromStdString(select));
 }
 
 /*
