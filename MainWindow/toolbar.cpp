@@ -220,7 +220,7 @@ void ToolBar::enregistrerSous()
         cout << "Fichier vide";
     else {
         cout << nomFichier.toStdString() << endl;
-        if(!nomFichier.toStdString().find('.'))
+        if(nomFichier.toStdString().find('.') == string::npos)
             nomFichier.append(".gret");
         modifierContenu(nomFichier);
         mainWidget->getCurrentTabContent()->setFileName(nomFichier);
