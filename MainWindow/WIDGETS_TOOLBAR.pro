@@ -30,6 +30,7 @@ SOURCES += \
         Graph/graph.cpp \
         Graph/gret.cpp \
         Graph/node.cpp \
+        aboutdialog.cpp \
         graphaction.cpp \
         helpdialog.cpp \
         mainwidget.cpp \
@@ -40,6 +41,7 @@ SOURCES += \
 HEADERS += \
         Graph/csv.h \
         Graph/graph.h \
+        aboutdialog.h \
         graphaction.h \
         Graph/gret.h \
         helpdialog.h \
@@ -48,6 +50,7 @@ HEADERS += \
         toolbar.h
 
 FORMS += \
+        aboutdialog.ui \
         helpdialog.ui \
         mainwidget.ui \
         tabcontentwidget.ui \
@@ -60,7 +63,8 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-DISTFILES +=
+DISTFILES += \
+    ImagesAide/graphET_icon2.png
 
 RESOURCES += \
     rez.qrc

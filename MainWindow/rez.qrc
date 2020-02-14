@@ -12,4 +12,8 @@
         <file>ImagesAide/color.png</file>
         <file>ImagesAide/add.png</file>
     </qresource>
+    <qresource prefix="/">
+        <file>ImagesAide/graphET_icon2.png</file>
+        <file>ImagesAide/DreamTeam.jpg</file>
+    </qresource>
 </RCC>

@@ -4,4 +4,5 @@ aboutdialog::aboutdialog(QWidget *parent) :
     QWidget(parent)
 {
     setupUi(this);
+
 }

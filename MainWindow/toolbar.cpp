@@ -1,6 +1,7 @@
 #include "toolbar.h"
 #include "Graph/csv.h"
 #include "helpdialog.h"
+#include "aboutdialog.h"
 #include "graphaction.h"
 #include "mainwidget.h"
 #include "Graph/gret.h"
@@ -9,6 +10,7 @@
 #include <QToolBar>
 #include <QStatusBar>
 #include <QErrorMessage>
+#include <QPixmap>
 
 
 ToolBar::ToolBar(QWidget *parent) :
@@ -436,9 +438,10 @@ void ToolBar::aboutGraphEt()
 {
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
 
-    QMessageBox::information(this, tr("About GraphET"), tr("Cette application a été créé par :\n "
-                                                           "Alix Eymar,Maxime Graziano, Anthony Gignac,\n "
-                                                           "Mathieu Pietri, Oriane Donadio et Quentin Decloitre \n en février 2020. \n "));
+    aboutdialog * about = new aboutdialog();
+    about ->show();
+
+
 }
 
 void ToolBar::aide()
@@ -447,11 +450,6 @@ void ToolBar::aide()
     HelpDialog * help = new HelpDialog ();
     help->show();
 }
-
-/*
- *
- *
- */
 
 void ToolBar::changeStatusBar()
 {
