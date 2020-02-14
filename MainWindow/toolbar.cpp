@@ -273,11 +273,13 @@ void ToolBar::choixCouleurs()
 void ToolBar::zoomPlus()
 {
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
+    mainWidget->getCurrentTabContent()->getGraphArea().scale(1.3, 1.3);
 }
 
 void ToolBar::zoomMoins()
 {
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
+    mainWidget->getCurrentTabContent()->getGraphArea().scale(0.8, 0.8);
 }
 
 void ToolBar::zoomTailleReelle()
