@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>ImagesAide/undo.png</file>
+        <file>ImagesAide/saveS.png</file>
+        <file>ImagesAide/save.png</file>
+        <file>ImagesAide/redo.png</file>
+        <file>ImagesAide/plus.png</file>
+        <file>ImagesAide/moins.png</file>
+        <file>ImagesAide/fusion.png</file>
+        <file>ImagesAide/fichier.png</file>
+        <file>ImagesAide/export.png</file>
+        <file>ImagesAide/color.png</file>
+        <file>ImagesAide/add.png</file>
+    </qresource>
+</RCC>

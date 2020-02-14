@@ -185,6 +185,16 @@ void Graph::colorationSelectedNodes(QColor c){
 
 }
 
+void Graph::printGraph(){
+    cout << "Nodes" << endl;
+    for(int i=0 ; i<(int)nodeList.size() ; i++){
+
+        cout << nodeList[i]->getId() << " ";
+        cout << nodeList[i]->getX() << " ";
+        cout << nodeList[i]->getY() << endl;
+    }
+}
+
 Node* Graph::getNodeByName(string name){
 
     for(int i = 0; i <(int)nodeList.size(); i++){
@@ -232,26 +242,25 @@ Graph::Graph(vector<vector<string>> &csvData){
 Graph::Graph(vector<vector<string>> &nodeData,
              vector<vector<string>> &edgeData,
              vector<vector<string>> &metaNodeData){
-    nodeList.clear();
-    edgeList.clear();
+    //nodeList.clear();
+    //edgeList.clear();
     for(int i=0 ; i<(int)nodeData.size() ; i++){
-        Node* n = getNodeByName((string)nodeData[i][0]);
+
+        Node* n = new Node((string)nodeData[i][0], stoi(nodeData[i][6]));
+
         n->setPos(stod(nodeData[i][1]), stod(nodeData[i][2]));
+        cout << n->getX() << endl;
+        //cout << stod(nodeData[i][1]) << " " << stod(nodeData[i][2]) << endl;
         int r = stoi(nodeData[i][3]);
         int g = stoi(nodeData[i][4]);
         int b = stoi(nodeData[i][5]);
         n->setColor(r, g, b);
-        n->setPonderation(stoi(nodeData[i][6]));
+
         nodeList.push_back(n);
     }
     for(int i=0 ; i<(int)edgeData.size() ; i ++){
-        int pos1; string name1 = edgeData[i][0];
-        int pos2; string name2 = edgeData[i][1];
-        for(int j=0 ; j<(int)nodeList.size() ; j++){
-            if ( nodeList[j]->getId() == name1 ) pos1 = j;
-            if ( nodeList[j]->getId() == name2 ) pos2 = j;
-        }
-        edgeList.push_back(new Edge(nodeList[pos1], nodeList[pos2]));
+        edgeList.push_back(new Edge(getNodeByName(edgeData[i][0]), getNodeByName(edgeData[i][1])));
+        cout << getNodeByName(edgeData[i][0]) << ", ega " << getNodeByName(edgeData[i][1]) << endl;
     }
 }
 
@@ -286,7 +295,7 @@ Graph::~Graph(){
 
     //listing of all entering nodes (nodes that will be connected to metaNode)
     for(int i=0 ; i<(int)edgeList.size() ; i++){
-        int node1isToFuse = isPartOfNodelist(selectedNodes, edgeList[i]->getNode1());
+        int node1isToFuse = isPartOfNcsvDataodelist(selectedNodes, edgeList[i]->getNode1());
         int node2isToFuse = isPartOfNodelist(selectedNodes, edgeList[i]->getNode2());
         if ( node1isToFuse == 1 && node2isToFuse == 1)
 

@@ -13,7 +13,7 @@ Graph * openFromGRET(const string & fileName, vector<vector<string>> * csv_resul
 
     vector<vector<string>> node_list;
     vector<vector<string>> edge_list;
-    //vector<vector<string>> metanode_list;
+    vector<vector<string>> metanode_list;
 
     string line;
     int n = 1;
@@ -71,7 +71,7 @@ Graph * openFromGRET(const string & fileName, vector<vector<string>> * csv_resul
             break;
         case 3:
             vectorLine.push_back(value);
-            //metanode_list.push_back(vectorLine);
+            metanode_list.push_back(vectorLine);
             break;
         case -1:
             if (sharpValue.compare("nodelist") == 0) {
@@ -80,9 +80,9 @@ Graph * openFromGRET(const string & fileName, vector<vector<string>> * csv_resul
             } else if (sharpValue.compare("edgelist") == 0) {
                 mode = 2;
                 break;
-//            } else if (sharpValue == "metanodelist") {
-//                mode = 3;
-//                break;
+            } else if (sharpValue == "metanodelist") {
+                mode = 3;
+                break;
             } else {
                 cerr << "Invalid # found while parsing .gret file." << endl;
                 mode = 0;
@@ -136,11 +136,15 @@ Graph * openFromGRET(const string & fileName, vector<vector<string>> * csv_resul
         }
     }
     cout << "]]" << endl;
-//    for (auto vect : metanode_list)
-//        for (auto str : vect)
-//            cout << str << endl;
+    for (auto vect : metanode_list)
+        for (auto str : vect)
+            cout << str << endl;
 
-    Graph * g = new Graph(* csv_result);
+    vector<vector<string>> & node_ref = node_list;
+    vector<vector<string>> & edge_ref = edge_list;
+    vector<vector<string>> & metanode_ref = metanode_list;
+
+    Graph * g = new Graph(node_ref, edge_ref, metanode_ref);
     return g;
 }
 
