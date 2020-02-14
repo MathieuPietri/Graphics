@@ -1,0 +1,8 @@
+ce, tableau, est, peu, rempli
+2e, ligne, , , , , , coucou
+#nodelist
+gros rond, 		10.2, 10.4, 100, 150, 0,   10
+petit rond loin,	491,  148,  150, 150, 150, 2
+rond 255 blanc, 	0,    0,    255, 255, 255, 5
+#edgelist
+gros rond, petit rond
