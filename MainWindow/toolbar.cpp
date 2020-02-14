@@ -285,6 +285,7 @@ void ToolBar::zoomMoins()
 void ToolBar::zoomTailleReelle()
 {
     qDebug() << __FUNCTION__ << "The event sender is" << sender();
+    mainWidget->getCurrentTabContent()->getGraphArea().resetTransform();
 }
 
 void ToolBar::pleinEcran()
