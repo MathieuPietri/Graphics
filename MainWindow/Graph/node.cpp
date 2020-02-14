@@ -42,3 +42,8 @@ void Node::mousePressEvent(QGraphicsSceneMouseEvent *event){
     _YOnMousePressed = getY();
     QGraphicsItem::mousePressEvent(event);
 }
+
+
+vector<Edge*>
+
+
